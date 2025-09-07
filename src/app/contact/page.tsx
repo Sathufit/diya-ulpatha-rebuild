@@ -104,8 +104,8 @@ export default function ContactPage() {
               Contact <span className="gradient-text">Us</span>
             </h1>
             <p className="text-xl md:text-2xl text-text-muted max-w-4xl mx-auto leading-relaxed mb-12">
-              Ready to begin your wellness journey? We're here to guide you every
-              step of the way. Reach out and let's start your healing
+              Ready to begin your wellness journey? We&apos;re here to guide you every
+              step of the way. Reach out and let&apos;s start your healing
               transformation.
             </p>
 
@@ -258,7 +258,7 @@ export default function ContactPage() {
                   Send Us a <span className="gradient-text">Message</span>
                 </h2>
                 <p className="text-xl text-text-muted">
-                  Fill out the form below and we'll get back to you within 24
+                  Fill out the form below and we&apos;ll get back to you within 24
                   hours
                 </p>
               </div>
@@ -440,8 +440,8 @@ export default function ContactPage() {
               Your Wellness Journey Starts Here
             </h2>
             <p className="text-xl text-primary-light mb-10 leading-relaxed">
-              Whether you're seeking healing treatments, learning opportunities,
-              or a peaceful retreat, we're here to guide you on your path to
+              Whether you&apos;re seeking healing treatments, learning opportunities,
+              or a peaceful retreat, we&apos;re here to guide you on your path to
               wellness.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

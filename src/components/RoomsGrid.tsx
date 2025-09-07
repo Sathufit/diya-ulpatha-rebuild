@@ -2,15 +2,12 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import {
+	X,
 	Users,
 	Bed,
-	X,
-	ArrowRight,
 	CheckCircle,
 	Mountain,
 	TreePine,
-	Wifi,
-	Coffee,
 } from "lucide-react";
 import { IMAGES } from "@/constants/images";
 
@@ -268,7 +265,7 @@ export function RoomsGrid() {
 						<p className="text-text-primary font-medium leading-relaxed">
 							<strong>Ideal for long stays</strong>, our accommodations
 							perfectly complement your Ayurveda wellness journey,
-							whether you're here for relaxation or immersive Ayurveda
+							whether you&apos;re here for relaxation or immersive Ayurveda
 							training. Wake up to the soothing sounds of birds and
 							embrace the tranquility of your surroundings. Experience
 							comfort, privacy, and nature in perfect harmony.

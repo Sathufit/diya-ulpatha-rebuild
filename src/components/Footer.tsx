@@ -19,7 +19,7 @@ export function Footer() {
             </div>
             
             <p className="text-primary-light leading-relaxed text-lg max-w-lg">
-              Experience authentic Ayurvedic healing in the heart of Sri Lanka's natural beauty. 
+              Experience authentic Ayurvedic healing in the heart of Sri Lanka&apos;s natural beauty. 
               Our holistic wellness center offers traditional treatments, expert training, and 
               peaceful accommodation surrounded by medicinal gardens.
             </p>

@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { X, ChevronLeft, ChevronRight, Filter, Camera, Eye } from "lucide-react";
 import { IMAGES } from "@/constants/images";
@@ -147,30 +147,30 @@ export default function GalleryPage() {
     ? filteredImages.findIndex(img => img.id === selectedImage.id)
     : -1;
 
-  const goToPrevious = () => {
+  const goToPrevious = useCallback(() => {
     if (currentIndex > 0) {
       setSelectedImage(filteredImages[currentIndex - 1]);
     }
-  };
+  }, [currentIndex, filteredImages]);
 
-  const goToNext = () => {
+  const goToNext = useCallback(() => {
     if (currentIndex < filteredImages.length - 1) {
       setSelectedImage(filteredImages[currentIndex + 1]);
     }
-  };
+  }, [currentIndex, filteredImages]);
 
-  const handleKeyPress = (e: KeyboardEvent) => {
+  const handleKeyPress = useCallback((e: KeyboardEvent) => {
     if (selectedImage) {
       if (e.key === "Escape") setSelectedImage(null);
       if (e.key === "ArrowLeft") goToPrevious();
       if (e.key === "ArrowRight") goToNext();
     }
-  };
+  }, [selectedImage, goToPrevious, goToNext]);
 
   useEffect(() => {
     document.addEventListener("keydown", handleKeyPress);
     return () => document.removeEventListener("keydown", handleKeyPress);
-  }, [selectedImage, currentIndex]);
+  }, [handleKeyPress]);
 
   return (
     <div className="min-h-screen">
@@ -349,9 +349,11 @@ export default function GalleryPage() {
 
             {/* Image */}
             <div className="relative max-h-[80vh] max-w-full animate-scale-in">
-              <img
+              <Image
                 src={selectedImage.src}
                 alt={selectedImage.alt}
+                width={800}
+                height={600}
                 className="max-h-[80vh] max-w-full object-contain rounded-xl shadow-2xl"
               />
               

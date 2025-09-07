@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { HeroCarousel, type HeroSlide } from "@/components/HeroCarousel";
 import { QuickInquiryForm } from "@/components/QuickInquiryForm";
 import { IMAGES } from "@/constants/images";
@@ -8,7 +8,6 @@ import {
   Heart,
   Leaf,
   Users,
-  Clock,
   Star,
   CheckCircle,
   TreePine,
@@ -110,29 +109,24 @@ const features = [
 ];
 
 export default function HomePage() {
-  const [isVisible, setIsVisible] = useState(false);
-
   useEffect(() => {
-    const timer = setTimeout(() => setIsVisible(true), 100);
-
     // Intersection Observer for scroll animations
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add("animate-in");
+            entry.target.classList.add('animate-in');
           }
         });
       },
-      { threshold: 0.1, rootMargin: "50px" }
+      { threshold: 0.1, rootMargin: '50px' }
     );
 
-    document.querySelectorAll(".animate-on-scroll").forEach((el) => {
+    document.querySelectorAll('.animate-on-scroll').forEach((el) => {
       observer.observe(el);
     });
 
     return () => {
-      clearTimeout(timer);
       observer.disconnect();
     };
   }, []);
@@ -301,11 +295,6 @@ export default function HomePage() {
                     className="object-cover group-hover:scale-110 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-
-                  <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-primary px-3 py-1 rounded-full text-sm font-medium flex items-center gap-1">
-                    <Clock size={12} />
-                    {treatment.duration}
-                  </div>
                 </div>
 
                 <div className="space-y-4">
