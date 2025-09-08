@@ -4,8 +4,8 @@ import { RoomsGrid } from "@/components/RoomsGrid";
 import Image from "next/image";
 import { 
   TreePine, Mountain, Utensils, Waves, Dumbbell, Wifi, Coffee, Shield, 
-  CheckCircle, Clock, MapPin, Star, ArrowRight, Play, Heart, Award,
-  Calendar, Phone, Users, Sparkles, Eye, Camera, Leaf
+  CheckCircle, Clock, MapPin, Star, ArrowRight, Heart,
+  Calendar, Phone, Users, Sparkles, Eye, Camera
 } from "lucide-react";
 import { IMAGES } from "@/constants/images";
 
@@ -185,6 +185,7 @@ export default function AccommodationPage() {
             fill
             className="object-cover"
             priority
+            sizes="100vw"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-black/40"></div>
         </div>
@@ -218,7 +219,7 @@ export default function AccommodationPage() {
             <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16">
               <a 
                 href="#rooms" 
-                className="group bg-accent hover:bg-accent/90 text-primary px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl flex items-center gap-3 justify-center"
+                className="group bg-accent hover:bg-accent/90 text-primary px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 hover:scale-105 hover:shadow-xl flex items-center gap-3 justify-center"
               >
                 <Camera className="w-6 h-6" />
                 Explore Rooms
@@ -283,9 +284,6 @@ export default function AccommodationPage() {
                   <p className="text-text-muted text-lg leading-relaxed">
                     {highlight.description}
                   </p>
-
-                  {/* Decorative element */}
-                  <div className="absolute top-8 right-8 w-16 h-16 bg-gradient-to-br from-accent/10 to-primary/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 group-hover:animate-spin-slow"></div>
                 </div>
               </div>
             ))}
@@ -315,6 +313,67 @@ export default function AccommodationPage() {
         </div>
       </section>
 
+      {/* Dynamic Testimonials */}
+      <section className="py-32 bg-gradient-to-r from-primary/5 via-accent/5 to-surface relative overflow-hidden">
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="text-center mb-16 animate-on-scroll">
+            <h2 className="text-5xl md:text-6xl font-bold mb-6">
+              Guest <span className="text-accent">Experiences</span>
+            </h2>
+            <p className="text-xl text-text-muted max-w-3xl mx-auto">
+              Hear from those who have found their sanctuary with us
+            </p>
+          </div>
+
+          <div className="max-w-4xl mx-auto">
+            <div className="relative bg-white rounded-3xl p-12 shadow-2xl border border-gray-100 animate-on-scroll">
+              {/* Active Testimonial */}
+              <div className="text-center mb-8">
+                <div className="flex justify-center gap-1 mb-6">
+                  {[...Array(testimonials[currentTestimonial].rating)].map((_, i) => (
+                    <Star key={i} className="w-6 h-6 fill-accent text-accent" />
+                  ))}
+                </div>
+                
+                <blockquote className="text-2xl lg:text-3xl text-text-primary leading-relaxed mb-8 italic">
+                  &ldquo;{testimonials[currentTestimonial].content}&rdquo;
+                </blockquote>
+                
+                <div className="flex items-center justify-center gap-4">
+                  <Image
+                    src={testimonials[currentTestimonial].image}
+                    alt={testimonials[currentTestimonial].name}
+                    width={80}
+                    height={80}
+                    className="rounded-full object-cover shadow-lg"
+                  />
+                  <div className="text-left">
+                    <div className="font-bold text-xl text-primary">{testimonials[currentTestimonial].name}</div>
+                    <div className="text-text-muted">{testimonials[currentTestimonial].role}</div>
+                    <div className="text-accent text-sm font-medium">{testimonials[currentTestimonial].stay}</div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Navigation Dots */}
+              <div className="flex justify-center gap-3">
+                {testimonials.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentTestimonial(index)}
+                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                      currentTestimonial === index 
+                        ? 'bg-accent w-8' 
+                        : 'bg-gray-300 hover:bg-gray-400'
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Amenities - Interactive Grid */}
       <section className="py-32 bg-background">
         <div className="container mx-auto px-4">
@@ -331,7 +390,7 @@ export default function AccommodationPage() {
             {amenities.map((amenity, index) => (
               <div
                 key={index}
-                className={`animate-on-scroll group bg-white rounded-2xl p-8 shadow-lg border border-gray-100 text-center transition-all duration-500 hover:-translate-y-4 hover:shadow-2xl hover:scale-105`}
+                className={`animate-on-scroll group bg-white rounded-2xl p-8 shadow-lg border border-gray-100 text-center transition-all duration-500 hover:-translate-y-4 hover:shadow-2xl hover:scale-105 relative`}
                 style={{ animationDelay: `${index * 100}ms` }}
               >
                 <div className="w-20 h-20 bg-gradient-to-br from-accent/20 to-primary/20 rounded-2xl flex items-center justify-center mx-auto mb-6 text-accent group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
@@ -353,6 +412,46 @@ export default function AccommodationPage() {
 
                 {/* Hover Effect */}
                 <div className="absolute inset-0 bg-gradient-to-t from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Policies - Modern Cards */}
+      <section className="py-32 bg-surface">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-20 animate-on-scroll">
+            <h2 className="text-5xl md:text-6xl font-bold mb-6">
+              Essential <span className="text-accent">Information</span>
+            </h2>
+            <p className="text-xl text-text-muted max-w-3xl mx-auto">
+              Everything you need to know for a seamless and comfortable stay
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 max-w-6xl mx-auto">
+            {policies.map((policy, index) => (
+              <div
+                key={index}
+                className={`animate-on-scroll group bg-white rounded-3xl p-10 shadow-xl border border-gray-100 text-center transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl`}
+                style={{ animationDelay: `${index * 150}ms` }}
+              >
+                <div className="w-16 h-16 bg-gradient-to-br from-accent/20 to-primary/20 rounded-2xl flex items-center justify-center mx-auto mb-8 text-accent group-hover:scale-110 transition-transform duration-300">
+                  {policy.icon}
+                </div>
+                
+                <h3 className="text-2xl font-bold text-primary mb-4 group-hover:text-accent transition-colors duration-300">
+                  {policy.title}
+                </h3>
+                
+                <p className="text-lg text-text-primary font-medium mb-3">
+                  {policy.details}
+                </p>
+                
+                <p className="text-text-muted text-sm">
+                  {policy.subtext}
+                </p>
               </div>
             ))}
           </div>

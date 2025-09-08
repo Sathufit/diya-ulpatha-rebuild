@@ -5,8 +5,8 @@ import { TreatmentsGrid } from "@/components/TreatmentsGrid";
 import { QuickInquiryForm } from "@/components/QuickInquiryForm";
 import { 
   Leaf, Heart, Users, Award, Star, ArrowRight, Play, Sparkles, 
-  CheckCircle, Clock, Globe, Shield, TreePine, Phone, Calendar,
-  MessageCircle, ChevronDown, Zap, Target
+  CheckCircle, Shield, TreePine, Phone, Calendar,
+  MessageCircle, ChevronDown, Zap
 } from "lucide-react";
 import { IMAGES } from "@/constants/images";
 import Image from "next/image";
@@ -37,13 +37,10 @@ const heroSlides = [
 ];
 
 export default function HomePage() {
-  const [isVisible, setIsVisible] = useState(false);
   const [scrollY, setScrollY] = useState(0);
   const [activeService, setActiveService] = useState(0);
 
   useEffect(() => {
-    setIsVisible(true);
-    
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener('scroll', handleScroll);
     
@@ -112,30 +109,6 @@ export default function HomePage() {
     { number: "1000+", label: "Lives Transformed", icon: <Heart className="w-6 h-6" /> },
     { number: "15+", label: "Expert Treatments", icon: <Sparkles className="w-6 h-6" /> },
     { number: "98%", label: "Satisfaction Rate", icon: <Star className="w-6 h-6" /> }
-  ];
-
-  const testimonials = [
-    {
-      name: "Sarah Johnson",
-      role: "Wellness Enthusiast", 
-      content: "Life-changing experience! The combination of authentic treatments and modern comfort exceeded all expectations.",
-      rating: 5,
-      image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=80&h=80&fit=crop&crop=face&q=80"
-    },
-    {
-      name: "Dr. Michael Chen",
-      role: "Physician",
-      content: "The training program opened my eyes to the profound wisdom of Ayurveda. Excellent facility and expert guidance.",
-      rating: 5,
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face&q=80"
-    },
-    {
-      name: "Emma Williams", 
-      role: "Yoga Instructor",
-      content: "Perfect retreat setting. The natural rock features and garden views create an incredibly peaceful atmosphere.",
-      rating: 5,
-      image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=80&h=80&fit=crop&crop=face&q=80"
-    }
   ];
 
   return (
@@ -216,7 +189,7 @@ export default function HomePage() {
                 </h2>
 
                 <p className="text-xl text-text-muted mb-8 leading-relaxed">
-                  Discover the healing power of authentic Ayurveda in Sri Lanka's most peaceful sanctuary. 
+                  Discover the healing power of authentic Ayurveda in Sri Lanka&apos;s most peaceful sanctuary. 
                   Our expert practitioners combine 5000 years of ancient wisdom with modern comfort to create 
                   your perfect wellness experience.
                 </p>
@@ -374,19 +347,19 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Treatments Preview - Optimized */}
-      <section className="py-12 bg-background">
+      {/* Treatments Preview */}
+      <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-text-primary mb-4">
+          <div className="text-center mb-16 animate-on-scroll">
+            <h2 className="text-4xl lg:text-5xl font-bold mb-6">
               Discover Our <span className="text-accent">Treatments</span>
             </h2>
-            <p className="text-lg text-text-muted max-w-2xl mx-auto">
+            <p className="text-xl text-text-muted max-w-3xl mx-auto">
               Experience authentic Ayurvedic healing through our traditional treatments
             </p>
           </div>
+          <TreatmentsGrid />
         </div>
-        <TreatmentsGrid showOnly={3} showViewMore={true} />
       </section>
 
       {/* Contact Form */}

@@ -8,12 +8,8 @@ import {
   BookOpen, 
   GraduationCap, 
   Stethoscope,
-  Star,
   Phone,
   Mail,
-  ArrowRight,
-  User,
-  UsersIcon,
   Leaf,
   Play,
   ChevronDown,
@@ -24,8 +20,7 @@ import {
   Heart,
   Globe,
   Zap,
-  FileText,
-  Video
+  FileText
 } from "lucide-react";
 
 interface Course {
@@ -50,96 +45,55 @@ const mainCourse: Course = {
   price: "Contact for pricing",
   description: "A perfect opportunity to learn Ayurveda from the abode of this ancient healing system. This course provides pragmatic awareness about Ayurvedic treatments with hands-on training under experienced physicians.",
   features: [
-    "Introduction to Ayurveda",
-    "Ayurvedic Perspective of Anatomy", 
-    "Ayurvedic Pharmacology",
-    "Ayurvedic Wellness Procedures",
-    "Ayurvedic Therapeutic Procedures",
-    "Different Kinds of Ayurvedic Massages"
+    "Comprehensive theory and practical sessions",
+    "Daily hands-on training with real patients",
+    "Learn from qualified Ayurvedic doctors",
+    "Traditional massage techniques",
+    "Herbal medicine preparation",
+    "Pulse diagnosis fundamentals",
+    "Treatment planning and case studies",
+    "Business guidance for practitioners"
   ],
   popular: true,
-  certification: "Certificate of Practical Awareness in Ayurvedic Therapies",
+  certification: "Internationally recognized certificate upon completion",
   methodology: [
-    "Lectures & Tutorials",
-    "Interactive Sessions", 
-    "Practical Demonstrations",
-    "Hands-On Training"
+    "Morning theory sessions (2 hours)",
+    "Practical demonstrations (3 hours)",
+    "Hands-on patient treatment (2 hours)",
+    "Self-practice and assessment (1 hour)"
   ],
-  eligibility: "Anyone with genuine interest in gaining practical knowledge in Ayurvedic Healing"
+  eligibility: "Open to healthcare professionals, massage therapists, wellness enthusiasts, and anyone interested in authentic Ayurvedic healing"
 };
-
-const learningPath = [
-  {
-    week: "Week 1",
-    title: "Foundation & Theory",
-    topics: ["Ayurveda Principles", "Constitutional Analysis", "Basic Anatomy"],
-    icon: <BookOpen className="w-6 h-6" />
-  },
-  {
-    week: "Week 2", 
-    title: "Practical Application",
-    topics: ["Massage Techniques", "Herbal Preparations", "Treatment Protocols"],
-    icon: <Target className="w-6 h-6" />
-  }
-];
-
-const stats = [
-  { number: "500+", label: "Graduates", icon: <GraduationCap className="w-6 h-6" /> },
-  { number: "15+", label: "Countries", icon: <Globe className="w-6 h-6" /> },
-  { number: "98%", label: "Success Rate", icon: <Award className="w-6 h-6" /> },
-  { number: "14", label: "Day Program", icon: <Calendar className="w-6 h-6" /> }
-];
-
-const benefits = [
-  {
-    icon: <Brain className="w-8 h-8" />,
-    title: "Deep Understanding",
-    description: "Master the philosophical foundations and practical applications of Ayurveda"
-  },
-  {
-    icon: <Heart className="w-8 h-8" />,
-    title: "Hands-On Experience", 
-    description: "Practice authentic techniques under the guidance of experienced masters"
-  },
-  {
-    icon: <Award className="w-8 h-8" />,
-    title: "Global Certification",
-    description: "Receive internationally recognized certification to practice worldwide"
-  },
-  {
-    icon: <Users className="w-8 h-8" />,
-    title: "Community Network",
-    description: "Join a global network of Ayurvedic practitioners and wellness professionals"
-  }
-];
 
 const faqs = [
   {
-    question: "What prior experience do I need?",
-    answer: "No prior experience required. Our course is designed for all levels, from complete beginners to healthcare professionals seeking to expand their knowledge."
+    question: "What is included in the 14-day program?",
+    answer: "The program includes daily theory classes, practical demonstrations, hands-on training, all study materials, accommodation, three Ayurvedic meals per day, and a certificate upon completion."
+  },
+  {
+    question: "Do I need prior medical experience?",
+    answer: "No prior medical experience is required. Our program is designed for beginners as well as experienced practitioners. We start with fundamentals and gradually progress to advanced techniques."
+  },
+  {
+    question: "What type of certification do I receive?",
+    answer: "You receive an internationally recognized certificate in Practical Awareness of Ayurvedic Therapies & Massage, which enables you to practice these therapies professionally."
   },
   {
     question: "Is accommodation included?",
-    answer: "Yes, we offer comprehensive packages that include comfortable accommodation, Ayurvedic meals, and all learning materials."
+    answer: "Yes, comfortable accommodation in our wellness center is included in the program fee, along with three nutritious Ayurvedic meals per day."
   },
   {
-    question: "What certification will I receive?",
-    answer: "Upon successful completion, you'll receive a Certificate of Practical Awareness in Ayurvedic Therapies, recognized internationally."
-  },
-  {
-    question: "Can I practice professionally after the course?",
+    question: "Can I practice after completing this course?",
     answer: "Yes, our certification enables you to practice Ayurvedic therapies professionally. We also provide guidance on setting up your practice."
   }
 ];
 
 export default function TrainingPage() {
-  const [isVisible, setIsVisible] = useState(false);
   const [activeTab, setActiveTab] = useState("overview");
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
-  const [currentStep, setCurrentStep] = useState(0);
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsVisible(true), 100);
+    const timer = setTimeout(() => {}, 100);
     return () => clearTimeout(timer);
   }, []);
 
@@ -150,290 +104,396 @@ export default function TrainingPage() {
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-20">
           <div className="absolute inset-0" style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M30 30c0-16.569-13.431-30-30-30v60c16.569 0 30-13.431 30-30zM0 30c16.569 0 30 13.431 30 30H0V30z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
           }}></div>
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Left Content */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            {/* Content */}
             <div className="text-white">
-              <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
-                <Leaf className="w-4 h-4 text-accent" />
-                <span className="text-sm font-medium">MASTER ANCIENT WISDOM</span>
+              <div className="inline-flex items-center gap-2 bg-white/20 rounded-full px-6 py-3 mb-8">
+                <GraduationCap className="w-5 h-5" />
+                <span className="font-semibold">PROFESSIONAL TRAINING</span>
               </div>
 
-              <h1 className="text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                Transform Lives Through
-                <span className="block text-accent">Ayurvedic Mastery</span>
+              <h1 className="text-5xl lg:text-7xl font-bold mb-8 leading-tight">
+                Master
+                <span className="block text-accent">Ayurvedic Arts</span>
               </h1>
 
-              <p className="text-xl text-white/90 mb-8 leading-relaxed">
-                Join our comprehensive 14-day certification program and master the art of Ayurvedic healing. 
-                Learn from expert practitioners in the birthplace of this ancient science.
+              <p className="text-xl lg:text-2xl text-white/90 mb-12 leading-relaxed">
+                Transform your career with our comprehensive 14-day certification program. Learn authentic Ayurvedic therapies from experienced practitioners in the birthplace of this ancient healing science.
               </p>
 
-              {/* Key Points */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-accent/20 rounded-full flex items-center justify-center">
-                    <CheckCircle className="w-5 h-5 text-accent" />
-                  </div>
-                  <span className="font-medium">14-Day Intensive</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-accent/20 rounded-full flex items-center justify-center">
-                    <CheckCircle className="w-5 h-5 text-accent" />
-                  </div>
-                  <span className="font-medium">Global Certification</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-accent/20 rounded-full flex items-center justify-center">
-                    <CheckCircle className="w-5 h-5 text-accent" />
-                  </div>
-                  <span className="font-medium">Expert Instructors</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-accent/20 rounded-full flex items-center justify-center">
-                    <CheckCircle className="w-5 h-5 text-accent" />
-                  </div>
-                  <span className="font-medium">All Levels Welcome</span>
-                </div>
-              </div>
-
-              <div className="flex flex-col sm:flex-row gap-4">
-                <a href="#enroll" className="btn-secondary text-lg px-8 py-4">
-                  Start Your Journey
+              <div className="flex flex-col sm:flex-row gap-6">
+                <a href="#course-details" className="bg-accent hover:bg-accent/90 text-primary px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 hover:scale-105 hover:shadow-xl flex items-center gap-3 justify-center">
+                  <BookOpen className="w-6 h-6" />
+                  Explore Program
                 </a>
-                <button className="btn-outline text-white border-white hover:bg-white hover:text-primary text-lg px-8 py-4 inline-flex items-center gap-2">
-                  <Play size={20} />
+                <button className="bg-white/10 backdrop-blur-md border-2 border-white/30 text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 hover:bg-white hover:text-primary flex items-center gap-3 justify-center">
+                  <Play className="w-6 h-6" />
                   Watch Preview
                 </button>
               </div>
             </div>
 
-            {/* Right Content - Interactive Stats Card */}
-            <div className="relative">
-              <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/20">
-                <h3 className="text-2xl font-bold text-white mb-8 text-center">Course Impact</h3>
-                <div className="grid grid-cols-2 gap-6">
-                  {stats.map((stat, index) => (
-                    <div key={index} className="text-center group">
-                      <div className="w-16 h-16 bg-accent/20 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                        <div className="text-accent">{stat.icon}</div>
-                      </div>
-                      <div className="text-3xl font-bold text-white mb-2">{stat.number}</div>
-                      <div className="text-white/80 text-sm">{stat.label}</div>
-                    </div>
-                  ))}
+            {/* Quick Info Card */}
+            <div className="bg-white/95 backdrop-blur-xl rounded-3xl p-8 shadow-2xl border border-white/20">
+              <div className="text-center mb-8">
+                <div className="w-20 h-20 bg-gradient-to-br from-accent to-yellow-500 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                  <Award className="w-10 h-10 text-white" />
+                </div>
+                <h3 className="text-2xl font-bold text-primary mb-2">
+                  {mainCourse.title}
+                </h3>
+                <p className="text-accent font-semibold">{mainCourse.level} • {mainCourse.duration}</p>
+              </div>
+
+              <div className="space-y-4 mb-8">
+                <div className="flex items-center gap-3">
+                  <Clock className="w-5 h-5 text-accent" />
+                  <span className="text-text-primary">14 Days Intensive Program</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Users className="w-5 h-5 text-accent" />
+                  <span className="text-text-primary">Small Batch Training</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Award className="w-5 h-5 text-accent" />
+                  <span className="text-text-primary">International Certification</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <FileText className="w-5 h-5 text-accent" />
+                  <span className="text-text-primary">Complete Study Materials</span>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Learning Path Section - Interactive Timeline */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4 text-primary">Your Learning <span className="text-accent">Journey</span></h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">A structured path to mastery designed by expert practitioners</p>
-          </div>
-
-          <div className="max-w-4xl mx-auto">
-            <div className="relative">
-              {/* Progress Line */}
-              <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gray-200"></div>
-              
-              {learningPath.map((phase, index) => (
-                <div key={index} className={`relative flex items-center mb-12 ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}>
-                  {/* Timeline Dot */}
-                  <div className="absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-accent rounded-full border-4 border-white shadow-lg flex items-center justify-center z-10">
-                    <div className="text-primary">{phase.icon}</div>
-                  </div>
-                  
-                  {/* Content Card */}
-                  <div className={`w-5/12 ${index % 2 === 0 ? 'pr-8 text-right' : 'pl-8'}`}>
-                    <div className="bg-gray-50 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
-                      <div className="text-accent font-bold text-sm mb-2">{phase.week}</div>
-                      <h4 className="text-xl font-bold text-primary mb-3">{phase.title}</h4>
-                      <div className="space-y-2">
-                        {phase.topics.map((topic, idx) => (
-                          <div key={idx} className="text-gray-600 text-sm">{topic}</div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Course Details - Tabbed Interface */}
-      <section id="course-details" className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            {/* Tab Navigation */}
-            <div className="flex justify-center mb-12">
-              <div className="bg-white rounded-2xl p-2 shadow-lg">
-                {[
-                  { id: "overview", label: "Overview", icon: <BookOpen size={20} /> },
-                  { id: "curriculum", label: "Curriculum", icon: <FileText size={20} /> },
-                  { id: "instructors", label: "Instructors", icon: <Users size={20} /> },
-                  { id: "certification", label: "Certification", icon: <Award size={20} /> }
-                ].map((tab) => (
-                  <button
-                    key={tab.id}
-                    onClick={() => setActiveTab(tab.id)}
-                    className={`inline-flex items-center gap-2 px-6 py-3 rounded-xl font-medium transition-all duration-300 ${
-                      activeTab === tab.id
-                        ? 'bg-primary text-white shadow-lg'
-                        : 'text-gray-600 hover:text-primary hover:bg-gray-50'
-                    }`}
-                  >
-                    {tab.icon}
-                    <span className="hidden sm:block">{tab.label}</span>
+              <div className="border-t border-gray-200 pt-6">
+                <p className="text-sm text-text-muted mb-4">Next batch starts soon!</p>
+                <div className="flex gap-3">
+                  <a href="/contact" className="flex-1 bg-primary hover:bg-primary-dark text-white py-3 px-4 rounded-xl font-semibold text-center transition-colors">
+                    Apply Now
+                  </a>
+                  <button className="flex-1 border border-primary text-primary hover:bg-primary hover:text-white py-3 px-4 rounded-xl font-semibold transition-colors">
+                    Get Brochure
                   </button>
-                ))}
+                </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
 
-            {/* Tab Content */}
-            <div className="bg-white rounded-3xl shadow-xl overflow-hidden">
-              {activeTab === "overview" && (
-                <div className="p-8 md:p-12">
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                    <div>
-                      <h3 className="text-3xl font-bold text-primary mb-6">{mainCourse.title}</h3>
-                      <p className="text-gray-600 text-lg leading-relaxed mb-8">{mainCourse.description}</p>
-                      
-                      {/* Course Info Cards */}
-                      <div className="grid grid-cols-2 gap-4">
-                        <div className="bg-blue-50 rounded-xl p-4 text-center">
-                          <Clock className="w-8 h-8 text-blue-600 mx-auto mb-2" />
-                          <div className="font-bold text-blue-900">{mainCourse.duration}</div>
-                          <div className="text-blue-600 text-sm">Duration</div>
-                        </div>
-                        <div className="bg-green-50 rounded-xl p-4 text-center">
-                          <Users className="w-8 h-8 text-green-600 mx-auto mb-2" />
-                          <div className="font-bold text-green-900">{mainCourse.level}</div>
-                          <div className="text-green-600 text-sm">Level</div>
-                        </div>
-                      </div>
-                    </div>
+      {/* Course Navigation Tabs */}
+      <section className="sticky top-0 z-40 bg-white shadow-lg border-b">
+        <div className="container mx-auto px-4">
+          <div className="flex overflow-x-auto">
+            {[
+              { id: "overview", label: "Overview", icon: <Target className="w-4 h-4" /> },
+              { id: "curriculum", label: "Curriculum", icon: <BookOpen className="w-4 h-4" /> },
+              { id: "methodology", label: "Teaching", icon: <Brain className="w-4 h-4" /> },
+              { id: "certification", label: "Certification", icon: <Award className="w-4 h-4" /> },
+              { id: "faqs", label: "FAQs", icon: <ChevronDown className="w-4 h-4" /> }
+            ].map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className={`flex items-center gap-2 px-6 py-4 font-semibold border-b-2 transition-colors whitespace-nowrap ${
+                  activeTab === tab.id
+                    ? "border-accent text-accent"
+                    : "border-transparent text-text-muted hover:text-primary"
+                }`}
+              >
+                {tab.icon}
+                {tab.label}
+              </button>
+            ))}
+          </div>
+        </div>
+      </section>
 
-                    <div>
-                      <h4 className="text-xl font-bold text-primary mb-6">Why Choose This Course?</h4>
-                      <div className="space-y-4">
-                        {benefits.map((benefit, index) => (
-                          <div key={index} className="flex items-start gap-4 p-4 rounded-xl hover:bg-gray-50 transition-colors duration-300">
-                            <div className="w-12 h-12 bg-accent/20 rounded-xl flex items-center justify-center text-accent">
-                              {benefit.icon}
-                            </div>
-                            <div>
-                              <h5 className="font-bold text-primary mb-1">{benefit.title}</h5>
-                              <p className="text-gray-600 text-sm">{benefit.description}</p>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
+      {/* Tab Content */}
+      <section id="course-details" className="py-20">
+        <div className="container mx-auto px-4">
+          {/* Overview Tab */}
+          {activeTab === "overview" && (
+            <div className="max-w-4xl mx-auto">
+              <div className="text-center mb-16">
+                <h2 className="text-4xl font-bold mb-6">
+                  Transform Your <span className="text-accent">Career</span>
+                </h2>
+                <p className="text-xl text-text-muted">
+                  Join our intensive program and become a certified Ayurvedic practitioner
+                </p>
+              </div>
 
-              {activeTab === "curriculum" && (
-                <div className="p-8 md:p-12">
-                  <h3 className="text-3xl font-bold text-primary mb-8 text-center">Comprehensive Curriculum</h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    {mainCourse.features.map((feature, index) => (
-                      <div key={index} className="flex items-center gap-4 p-4 rounded-xl bg-gray-50 hover:bg-accent/10 transition-colors duration-300">
-                        <div className="w-10 h-10 bg-accent rounded-full flex items-center justify-center text-white font-bold">
-                          {index + 1}
-                        </div>
-                        <span className="font-medium text-primary">{feature}</span>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
+                <div>
+                  <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
+                    <Heart className="w-8 h-8 text-accent" />
+                    Why Choose This Program?
+                  </h3>
+                  <div className="space-y-4">
+                    {mainCourse.features.slice(0, 4).map((feature, index) => (
+                      <div key={index} className="flex items-start gap-3">
+                        <CheckCircle className="w-5 h-5 text-green-500 mt-1" />
+                        <span className="text-text-primary">{feature}</span>
                       </div>
                     ))}
                   </div>
-                  
-                  <div className="mt-12 bg-primary/5 rounded-2xl p-8">
-                    <h4 className="text-xl font-bold text-primary mb-4">Learning Methodology</h4>
+                </div>
+
+                <div>
+                  <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
+                    <Globe className="w-8 h-8 text-accent" />
+                    Career Opportunities
+                  </h3>
+                  <div className="space-y-4">
+                    <div className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-green-500 mt-1" />
+                      <span className="text-text-primary">Start your own wellness practice</span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-green-500 mt-1" />
+                      <span className="text-text-primary">Join established wellness centers</span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-green-500 mt-1" />
+                      <span className="text-text-primary">Offer specialized Ayurvedic massages</span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-green-500 mt-1" />
+                      <span className="text-text-primary">Pursue advanced Ayurvedic studies</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-gradient-to-br from-accent/5 to-primary/5 rounded-2xl p-8 border border-accent/20">
+                <h3 className="text-2xl font-bold mb-4 text-center">Program Highlights</h3>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  <div className="text-center">
+                    <div className="w-16 h-16 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <Stethoscope className="w-8 h-8 text-accent" />
+                    </div>
+                    <h4 className="font-bold mb-2">Expert Faculty</h4>
+                    <p className="text-sm text-text-muted">Learn from qualified Ayurvedic physicians</p>
+                  </div>
+                  <div className="text-center">
+                    <div className="w-16 h-16 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <Users className="w-8 h-8 text-accent" />
+                    </div>
+                    <h4 className="font-bold mb-2">Small Batches</h4>
+                    <p className="text-sm text-text-muted">Personalized attention with limited seats</p>
+                  </div>
+                  <div className="text-center">
+                    <div className="w-16 h-16 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <Clock className="w-8 h-8 text-accent" />
+                    </div>
+                    <h4 className="font-bold mb-2">Intensive Schedule</h4>
+                    <p className="text-sm text-text-muted">8 hours daily of theory and practice</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Curriculum Tab */}
+          {activeTab === "curriculum" && (
+            <div className="max-w-4xl mx-auto">
+              <div className="text-center mb-16">
+                <h2 className="text-4xl font-bold mb-6">
+                  Comprehensive <span className="text-accent">Curriculum</span>
+                </h2>
+                <p className="text-xl text-text-muted">
+                  14 days of intensive learning covering all aspects of Ayurvedic therapy
+                </p>
+              </div>
+
+              <div className="space-y-8">
+                {[
+                  {
+                    week: "Week 1: Foundations",
+                    days: "Days 1-7",
+                    topics: [
+                      "Introduction to Ayurveda and its principles",
+                      "Understanding Doshas and body constitution",
+                      "Basic anatomy and physiology in Ayurveda",
+                      "Fundamental massage techniques",
+                      "Oil selection and preparation",
+                      "Pulse diagnosis basics",
+                      "Patient assessment methods"
+                    ]
+                  },
+                  {
+                    week: "Week 2: Advanced Practice",
+                    days: "Days 8-14",
+                    topics: [
+                      "Specialized massage techniques",
+                      "Panchakarma procedures",
+                      "Herbal medicine preparation",
+                      "Treatment planning and protocols",
+                      "Business aspects of practice",
+                      "Ethics and professional conduct",
+                      "Final assessment and certification"
+                    ]
+                  }
+                ].map((week, index) => (
+                  <div key={index} className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+                    <div className="flex items-center gap-4 mb-6">
+                      <div className="w-12 h-12 bg-accent rounded-full flex items-center justify-center">
+                        <span className="text-white font-bold">{index + 1}</span>
+                      </div>
+                      <div>
+                        <h3 className="text-2xl font-bold text-primary">{week.week}</h3>
+                        <p className="text-accent font-semibold">{week.days}</p>
+                      </div>
+                    </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      {mainCourse.methodology.map((method, index) => (
-                        <div key={index} className="flex items-center gap-3">
-                          <Zap className="w-5 h-5 text-accent" />
-                          <span className="text-gray-700">{method}</span>
+                      {week.topics.map((topic, topicIndex) => (
+                        <div key={topicIndex} className="flex items-start gap-3">
+                          <CheckCircle className="w-5 h-5 text-green-500 mt-1" />
+                          <span className="text-text-primary">{topic}</span>
                         </div>
                       ))}
                     </div>
                   </div>
-                </div>
-              )}
-
-              {activeTab === "instructors" && (
-                <div className="p-8 md:p-12 text-center">
-                  <h3 className="text-3xl font-bold text-primary mb-8">Expert Instructors</h3>
-                  <div className="max-w-2xl mx-auto">
-                    <div className="bg-gray-50 rounded-2xl p-8 mb-8">
-                      <div className="w-24 h-24 bg-accent rounded-full flex items-center justify-center mx-auto mb-4">
-                        <Stethoscope className="w-12 h-12 text-white" />
-                      </div>
-                      <h4 className="text-xl font-bold text-primary mb-2">Qualified Ayurvedic Doctors</h4>
-                      <p className="text-gray-600 leading-relaxed">
-                        Learn from certified practitioners registered with Sri Lanka Ayurvedic Medical Council, 
-                        bringing years of clinical experience and traditional knowledge.
-                      </p>
-                    </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div className="text-center">
-                        <div className="text-3xl font-bold text-accent mb-2">15+</div>
-                        <div className="text-gray-600">Years Experience</div>
-                      </div>
-                      <div className="text-center">
-                        <div className="text-3xl font-bold text-accent mb-2">500+</div>
-                        <div className="text-gray-600">Students Trained</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {activeTab === "certification" && (
-                <div className="p-8 md:p-12">
-                  <div className="text-center mb-8">
-                    <div className="w-24 h-24 bg-accent rounded-full flex items-center justify-center mx-auto mb-6">
-                      <Award className="w-12 h-12 text-white" />
-                    </div>
-                    <h3 className="text-3xl font-bold text-primary mb-4">International Certification</h3>
-                    <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-                      Upon successful completion, receive your official Certificate of Practical Awareness in Ayurvedic Therapies
-                    </p>
-                  </div>
-                  
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div className="text-center p-6 rounded-xl bg-blue-50">
-                      <Globe className="w-8 h-8 text-blue-600 mx-auto mb-4" />
-                      <h4 className="font-bold text-blue-900 mb-2">Global Recognition</h4>
-                      <p className="text-blue-600 text-sm">Practice internationally with our certification</p>
-                    </div>
-                    <div className="text-center p-6 rounded-xl bg-green-50">
-                      <CheckCircle className="w-8 h-8 text-green-600 mx-auto mb-4" />
-                      <h4 className="font-bold text-green-900 mb-2">Quality Assured</h4>
-                      <p className="text-green-600 text-sm">Meets international training standards</p>
-                    </div>
-                    <div className="text-center p-6 rounded-xl bg-purple-50">
-                      <Users className="w-8 h-8 text-purple-600 mx-auto mb-4" />
-                      <h4 className="font-bold text-purple-900 mb-2">Professional Network</h4>
-                      <p className="text-purple-600 text-sm">Join our alumni community worldwide</p>
-                    </div>
-                  </div>
-                </div>
-              )}
+                ))}
+              </div>
             </div>
-          </div>
+          )}
+
+          {/* Teaching Methodology Tab */}
+          {activeTab === "methodology" && (
+            <div className="max-w-4xl mx-auto">
+              <div className="text-center mb-16">
+                <h2 className="text-4xl font-bold mb-6">
+                  Our Teaching <span className="text-accent">Approach</span>
+                </h2>
+                <p className="text-xl text-text-muted">
+                  Balanced combination of theory and practical hands-on training
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                <div className="bg-white rounded-2xl p-8 shadow-lg">
+                  <Brain className="w-12 h-12 text-accent mb-6" />
+                  <h3 className="text-2xl font-bold mb-4">Daily Schedule</h3>
+                  <div className="space-y-3">
+                    {mainCourse.methodology.map((item, index) => (
+                      <div key={index} className="flex items-center gap-3">
+                        <Clock className="w-5 h-5 text-accent" />
+                        <span className="text-text-primary">{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="bg-white rounded-2xl p-8 shadow-lg">
+                  <Zap className="w-12 h-12 text-accent mb-6" />
+                  <h3 className="text-2xl font-bold mb-4">Learning Features</h3>
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-3">
+                      <CheckCircle className="w-5 h-5 text-green-500" />
+                      <span className="text-text-primary">Interactive demonstrations</span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <CheckCircle className="w-5 h-5 text-green-500" />
+                      <span className="text-text-primary">Hands-on patient practice</span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <CheckCircle className="w-5 h-5 text-green-500" />
+                      <span className="text-text-primary">Case study discussions</span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <CheckCircle className="w-5 h-5 text-green-500" />
+                      <span className="text-text-primary">Practical assessments</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-gradient-to-br from-primary/5 to-accent/5 rounded-2xl p-8 border border-primary/20">
+                <h3 className="text-2xl font-bold mb-6 text-center">Eligibility & Requirements</h3>
+                <p className="text-lg text-text-primary mb-6 text-center">{mainCourse.eligibility}</p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <h4 className="font-bold mb-3">Ideal for:</h4>
+                    <ul className="space-y-2">
+                      <li className="flex items-center gap-2">
+                        <CheckCircle className="w-4 h-4 text-green-500" />
+                        <span className="text-sm">Healthcare professionals</span>
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <CheckCircle className="w-4 h-4 text-green-500" />
+                        <span className="text-sm">Massage therapists</span>
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <CheckCircle className="w-4 h-4 text-green-500" />
+                        <span className="text-sm">Wellness enthusiasts</span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 className="font-bold mb-3">Prerequisites:</h4>
+                    <ul className="space-y-2">
+                      <li className="flex items-center gap-2">
+                        <CheckCircle className="w-4 h-4 text-green-500" />
+                        <span className="text-sm">No prior experience required</span>
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <CheckCircle className="w-4 h-4 text-green-500" />
+                        <span className="text-sm">Basic English proficiency</span>
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <CheckCircle className="w-4 h-4 text-green-500" />
+                        <span className="text-sm">Commitment to full program</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Certification Tab */}
+          {activeTab === "certification" && (
+            <div className="max-w-4xl mx-auto text-center">
+              <div className="mb-16">
+                <h2 className="text-4xl font-bold mb-6">
+                  International <span className="text-accent">Certification</span>
+                </h2>
+                <p className="text-xl text-text-muted">
+                  Recognized qualification to practice Ayurvedic therapies worldwide
+                </p>
+              </div>
+
+              <div className="bg-white rounded-2xl p-12 shadow-2xl border border-gray-100 mb-12">
+                <Award className="w-24 h-24 text-accent mx-auto mb-8" />
+                <h3 className="text-3xl font-bold mb-4">Certificate Details</h3>
+                <p className="text-lg text-text-primary mb-8">{mainCourse.certification}</p>
+                
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                  <div>
+                    <GraduationCap className="w-12 h-12 text-accent mx-auto mb-4" />
+                    <h4 className="font-bold mb-2">Accredited Program</h4>
+                    <p className="text-sm text-text-muted">Internationally recognized certification</p>
+                  </div>
+                  <div>
+                    <FileText className="w-12 h-12 text-accent mx-auto mb-4" />
+                    <h4 className="font-bold mb-2">Comprehensive Curriculum</h4>
+                    <p className="text-sm text-text-muted">Covers all aspects of Ayurvedic therapies</p>
+                  </div>
+                  <div>
+                    <Users className="w-12 h-12 text-accent mx-auto mb-4" />
+                    <h4 className="font-bold mb-2">Expert Instructors</h4>
+                    <p className="text-sm text-text-muted">Learn from experienced Ayurvedic doctors</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </section>
 

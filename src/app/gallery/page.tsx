@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
-import { X, ChevronLeft, ChevronRight, Filter, Camera, Eye, Grid, List, Search, Download, Share2, Heart, ZoomIn } from "lucide-react";
+import { X, ChevronLeft, ChevronRight, Camera, Eye, Grid, List, Search, Download, Share2, Heart, ZoomIn } from "lucide-react";
 import { IMAGES } from "@/constants/images";
 
 interface GalleryImage {
