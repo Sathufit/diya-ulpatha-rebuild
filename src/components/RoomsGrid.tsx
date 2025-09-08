@@ -2,201 +2,193 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import {
-	X,
 	Users,
-	Bed,
-	CheckCircle,
-	Mountain,
+	Wifi,
 	TreePine,
+	Mountain,
+	CheckCircle,
+	ArrowRight,
+	Star,
 } from "lucide-react";
 import { IMAGES } from "@/constants/images";
 
-export interface Room {
+interface Room {
 	id: string;
 	name: string;
 	type: string;
-	description: string;
-	features: string[];
 	maxOccupancy: number;
-	bedConfiguration: string;
+	features: string[];
 	image: string;
+	alt: string;
+	description: string;
 	price: string;
-	specialFeatures: string[];
+	popular?: boolean;
 }
 
 const rooms: Room[] = [
 	{
-		id: "superior-double",
+		id: "double-room",
 		name: "Superior Double Room",
-		type: "Double",
-		description:
-			"Perfect for couples seeking a tranquil retreat. Features stunning garden views and unique natural rock surfaces that create an intimate, one-of-a-kind ambiance.",
-		features: [
-			"Garden views",
-			"Natural rock surfaces",
-			"Private bathroom",
-			"Air conditioning",
-			"Complimentary WiFi",
-			"Tea/coffee facilities",
-		],
+		type: "Double Occupancy",
 		maxOccupancy: 2,
-		bedConfiguration: "1 Double Bed",
+		features: [
+			"Garden Views",
+			"Natural Rock Features",
+			"Modern Amenities",
+			"Private Bathroom",
+			"Air Conditioning",
+			"Free WiFi",
+		],
 		image: IMAGES.accommodation.doubleRoom,
+		alt: "Superior Double Room with garden views",
+		description:
+			"Perfect for couples or individual guests seeking comfort and tranquility with stunning garden views.",
 		price: "Contact for rates",
-		specialFeatures: [
-			"Natural rock aesthetic",
-			"Enhanced privacy",
-			"Garden integration",
-		],
+		popular: true,
 	},
 	{
-		id: "superior-triple",
+		id: "triple-room",
 		name: "Superior Triple Room",
-		type: "Triple",
-		description:
-			"Spacious accommodation for small groups or families. Enjoy the perfect blend of comfort and nature with direct garden access and unique architectural features.",
-		features: [
-			"Stunning garden views",
-			"Natural rock surfaces",
-			"Spacious layout",
-			"Private bathroom",
-			"Air conditioning",
-			"Seating area",
-		],
+		type: "Triple Occupancy",
 		maxOccupancy: 3,
-		bedConfiguration: "1 Double + 1 Single Bed",
-		image: IMAGES.accommodation.tripleRoom,
-		price: "Contact for rates",
-		specialFeatures: [
-			"Flexible sleeping arrangements",
-			"Group-friendly layout",
-			"Nature integration",
+		features: [
+			"Spacious Layout",
+			"Garden Views",
+			"Natural Integration",
+			"Modern Comfort",
+			"Private Bathroom",
+			"Free WiFi",
 		],
+		image: IMAGES.accommodation.tripleRoom,
+		alt: "Superior Triple Room with nature integration",
+		description:
+			"Ideal for small groups or families, featuring additional space while maintaining our signature natural harmony.",
+		price: "Contact for rates",
 	},
 	{
-		id: "superior-family",
+		id: "family-room",
 		name: "Superior Family Room",
-		type: "Family",
-		description:
-			"Generous space designed for families seeking a wellness retreat together. Features separate areas and unique natural elements that create a memorable stay experience.",
-		features: [
-			"Panoramic garden views",
-			"Natural rock features",
-			"Separate living area",
-			"Family bathroom",
-			"Climate control",
-			"Kitchenette facilities",
-		],
+		type: "Family Accommodation",
 		maxOccupancy: 4,
-		bedConfiguration: "1 Double + 2 Single Beds",
-		image: IMAGES.accommodation.familyRoom,
-		price: "Contact for rates",
-		specialFeatures: [
-			"Family-focused design",
-			"Multiple living spaces",
-			"Premium garden access",
+		features: [
+			"Separate Living Area",
+			"Family-Friendly Design",
+			"Garden Access",
+			"Natural Elements",
+			"Private Bathroom",
+			"Free WiFi",
 		],
+		image: IMAGES.accommodation.familyRoom,
+		alt: "Superior Family Room with separate living space",
+		description:
+			"Designed for families seeking wellness together, with separate spaces for relaxation and privacy.",
+		price: "Contact for rates",
 	},
 ];
 
 export function RoomsGrid() {
-	const [selectedRoom, setSelectedRoom] = useState<Room | null>(null);
 	const [isVisible, setIsVisible] = useState(false);
 
 	useEffect(() => {
-		const timer = setTimeout(() => setIsVisible(true), 100);
+		const timer = setTimeout(() => setIsVisible(true), 200);
 		return () => clearTimeout(timer);
 	}, []);
 
 	return (
-		<section className="section-padding bg-background">
-			<div className="container mx-auto container-padding">
-				<div className="text-center mb-16">
-					<h2 className="text-4xl md:text-5xl font-bold text-text-primary mb-6">
-						Superior Rooms with{" "}
-						<span className="gradient-text">Garden Views</span>
-					</h2>
-					<p className="text-xl text-text-muted max-w-3xl mx-auto leading-relaxed">
-						Available in double, triple, and family options. Experience
-						stunning garden views and distinctive ambiance with natural
-						rock surfaces for a one-of-a-kind aesthetic.
-					</p>
-				</div>
-
-				<div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
+		<section className="py-16 bg-background">
+			<div className="container mx-auto px-4">
+				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 					{rooms.map((room, index) => (
 						<div
 							key={room.id}
-							className={`card group hover-lift transition-all duration-500 transform ${
+							className={`group bg-white rounded-3xl shadow-lg border border-gray-100 overflow-hidden transition-all duration-500 hover:-translate-y-4 hover:shadow-2xl ${
 								isVisible
-									? "translate-y-0 opacity-100"
-									: "translate-y-8 opacity-0"
+									? "opacity-100 translate-y-0"
+									: "opacity-0 translate-y-8"
 							}`}
 							style={{ transitionDelay: `${index * 200}ms` }}
 						>
-							<div className="relative h-64 rounded-xl overflow-hidden mb-6">
+							{/* Room Image */}
+							<div className="relative h-64 overflow-hidden">
 								<Image
 									src={room.image}
-									alt={room.name}
+									alt={room.alt}
 									fill
-									sizes="(max-width: 1024px) 100vw, 33vw"
 									className="object-cover group-hover:scale-110 transition-transform duration-700"
+									sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
 								/>
-								<div className="absolute top-4 right-4 bg-accent text-primary px-3 py-1 rounded-full text-sm font-medium">
-									{room.type}
-								</div>
-								<div className="absolute bottom-4 left-4 bg-black/60 backdrop-blur-sm text-white px-3 py-1 rounded-lg text-sm">
-									{room.bedConfiguration}
+								<div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+
+								{room.popular && (
+									<div className="absolute top-4 left-4 bg-accent text-primary px-3 py-1 rounded-full text-sm font-bold shadow-lg flex items-center gap-1">
+										<Star size={14} />
+										Popular
+									</div>
+								)}
+
+								<div className="absolute top-4 right-4 bg-white/20 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm font-medium flex items-center gap-1">
+									<Users size={14} />
+									{room.maxOccupancy} guests
 								</div>
 							</div>
 
-							<div className="space-y-4">
-								<div className="flex items-center justify-between">
-									<h3 className="text-2xl font-bold text-text-primary group-hover:gradient-text transition-all duration-300">
+							{/* Room Content */}
+							<div className="p-6">
+								<div className="mb-4">
+									<h3 className="text-xl font-bold text-primary mb-1 group-hover:text-accent transition-colors duration-300">
 										{room.name}
 									</h3>
-									<div className="flex items-center gap-1 text-text-muted">
-										<Users size={16} className="text-accent" />
-										<span>{room.maxOccupancy}</span>
-									</div>
+									<p className="text-text-muted text-sm">
+										{room.type}
+									</p>
 								</div>
 
-								<p className="text-text-secondary leading-relaxed group-hover:text-text-primary transition-colors duration-300">
+								<p className="text-text-secondary text-sm leading-relaxed mb-6">
 									{room.description}
 								</p>
 
-								<div className="space-y-3">
-									<div className="flex flex-wrap gap-2">
-										{room.features
-											.slice(0, 3)
-											.map((feature, idx) => (
-												<span
-													key={idx}
-													className="bg-accent/10 text-primary px-3 py-1 rounded-full text-sm font-medium"
-												>
-													{feature}
-												</span>
-											))}
-										{room.features.length > 3 && (
-											<span className="text-text-muted text-sm self-center">
-												+{room.features.length - 3} more
-											</span>
-										)}
+								{/* Features */}
+								<div className="mb-6">
+									<h4 className="font-semibold text-primary mb-3 text-sm">
+										Room Features
+									</h4>
+									<div className="grid grid-cols-2 gap-2">
+										{room.features.slice(0, 4).map((feature, idx) => (
+											<div
+												key={idx}
+												className="flex items-center gap-2 text-xs text-text-muted"
+											>
+												<CheckCircle
+													size={12}
+													className="text-accent flex-shrink-0"
+												/>
+												<span>{feature}</span>
+											</div>
+										))}
 									</div>
+									{room.features.length > 4 && (
+										<p className="text-xs text-accent mt-2">
+											+{room.features.length - 4} more features
+										</p>
+									)}
 								</div>
 
-								<div className="flex flex-col gap-3 pt-4 border-t border-border">
-									<button
-										onClick={() => setSelectedRoom(room)}
-										className="btn-primary w-full"
-									>
-										View Details
-									</button>
+								{/* Price and CTA */}
+								<div className="flex items-center justify-between">
+									<div>
+										<p className="font-bold text-lg text-primary">
+											{room.price}
+										</p>
+										<p className="text-xs text-text-muted">
+											per night
+										</p>
+									</div>
 									<a
 										href="/contact"
-										className="btn-outline w-full text-center"
+										className="inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white px-4 py-2 rounded-xl font-medium text-sm transition-all duration-300 hover:scale-105"
 									>
-										Reserve Room
+										Book Now
+										<ArrowRight size={14} />
 									</a>
 								</div>
 							</div>
@@ -204,172 +196,40 @@ export function RoomsGrid() {
 					))}
 				</div>
 
-				{/* Special Features Section */}
-				<div className="bg-gradient-to-br from-accent/10 to-primary/10 rounded-3xl p-8 md:p-12">
-					<div className="text-center mb-8">
-						<h3 className="text-3xl font-bold text-text-primary mb-4">
-							A Perfect Blend of{" "}
-							<span className="text-accent">Nature & Comfort</span>
+				{/* Additional Info */}
+				<div className="mt-16 text-center">
+					<div className="bg-accent/10 rounded-2xl p-8 max-w-4xl mx-auto">
+						<h3 className="text-2xl font-bold text-primary mb-4">
+							All Rooms Include
 						</h3>
-						<p className="text-lg text-text-muted max-w-3xl mx-auto">
-							Our superior rooms seamlessly blend with the lush garden
-							setting, offering a serene retreat where nature surrounds
-							you.
-						</p>
-					</div>
-
-					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-						<div className="text-center">
-							<Mountain className="w-12 h-12 text-accent mx-auto mb-4" />
-							<h4 className="font-bold text-text-primary mb-2">
-								Natural Rock Surfaces
-							</h4>
-							<p className="text-text-muted text-sm">
-								Unique architectural features left untouched for
-								authentic ambiance
-							</p>
-						</div>
-						<div className="text-center">
-							<TreePine className="w-12 h-12 text-accent mx-auto mb-4" />
-							<h4 className="font-bold text-text-primary mb-2">
-								Garden Integration
-							</h4>
-							<p className="text-text-muted text-sm">
-								Seamlessly blended with lush garden settings for
-								natural harmony
-							</p>
-						</div>
-						<div className="text-center">
-							<Users className="w-12 h-12 text-accent mx-auto mb-4" />
-							<h4 className="font-bold text-text-primary mb-2">
-								Enhanced Privacy
-							</h4>
-							<p className="text-text-muted text-sm">
-								Natural elements create intimate spaces and peaceful
-								seclusion
-							</p>
-						</div>
-						<div className="text-center">
-							<Bed className="w-12 h-12 text-accent mx-auto mb-4" />
-							<h4 className="font-bold text-text-primary mb-2">
-								Wellness Focused
-							</h4>
-							<p className="text-text-muted text-sm">
-								Ideal for Ayurveda journeys and long-term wellness
-								stays
-							</p>
-						</div>
-					</div>
-
-					<div className="mt-8 p-6 bg-white/50 rounded-2xl border-l-4 border-accent">
-						<p className="text-text-primary font-medium leading-relaxed">
-							<strong>Ideal for long stays</strong>, our accommodations
-							perfectly complement your Ayurveda wellness journey,
-							whether you&apos;re here for relaxation or immersive Ayurveda
-							training. Wake up to the soothing sounds of birds and
-							embrace the tranquility of your surroundings. Experience
-							comfort, privacy, and nature in perfect harmony.
-						</p>
-					</div>
-				</div>
-
-				{/* Room Details Modal */}
-				{selectedRoom && (
-					<div
-						className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4 animate-fade-in-up"
-						onClick={(e) => {
-							if (e.target === e.currentTarget) setSelectedRoom(null);
-						}}
-					>
-						<div className="bg-surface rounded-2xl p-8 max-w-2xl w-full relative animate-scale-in shadow-2xl max-h-[90vh] overflow-y-auto">
-							<button
-								className="absolute top-4 right-4 w-10 h-10 bg-muted hover:bg-border rounded-full flex items-center justify-center text-text-muted hover:text-primary transition-all duration-300 hover:rotate-90 hover:scale-110"
-								onClick={() => setSelectedRoom(null)}
-							>
-								<X size={20} />
-							</button>
-
-							<div className="space-y-6">
-								<div className="relative h-64 rounded-xl overflow-hidden">
-									<Image
-										src={selectedRoom.image}
-										alt={selectedRoom.name}
-										fill
-										sizes="(max-width: 768px) 100vw, 50vw"
-										className="object-cover"
-									/>
-								</div>
-
-								<div>
-									<h3 className="text-3xl font-bold text-text-primary mb-4">
-										{selectedRoom.name}
-									</h3>
-									<p className="text-text-secondary leading-relaxed mb-6">
-										{selectedRoom.description}
-									</p>
-								</div>
-
-								<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-									<div>
-										<h4 className="font-bold text-text-primary mb-3 flex items-center gap-2">
-											<CheckCircle size={20} className="text-accent" />
-											Room Features
-										</h4>
-										<ul className="space-y-2">
-											{selectedRoom.features.map((feature, idx) => (
-												<li
-													key={idx}
-													className="text-text-muted flex items-center gap-2"
-												>
-													<div className="w-2 h-2 bg-accent rounded-full"></div>
-													{feature}
-												</li>
-											))}
-										</ul>
-									</div>
-									<div>
-										<h4 className="font-bold text-text-primary mb-3 flex items-center gap-2">
-											<Users size={20} className="text-accent" />
-											Room Details
-										</h4>
-										<div className="space-y-2 text-text-muted">
-											<p>
-												<strong>Max Occupancy:</strong>{" "}
-												{selectedRoom.maxOccupancy} guests
-											</p>
-											<p>
-												<strong>Bed Configuration:</strong>{" "}
-												{selectedRoom.bedConfiguration}
-											</p>
-											<p>
-												<strong>Room Type:</strong> {selectedRoom.type}
-											</p>
-											<p>
-												<strong>Rate:</strong> {selectedRoom.price}
-											</p>
-										</div>
-									</div>
-								</div>
-
-								<div className="flex flex-col sm:flex-row gap-4 pt-6 border-t border-border">
-									<a
-										href="/contact"
-										className="btn-primary flex-1 text-center"
-										onClick={() => setSelectedRoom(null)}
-									>
-										Reserve This Room
-									</a>
-									<button
-										onClick={() => setSelectedRoom(null)}
-										className="btn-secondary flex-1"
-									>
-										Continue Browsing
-									</button>
-								</div>
+						<div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+							<div className="flex flex-col items-center gap-2">
+								<TreePine className="w-8 h-8 text-accent" />
+								<span className="text-sm font-medium text-primary">
+									Garden Views
+								</span>
+							</div>
+							<div className="flex flex-col items-center gap-2">
+								<Mountain className="w-8 h-8 text-accent" />
+								<span className="text-sm font-medium text-primary">
+									Natural Features
+								</span>
+							</div>
+							<div className="flex flex-col items-center gap-2">
+								<Wifi className="w-8 h-8 text-accent" />
+								<span className="text-sm font-medium text-primary">
+									Free WiFi
+								</span>
+							</div>
+							<div className="flex flex-col items-center gap-2">
+								<CheckCircle className="w-8 h-8 text-accent" />
+								<span className="text-sm font-medium text-primary">
+									Modern Comfort
+								</span>
 							</div>
 						</div>
 					</div>
-				)}
+				</div>
 			</div>
 		</section>
 	);

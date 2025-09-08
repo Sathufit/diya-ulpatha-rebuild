@@ -518,3 +518,104 @@ body {
     print-color-adjust: exact !important;
   }
 }
+
+/* Add to the end of your globals.css file */
+
+/* Mobile-first responsive utilities */
+@layer utilities {
+  /* Safe area insets for mobile devices */
+  .safe-top { padding-top: env(safe-area-inset-top); }
+  .safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
+  .safe-left { padding-left: env(safe-area-inset-left); }
+  .safe-right { padding-right: env(safe-area-inset-right); }
+
+  /* Touch-friendly sizing */
+  .touch-target { min-height: 44px; min-width: 44px; }
+  
+  /* Dynamic viewport height for mobile */
+  .h-screen-mobile { height: 100dvh; }
+  .min-h-screen-mobile { min-height: 100dvh; }
+  
+  /* Mobile text sizing */
+  .text-mobile-xs { font-size: 0.75rem; line-height: 1rem; }
+  .text-mobile-sm { font-size: 0.875rem; line-height: 1.25rem; }
+  .text-mobile-base { font-size: 1rem; line-height: 1.5rem; }
+  .text-mobile-lg { font-size: 1.125rem; line-height: 1.75rem; }
+}
+
+/* Mobile-specific optimizations */
+@media (max-width: 640px) {
+  /* Reduce animation complexity on mobile */
+  .animate-float {
+    animation: none;
+  }
+  
+  /* Optimize button sizes for mobile */
+  .btn-primary, .btn-secondary, .btn-outline {
+    @apply touch-target text-sm;
+    padding: 0.75rem 1rem;
+  }
+  
+  /* Mobile card spacing */
+  .card {
+    padding: 1rem;
+    border-radius: 1rem;
+  }
+  
+  /* Mobile-friendly input sizing */
+  .input, .textarea {
+    @apply touch-target text-base;
+    padding: 0.75rem;
+  }
+  
+  /* Reduced margins on mobile */
+  .section-padding {
+    @apply py-12;
+  }
+}
+
+/* Tablet optimizations */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .section-padding {
+    @apply py-16;
+  }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  /* Optimize for retina displays */
+  .card {
+    border-width: 0.5px;
+  }
+}
+
+/* Landscape mobile */
+@media (max-width: 896px) and (orientation: landscape) {
+  .h-screen-mobile { height: 100vh; }
+  .min-h-screen-mobile { min-height: 100vh; }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  .animate-float,
+  .animate-bounce,
+  .animate-pulse-gentle,
+  .animate-fade-in-up,
+  .animate-scale-in {
+    animation: none;
+  }
+  
+  .transition-all,
+  .transition-transform,
+  .transition-colors {
+    transition: none;
+  }
+}
+
+/* Focus improvements for mobile */
+@media (max-width: 640px) {
+  .focus-ring:focus {
+    outline: 3px solid var(--primary);
+    outline-offset: 2px;
+  }
+}

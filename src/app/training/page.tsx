@@ -10,7 +10,6 @@ import {
   Stethoscope,
   Phone,
   Mail,
-  Leaf,
   Play,
   ChevronDown,
   ChevronUp,
