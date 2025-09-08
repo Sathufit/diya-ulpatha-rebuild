@@ -3,6 +3,9 @@ export const IMAGES = {
     slide1: "/images/hero/hero-1.jpg",
     slide2: "/images/hero/hero-2.jpeg", 
     slide3: "/images/hero/hero-3.jpeg",
+    treatments: "/images/hero/hero-1.jpg", 
+    nature: "/images/hero/hero-2.jpeg",
+    main: "/images/hero/hero-3.jpeg"
   },
   treatments: {
     fullBodyMassage: "/images/treatments/body.jpg",
@@ -13,7 +16,7 @@ export const IMAGES = {
     steamBath: "/images/treatments/steamBath.jpg",
     panchakarma: "/images/treatments/panchakarma.png",
     hairCare: "/images/treatments/hair.jpg",
-    skinCare: "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=600&h=400&fit=crop&q=80",
+    skinCare: "/images/treatments/face.jpg",
     herbalFacePack: "/images/treatments/face.jpg"
   },
   accommodation: {

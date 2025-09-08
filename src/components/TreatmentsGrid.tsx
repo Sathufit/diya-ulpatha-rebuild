@@ -17,6 +17,8 @@ export interface Treatment {
 
 export interface TreatmentsGridProps {
   treatments?: Treatment[];
+  showOnly?: number;
+  showViewMore?: boolean;
 }
 
 const defaultTreatments: Treatment[] = [
@@ -122,111 +124,85 @@ const defaultTreatments: Treatment[] = [
   }
 ];
 
-export function TreatmentsGrid({ treatments = defaultTreatments }: TreatmentsGridProps) {
+export function TreatmentsGrid({ 
+  treatments = defaultTreatments, 
+  showOnly,
+  showViewMore = false 
+}: TreatmentsGridProps) {
   const [selected, setSelected] = useState<Treatment | null>(null);
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsVisible(true), 100);
+    const timer = setTimeout(() => setIsVisible(true), 200);
     return () => clearTimeout(timer);
   }, []);
 
-  return (
-    <section aria-labelledby="treatments-heading" className="section-padding bg-background relative overflow-hidden">
-      {/* Background decorative elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-20 right-20 w-40 h-40 bg-accent/5 rounded-full animate-float"></div>
-        <div className="absolute bottom-20 left-20 w-32 h-32 bg-primary/5 rounded-full animate-float animate-delay-300"></div>
-        <div className="absolute top-1/2 left-1/3 w-24 h-24 bg-accent/10 rounded-full animate-pulse-gentle"></div>
-      </div>
+  // Determine which treatments to show
+  const treatmentsToShow = showOnly ? treatments.slice(0, showOnly) : treatments;
 
-      <div className="container mx-auto container-padding relative z-10">
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 mb-8">
-            <Star className="w-5 h-5 text-accent" />
-            <span className="text-primary font-medium">Authentic Ayurveda</span>
+  return (
+    <section aria-labelledby="treatments-heading" className="py-16 bg-background relative">
+      <div className="container mx-auto px-4 relative z-10">
+        {!showOnly && (
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 bg-accent/10 rounded-full px-4 py-2 mb-6">
+              <Star className="w-4 h-4 text-accent" />
+              <span className="text-primary font-medium text-sm">AUTHENTIC AYURVEDA</span>
+            </div>
+            
+            <h2 id="treatments-heading" className="text-3xl md:text-4xl font-bold text-text-primary mb-4">
+              Our <span className="text-accent">Treatments</span>
+            </h2>
+            <p className="text-lg text-text-muted max-w-2xl mx-auto leading-relaxed">
+              Experience authentic Ayurvedic healing through our traditional treatments
+            </p>
           </div>
-          
-          <h2 id="treatments-heading" className="text-4xl md:text-5xl font-bold text-text-primary mb-6">
-            Our <span className="gradient-text">Treatments</span>
-          </h2>
-          <p className="text-xl text-text-muted max-w-3xl mx-auto leading-relaxed">
-            Experience authentic Ayurvedic healing through our traditional treatments, 
-            each designed to restore balance and promote holistic wellness.
-          </p>
-        </div>
+        )}
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {treatments.map((treatment, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+          {treatmentsToShow.map((treatment, index) => (
             <div 
               key={treatment.key} 
-              className={`card group hover-lift transition-all duration-500 transform ${
-                isVisible 
-                  ? 'translate-y-0 opacity-100' 
-                  : 'translate-y-8 opacity-0'
+              className={`card group hover:shadow-lg transition-all duration-300 transform ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
               }`}
-              style={{ 
-                transitionDelay: `${index * 150}ms`,
-                animationDelay: `${index * 150}ms`
-              }}
+              style={{ transitionDelay: `${index * 100}ms` }}
             >
               {/* Treatment Image */}
-              <div className="relative h-48 rounded-xl overflow-hidden mb-6">
+              <div className="relative h-40 rounded-lg overflow-hidden mb-4">
                 <Image
                   src={treatment.image}
                   alt={treatment.alt}
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  className="object-cover group-hover:scale-110 transition-transform duration-700"
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
                 
-                {/* Duration badge */}
                 {treatment.duration && (
-                  <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-primary px-3 py-1 rounded-full text-sm font-medium flex items-center gap-1">
-                    <Clock size={12} />
+                  <div className="absolute top-3 right-3 bg-white/90 text-primary px-2 py-1 rounded-md text-xs font-medium">
                     {treatment.duration}
                   </div>
                 )}
               </div>
 
               {/* Treatment Content */}
-              <div className="space-y-4">
-                <h3 className="text-2xl font-bold text-text-primary group-hover:gradient-text transition-all duration-300">
+              <div className="space-y-3">
+                <h3 className="text-lg font-bold text-text-primary group-hover:text-accent transition-colors duration-300">
                   {treatment.title}
                 </h3>
                 
-                <p className="text-text-secondary leading-relaxed group-hover:text-text-primary transition-colors duration-300">
+                <p className="text-text-secondary text-sm leading-relaxed">
                   {treatment.short}
                 </p>
 
-                {/* Benefits preview */}
-                {treatment.benefits && (
-                  <div className="flex flex-wrap gap-2">
-                    {treatment.benefits.slice(0, 2).map((benefit, idx) => (
-                      <span 
-                        key={idx} 
-                        className="bg-accent/10 text-primary px-3 py-1 rounded-full text-sm font-medium"
-                      >
-                        {benefit}
-                      </span>
-                    ))}
-                    {treatment.benefits.length > 2 && (
-                      <span className="text-text-muted text-sm self-center">
-                        +{treatment.benefits.length - 2} more
-                      </span>
-                    )}
-                  </div>
-                )}
-
-                {/* Action button */}
                 <button
-                  className="inline-flex items-center gap-2 text-primary hover:text-accent font-semibold transition-all duration-300 transform hover:scale-105 group-hover:translate-x-1"
+                  className="inline-flex items-center gap-2 text-primary hover:text-accent font-medium transition-colors duration-300 text-sm"
                   onClick={() => setSelected(treatment)}
                   aria-label={`Learn more about ${treatment.title}`}
                 >
                   <span>Learn More</span>
-                  <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform duration-300" />
+                  <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-300" />
                 </button>
               </div>
             </div>
@@ -234,46 +210,49 @@ export function TreatmentsGrid({ treatments = defaultTreatments }: TreatmentsGri
         </div>
 
         {/* CTA Section */}
-        <div className="text-center bg-gradient-to-br from-accent/10 to-primary/10 rounded-3xl p-8 md:p-12">
-          <h3 className="text-3xl font-bold text-text-primary mb-4">
+        <div className="text-center bg-accent/10 rounded-2xl p-8">
+          <h3 className="text-2xl font-bold text-text-primary mb-4">
             Begin Your <span className="text-accent">Healing Journey</span>
           </h3>
-          <p className="text-lg text-text-muted mb-8 max-w-2xl mx-auto">
-            Each treatment is personalized to your unique constitution and health needs. 
-            Consult with our experienced Ayurvedic doctors to create your perfect wellness plan.
+          <p className="text-text-muted mb-6 max-w-xl mx-auto">
+            Each treatment is personalized to your unique needs. Consult with our experienced doctors.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/contact" className="btn-primary text-lg px-8 py-4">
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <a href="/contact" className="btn-primary">
               Book Consultation
             </a>
-            <a href="/treatments" className="btn-secondary text-lg px-8 py-4">
-              View All Treatments
-            </a>
+            {showViewMore ? (
+              <a href="/treatments" className="btn-secondary">
+                View All Treatments
+              </a>
+            ) : (
+              <a href="/treatments" className="btn-secondary">
+                View All Treatments
+              </a>
+            )}
           </div>
         </div>
         
         {/* Treatment Detail Modal */}
         {selected && (
           <div
-            className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4 animate-fade-in-up"
+            className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4"
             role="dialog"
             aria-modal="true"
             onClick={(e) => {
               if (e.target === e.currentTarget) setSelected(null);
             }}
           >
-            <div className="bg-surface rounded-2xl max-w-2xl w-full relative animate-scale-in shadow-2xl max-h-[90vh] overflow-y-auto">
-              {/* Close button */}
+            <div className="bg-white rounded-xl max-w-2xl w-full relative shadow-2xl max-h-[90vh] overflow-y-auto">
               <button
-                className="absolute top-4 right-4 z-10 w-10 h-10 bg-black/10 hover:bg-black/20 backdrop-blur-sm rounded-full flex items-center justify-center text-text-muted hover:text-primary transition-all duration-300 hover:rotate-90 hover:scale-110"
+                className="absolute top-4 right-4 z-10 w-8 h-8 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center"
                 onClick={() => setSelected(null)}
                 aria-label="Close modal"
               >
-                <X size={20} />
+                <X size={16} />
               </button>
 
-              {/* Treatment image */}
-              <div className="relative h-64 rounded-t-2xl overflow-hidden">
+              <div className="relative h-48 rounded-t-xl overflow-hidden">
                 <Image
                   src={selected.image}
                   alt={selected.alt}
@@ -281,54 +260,50 @@ export function TreatmentsGrid({ treatments = defaultTreatments }: TreatmentsGri
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                 
-                {/* Title overlay */}
-                <div className="absolute bottom-6 left-6 text-white">
-                  <h3 className="text-3xl font-bold mb-2">{selected.title}</h3>
+                <div className="absolute bottom-4 left-4 text-white">
+                  <h3 className="text-2xl font-bold mb-1">{selected.title}</h3>
                   {selected.duration && (
                     <div className="flex items-center gap-2 text-white/90">
-                      <Clock size={16} />
-                      <span>{selected.duration}</span>
+                      <Clock size={14} />
+                      <span className="text-sm">{selected.duration}</span>
                     </div>
                   )}
                 </div>
               </div>
 
-              {/* Content */}
-              <div className="p-8 space-y-6">
+              <div className="p-6 space-y-4">
                 <div>
-                  <h4 className="text-xl font-bold text-text-primary mb-3">Treatment Overview</h4>
-                  <p className="text-text-secondary leading-relaxed">{selected.full}</p>
+                  <h4 className="font-bold text-text-primary mb-2">Treatment Overview</h4>
+                  <p className="text-text-secondary text-sm leading-relaxed">{selected.full}</p>
                 </div>
 
-                {/* Benefits */}
                 {selected.benefits && (
                   <div>
-                    <h4 className="text-xl font-bold text-text-primary mb-4">Key Benefits</h4>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <h4 className="font-bold text-text-primary mb-3">Key Benefits</h4>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                       {selected.benefits.map((benefit, idx) => (
-                        <div key={idx} className="flex items-center gap-3">
-                          <CheckCircle size={16} className="text-accent" />
-                          <span className="text-text-secondary">{benefit}</span>
+                        <div key={idx} className="flex items-center gap-2">
+                          <CheckCircle size={14} className="text-accent" />
+                          <span className="text-text-secondary text-sm">{benefit}</span>
                         </div>
                       ))}
                     </div>
                   </div>
                 )}
 
-                {/* Action buttons */}
-                <div className="flex flex-col sm:flex-row gap-4 pt-6 border-t border-border">
+                <div className="flex flex-col sm:flex-row gap-3 pt-4 border-t">
                   <a
                     href="/contact"
-                    className="btn-primary flex-1 text-center"
+                    className="btn-primary flex-1 text-center text-sm"
                     onClick={() => setSelected(null)}
                   >
                     Book This Treatment
                   </a>
                   <button
                     onClick={() => setSelected(null)}
-                    className="btn-secondary flex-1"
+                    className="btn-secondary flex-1 text-sm"
                   >
                     Continue Browsing
                   </button>

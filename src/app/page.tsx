@@ -1,526 +1,474 @@
 "use client";
-import { useEffect } from "react";
-import { HeroCarousel, type HeroSlide } from "@/components/HeroCarousel";
+import { useState, useEffect } from "react";
+import { HeroCarousel } from "@/components/HeroCarousel";
+import { TreatmentsGrid } from "@/components/TreatmentsGrid";
 import { QuickInquiryForm } from "@/components/QuickInquiryForm";
-import { IMAGES } from "@/constants/images";
-import {
-  ArrowRight,
-  Heart,
-  Leaf,
-  Users,
-  Star,
-  CheckCircle,
-  TreePine,
-  Mountain,
-  Waves,
-  Award,
-  Shield,
-  Eye,
-  Calendar,
-  Phone,
+import { 
+  Leaf, Heart, Users, Award, Star, ArrowRight, Play, Sparkles, 
+  CheckCircle, Clock, Globe, Shield, TreePine, Phone, Calendar,
+  MessageCircle, ChevronDown, Zap, Target
 } from "lucide-react";
+import { IMAGES } from "@/constants/images";
 import Image from "next/image";
+import Link from "next/link";
 
-const heroSlides: HeroSlide[] = [
+const heroSlides = [
   {
     image: IMAGES.hero.slide1,
-    alt: "Peaceful Ayurveda retreat surrounded by nature",
-    heading: "Welcome to Diya Ulpatha",
-    subheading:
-      "Experience authentic Ayurvedic healing in the heart of Sri Lanka's natural beauty",
-    cta: {
-      label: "Begin Your Journey",
-      href: "/treatments",
-    },
+    alt: "Peaceful Ayurveda treatment room with natural lighting",
+    heading: "Authentic Ayurveda Wellness",
+    subheading: "Experience 5000 years of healing wisdom in Sri Lanka's most tranquil sanctuary",
+    cta: { label: "Begin Your Journey", href: "/contact" },
   },
   {
     image: IMAGES.hero.slide2,
-    alt: "Traditional Ayurvedic treatment session",
-    heading: "Ancient Wisdom, Modern Comfort",
-    subheading:
-      "5000-year-old healing traditions combined with contemporary wellness facilities",
-    cta: {
-      label: "Explore Treatments",
-      href: "/treatments",
-    },
+    alt: "Natural medicinal garden with healing herbs",
+    heading: "Connect with Nature",
+    subheading: "Discover harmony in our medicinal gardens where every breath brings you closer to wellness",
+    cta: { label: "Explore Treatments", href: "/treatments" },
   },
   {
     image: IMAGES.hero.slide3,
-    alt: "Serene accommodation with garden views",
-    heading: "Your Wellness Sanctuary",
-    subheading: "Peaceful accommodation designed to complement your healing journey",
-    cta: {
-      label: "View Accommodation",
-      href: "/accommodation",
-    },
-  },
-];
-
-// Featured treatments for homepage
-const featuredTreatments = [
-  {
-    key: "full-body-massage",
-    image: IMAGES.treatments.fullBodyMassage,
-    title: "Ayurveda Full Body Massage",
-    description:
-      "Complete body rejuvenation removing obesity, body aches, and discomfort",
-    benefits: ["Removes body aches", "Helps with obesity", "Overall rejuvenation"],
-  },
-  {
-    key: "panchakarma",
-    image: IMAGES.treatments.panchakarma,
-    title: "Panchakarma Therapy",
-    description:
-      "Five purifying techniques for complete body cleansing and detoxification",
-    benefits: ["Complete detox", "System rejuvenation", "Balance restoration"],
-  },
-  {
-      key: "steam-bath",
-      image: IMAGES.treatments.steamBath,
-      title: "Ayurvedic Steam Bath",
-      description: "Detoxifying steam therapy that removes toxins through natural perspiration",
-      benefits: ["Deep detoxification", "Liver cleansing", "Kidney support", "Metabolic waste removal"]
-    },
-];
-
-const features = [
-  {
-    icon: <Heart className="w-8 h-8" />,
-    title: "Holistic Healing",
-    description:
-      "5000+ years of proven Ayurvedic wisdom addressing root causes for lasting wellness",
-  },
-  {
-    icon: <TreePine className="w-8 h-8" />,
-    title: "Natural Setting",
-    description: "Peaceful sanctuary surrounded by medicinal gardens and pristine nature",
-  },
-  {
-    icon: <Users className="w-8 h-8" />,
-    title: "Expert Care",
-    description: "Qualified doctors and experienced therapists guide your healing journey",
-  },
-  {
-    icon: <Shield className="w-8 h-8" />,
-    title: "Authentic Treatments",
-    description:
-      "Traditional methods using pure herbal ingredients with no harmful side effects",
+    alt: "Serene accommodation surrounded by lush gardens",
+    heading: "Your Wellness Retreat",
+    subheading: "Find peace in our comfortable accommodations designed for healing and transformation",
+    cta: { label: "View Rooms", href: "/accommodation" },
   },
 ];
 
 export default function HomePage() {
+  const [isVisible, setIsVisible] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
+  const [activeService, setActiveService] = useState(0);
+
   useEffect(() => {
-    // Intersection Observer for scroll animations
+    setIsVisible(true);
+    
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener('scroll', handleScroll);
+    
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('animate-in');
+            entry.target.classList.add("animate-in");
           }
         });
       },
-      { threshold: 0.1, rootMargin: '50px' }
+      { threshold: 0.1, rootMargin: "50px" }
     );
 
-    document.querySelectorAll('.animate-on-scroll').forEach((el) => {
+    document.querySelectorAll(".animate-on-scroll").forEach((el) => {
       observer.observe(el);
     });
 
     return () => {
+      window.removeEventListener('scroll', handleScroll);
       observer.disconnect();
     };
   }, []);
 
+  const services = [
+    {
+      id: "treatments",
+      icon: <Heart className="w-8 h-8" />,
+      title: "Healing Treatments",
+      subtitle: "Ancient Therapies",
+      description: "Experience traditional Panchakarma, Abhyanga, and specialized treatments that address root causes for lasting wellness.",
+      features: ["10+ Traditional treatments", "Personalized consultations", "Expert practitioners"],
+      image: IMAGES.treatments.fullBodyMassage,
+      color: "from-rose-500/20 to-pink-500/20",
+      borderColor: "border-rose-200",
+      link: "/treatments"
+    },
+    {
+      id: "training",
+      icon: <Users className="w-8 h-8" />,
+      title: "Training Programs",
+      subtitle: "Professional Certification",
+      description: "14-day comprehensive courses combining ancient wisdom with practical skills for aspiring practitioners.",
+      features: ["Professional certification", "Hands-on training", "Expert guidance"],
+      image: IMAGES.treatments.panchakarma,
+      color: "from-blue-500/20 to-indigo-500/20",
+      borderColor: "border-blue-200",
+      link: "/training"
+    },
+    {
+      id: "accommodation",
+      icon: <TreePine className="w-8 h-8" />,
+      title: "Wellness Retreat",
+      subtitle: "Nature Integration",
+      description: "Superior accommodations with natural rock features and garden views designed for healing journeys.",
+      features: ["Garden views", "Natural rock features", "Peaceful environment"],
+      image: IMAGES.accommodation.doubleRoom,
+      color: "from-green-500/20 to-emerald-500/20",
+      borderColor: "border-green-200",
+      link: "/accommodation"
+    }
+  ];
+
+  const stats = [
+    { number: "5000+", label: "Years of Wisdom", icon: <Award className="w-6 h-6" /> },
+    { number: "1000+", label: "Lives Transformed", icon: <Heart className="w-6 h-6" /> },
+    { number: "15+", label: "Expert Treatments", icon: <Sparkles className="w-6 h-6" /> },
+    { number: "98%", label: "Satisfaction Rate", icon: <Star className="w-6 h-6" /> }
+  ];
+
+  const testimonials = [
+    {
+      name: "Sarah Johnson",
+      role: "Wellness Enthusiast", 
+      content: "Life-changing experience! The combination of authentic treatments and modern comfort exceeded all expectations.",
+      rating: 5,
+      image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=80&h=80&fit=crop&crop=face&q=80"
+    },
+    {
+      name: "Dr. Michael Chen",
+      role: "Physician",
+      content: "The training program opened my eyes to the profound wisdom of Ayurveda. Excellent facility and expert guidance.",
+      rating: 5,
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face&q=80"
+    },
+    {
+      name: "Emma Williams", 
+      role: "Yoga Instructor",
+      content: "Perfect retreat setting. The natural rock features and garden views create an incredibly peaceful atmosphere.",
+      rating: 5,
+      image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=80&h=80&fit=crop&crop=face&q=80"
+    }
+  ];
+
   return (
-    <div className="min-h-screen">
-      {/* Hero Carousel */}
-      <HeroCarousel slides={heroSlides} />
+    <main className="overflow-hidden">
+      {/* Modern Hero with Floating Elements */}
+      <section className="relative min-h-screen flex items-center">
+        {/* Parallax Background */}
+        <div 
+          className="absolute inset-0 z-0"
+          style={{ transform: `translateY(${scrollY * 0.5}px)` }}
+        >
+          <HeroCarousel slides={heroSlides} />
+        </div>
 
-      {/* About Preview */}
-      <section className="section-padding bg-gradient-to-br from-primary/5 to-accent/5">
-        <div className="container mx-auto container-padding">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div className="space-y-8 animate-on-scroll">
-              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-6 py-3">
-                <Leaf className="w-5 h-5 text-accent" />
-                <span className="text-primary font-medium">Our Story</span>
-              </div>
-
-              <h2 className="heading-lg text-text-primary">
-                Welcome to{" "}
-                <span className="gradient-text">Diya Ulpatha</span>
-              </h2>
-
-              <div className="space-y-6">
-                <p className="body-md text-text-secondary">
-                  Discover your soul, be one with nature, and connect with your
-                  real self. Experience 5000-year-old time-tested science of life
-                  in our tranquil sanctuary designed for holistic healing and
-                  blissful experiences.
-                </p>
-
-                <p className="body-md text-text-secondary">
-                  Founded by visionary Mr. Niranjan, our center combines ancient
-                  Ayurvedic wisdom with modern facilities, creating the perfect
-                  environment for your wellness journey.
-                </p>
-              </div>
-
-              <div className="flex flex-col sm:flex-row gap-4">
-                <a href="/about" className="btn-primary px-6 py-3">
-                  Learn Our Story
-                </a>
-                <a href="/training" className="btn-secondary px-6 py-3">
-                  Ayurveda Training
-                </a>
-              </div>
+        {/* Floating Navigation Dots */}
+        <div className="absolute right-8 top-1/2 transform -translate-y-1/2 z-20 hidden lg:flex flex-col gap-4">
+          {['Welcome', 'Services', 'Testimonials', 'Contact'].map((section, idx) => (
+            <div key={idx} className="group flex items-center gap-3">
+              <div className="w-3 h-3 rounded-full bg-white/40 group-hover:bg-accent transition-colors cursor-pointer"></div>
+              <span className="text-white text-sm opacity-0 group-hover:opacity-100 transition-opacity bg-black/50 px-2 py-1 rounded whitespace-nowrap">
+                {section}
+              </span>
             </div>
+          ))}
+        </div>
 
-            <div className="grid grid-cols-2 gap-6 animate-on-scroll animate-delay-300">
-              <div className="space-y-6">
-                <div className="card-feature">
-                  <Mountain className="w-10 h-10 text-accent mb-4" />
-                  <h3 className="text-lg font-bold text-text-primary mb-2">
-                    Natural Setting
-                  </h3>
-                  <p className="text-text-muted text-sm">
-                    Peaceful sanctuary in nature
-                  </p>
+        {/* Scroll Indicator */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce z-20">
+          <div className="flex flex-col items-center gap-2 text-white/80">
+            <span className="text-sm">Scroll to explore</span>
+            <ChevronDown className="w-6 h-6" />
+          </div>
+        </div>
+      </section>
+
+      {/* Stats Bar - Floating */}
+      <section className="relative -mt-20 z-30">
+        <div className="container mx-auto px-4">
+          <div className="bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl border border-gray-100 p-8">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+              {stats.map((stat, index) => (
+                <div key={index} className="text-center group">
+                  <div className="w-16 h-16 bg-gradient-to-br from-accent/20 to-primary/20 rounded-2xl flex items-center justify-center mx-auto mb-4 text-accent group-hover:scale-110 transition-transform duration-300">
+                    {stat.icon}
+                  </div>
+                  <div className="text-3xl lg:text-4xl font-bold text-primary mb-2">{stat.number}</div>
+                  <div className="text-text-muted font-medium">{stat.label}</div>
                 </div>
-                <div className="card-feature">
-                  <Award className="w-10 h-10 text-accent mb-4" />
-                  <h3 className="text-lg font-bold text-text-primary mb-2">
-                    Expert Care
-                  </h3>
-                  <p className="text-text-muted text-sm">
-                    Qualified Ayurvedic doctors
-                  </p>
-                </div>
-              </div>
-              <div className="space-y-6 mt-8">
-                <div className="card-feature">
-                  <Waves className="w-10 h-10 text-accent mb-4" />
-                  <h3 className="text-lg font-bold text-text-primary mb-2">
-                    Holistic Approach
-                  </h3>
-                  <p className="text-text-muted text-sm">
-                    Mind, body, and soul healing
-                  </p>
-                </div>
-                <div className="card-feature">
-                  <Shield className="w-10 h-10 text-accent mb-4" />
-                  <h3 className="text-lg font-bold text-text-primary mb-2">
-                    Authentic Methods
-                  </h3>
-                  <p className="text-text-muted text-sm">
-                    Traditional healing practices
-                  </p>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="section-padding bg-surface relative overflow-hidden">
-        <div className="absolute inset-0 bg-pattern opacity-30"></div>
-
-        <div className="container mx-auto container-padding relative z-10">
-          <div className="text-center mb-16 animate-on-scroll">
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 mb-8">
-              <Star className="w-5 h-5 text-accent" />
-              <span className="text-primary font-medium">Why Choose Ayurveda</span>
-            </div>
-
-            <h2 className="heading-lg text-text-primary mb-6">
-              Discover{" "}
-              <span className="gradient-text">Authentic Healing</span>
-            </h2>
-            <p className="body-lg text-text-muted mb-12 max-w-3xl mx-auto">
-              Experience the transformative power of traditional healing in our
-              peaceful sanctuary
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-            {features.map((feature, index) => (
-              <div
-                key={index}
-                className={`card text-center group hover-glow animate-on-scroll transition-all duration-500 transform`}
-                style={{ animationDelay: `${index * 150}ms` }}
-              >
-                <div className="w-20 h-20 bg-gradient-to-br from-accent/20 to-primary/20 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 text-accent">
-                  {feature.icon}
-                </div>
-                <h3 className="text-xl font-bold text-text-primary mb-3 group-hover:text-accent transition-colors duration-300">
-                  {feature.title}
-                </h3>
-                <p className="text-text-muted leading-relaxed">
-                  {feature.description}
-                </p>
-              </div>
-            ))}
-          </div>
+      {/* Welcome Section - Split with Interactive Elements */}
+      <section className="py-32 bg-gradient-to-br from-background via-white to-surface relative overflow-hidden">
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-20 right-20 w-40 h-40 bg-accent/5 rounded-full animate-float"></div>
+          <div className="absolute bottom-20 left-20 w-32 h-32 bg-primary/5 rounded-full animate-float animate-delay-300"></div>
         </div>
-      </section>
 
-      {/* Featured Treatments */}
-      <section className="section-padding bg-background">
-        <div className="container mx-auto container-padding">
-          <div className="text-center mb-16 animate-on-scroll">
-            <h2 className="heading-lg text-text-primary mb-6">
-              Featured{" "}
-              <span className="gradient-text">Treatments</span>
-            </h2>
-            <p className="body-lg text-text-muted max-w-3xl mx-auto mb-8">
-              Experience our most popular Ayurvedic therapies designed to restore
-              balance and promote wellness
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-            {featuredTreatments.map((treatment, index) => (
-              <div
-                key={treatment.key}
-                className={`card group hover-lift animate-on-scroll transition-all duration-500 transform`}
-                style={{ animationDelay: `${index * 200}ms` }}
-              >
-                <div className="relative h-48 rounded-xl overflow-hidden mb-6">
-                  <Image
-                    src={treatment.image}
-                    alt={treatment.title}
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-cover group-hover:scale-110 transition-transform duration-700"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+              {/* Content */}
+              <div className="animate-on-scroll">
+                <div className="inline-flex items-center gap-2 bg-accent/10 rounded-full px-6 py-3 mb-8">
+                  <Leaf className="w-5 h-5 text-accent" />
+                  <span className="text-primary font-semibold">WELCOME TO DIYA ULPATHA</span>
                 </div>
 
-                <div className="space-y-4">
-                  <h3 className="text-2xl font-bold text-text-primary group-hover:gradient-text transition-all duration-300">
-                    {treatment.title}
-                  </h3>
+                <h2 className="text-5xl lg:text-6xl font-bold mb-8 leading-tight">
+                  Where Ancient 
+                  <span className="block bg-gradient-to-r from-accent via-yellow-400 to-accent bg-clip-text text-transparent">
+                    Wisdom Meets
+                  </span>
+                  Modern Wellness
+                </h2>
 
-                  <p className="text-text-secondary leading-relaxed">
-                    {treatment.description}
-                  </p>
+                <p className="text-xl text-text-muted mb-8 leading-relaxed">
+                  Discover the healing power of authentic Ayurveda in Sri Lanka's most peaceful sanctuary. 
+                  Our expert practitioners combine 5000 years of ancient wisdom with modern comfort to create 
+                  your perfect wellness experience.
+                </p>
 
-                  <div className="flex flex-wrap gap-2">
-                    {treatment.benefits.slice(0, 2).map((benefit, idx) => (
-                      <span
-                        key={idx}
-                        className="bg-accent/10 text-primary px-3 py-1 rounded-full text-sm font-medium"
-                      >
-                        {benefit}
-                      </span>
-                    ))}
+                <div className="flex flex-col sm:flex-row gap-4 mb-12">
+                  <Link href="/about" className="group btn-primary inline-flex items-center gap-2">
+                    <Play className="w-5 h-5" />
+                    <span>Our Story</span>
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                  <Link href="/treatments" className="btn-outline">
+                    Explore Treatments
+                  </Link>
+                </div>
+
+                {/* Quick Features */}
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="flex items-center gap-3">
+                    <CheckCircle className="w-6 h-6 text-green-500" />
+                    <span className="text-text-primary font-medium">Certified Practitioners</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <CheckCircle className="w-6 h-6 text-green-500" />
+                    <span className="text-text-primary font-medium">Natural Environment</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <CheckCircle className="w-6 h-6 text-green-500" />
+                    <span className="text-text-primary font-medium">24/7 Support</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <CheckCircle className="w-6 h-6 text-green-500" />
+                    <span className="text-text-primary font-medium">Personalized Care</span>
                   </div>
                 </div>
               </div>
-            ))}
-          </div>
 
-          <div className="text-center animate-on-scroll">
-            <a
-              href="/treatments"
-              className="btn-primary text-lg px-8 py-4 inline-flex items-center gap-2 group"
-            >
-              <span>Explore All Treatments</span>
-              <ArrowRight
-                size={20}
-                className="group-hover:translate-x-1 transition-transform duration-300"
-              />
-            </a>
+              {/* Visual */}
+              <div className="animate-on-scroll animate-delay-200">
+                <div className="relative">
+                  <div className="relative h-96 rounded-3xl overflow-hidden shadow-2xl">
+                    <Image
+                      src={IMAGES.treatments.fullBodyMassage}
+                      alt="Ayurvedic treatment"
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                  </div>
+
+                  {/* Floating Elements */}
+                  <div className="absolute -top-6 -right-6 bg-accent/90 backdrop-blur-xl rounded-2xl p-4 shadow-xl animate-float">
+                    <Star className="w-8 h-8 text-white" />
+                  </div>
+                  
+                  <div className="absolute -bottom-6 -left-6 bg-primary/90 backdrop-blur-xl rounded-2xl p-6 shadow-xl text-white animate-float animate-delay-300">
+                    <div className="text-2xl font-bold">5000+</div>
+                    <div className="text-sm opacity-90">Years Heritage</div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Accommodation Preview */}
-      <section className="section-padding bg-surface">
-        <div className="container mx-auto container-padding">
+      {/* Interactive Services Showcase */}
+      <section className="py-32 bg-surface">
+        <div className="container mx-auto px-4">
           <div className="text-center mb-16 animate-on-scroll">
-            <h2 className="heading-lg text-text-primary mb-6">
-              Superior Rooms with{" "}
-              <span className="gradient-text">Garden Views</span>
+            <h2 className="text-5xl lg:text-6xl font-bold mb-6">
+              Complete <span className="bg-gradient-to-r from-accent to-yellow-500 bg-clip-text text-transparent">Wellness Ecosystem</span>
             </h2>
-            <p className="body-lg text-text-muted max-w-3xl mx-auto">
-              Experience comfort and tranquility in our unique accommodations
-              featuring natural rock surfaces and stunning garden views
+            <p className="text-xl text-text-muted max-w-3xl mx-auto">
+              From healing treatments to professional training, everything you need for your wellness journey
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-            {[
-              {
-                title: "Double Room",
-                image: IMAGES.accommodation.doubleRoom,
-                features: [
-                  "Garden Views",
-                  "Natural Rock Features",
-                  "Private Bathroom",
-                ],
-              },
-              {
-                title: "Triple Room",
-                image: IMAGES.accommodation.tripleRoom,
-                features: [
-                  "Spacious Layout",
-                  "Nature Integration",
-                  "Modern Amenities",
-                ],
-              },
-              {
-                title: "Family Room",
-                image: IMAGES.accommodation.familyRoom,
-                features: ["Separate Living Area", "Family Focused", "Premium Access"],
-              },
-            ].map((room, index) => (
-              <div
-                key={index}
-                className={`card group hover-lift animate-on-scroll transition-all duration-500 transform`}
-                style={{ animationDelay: `${index * 200}ms` }}
-              >
-                <div className="relative h-48 rounded-xl overflow-hidden mb-6">
-                  <Image
-                    src={room.image}
-                    alt={room.title}
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-cover group-hover:scale-110 transition-transform duration-700"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                </div>
+          <div className="max-w-7xl mx-auto">
+            {/* Service Navigation */}
+            <div className="flex justify-center mb-12 animate-on-scroll">
+              <div className="flex bg-white rounded-2xl p-2 shadow-lg border border-gray-100">
+                {services.map((service, index) => (
+                  <button
+                    key={service.id}
+                    onClick={() => setActiveService(index)}
+                    className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${
+                      activeService === index
+                        ? 'bg-primary text-white shadow-lg'
+                        : 'text-text-muted hover:text-primary'
+                    }`}
+                  >
+                    {service.title}
+                  </button>
+                ))}
+              </div>
+            </div>
 
-                <div className="space-y-4">
-                  <h3 className="text-xl font-bold text-text-primary">
-                    {room.title}
-                  </h3>
-                  <div className="space-y-2">
-                    {room.features.map((feature, idx) => (
-                      <div
-                        key={idx}
-                        className="flex items-center gap-2 text-sm text-text-secondary"
-                      >
-                        <CheckCircle size={14} className="text-accent" />
-                        <span>{feature}</span>
+            {/* Active Service Display */}
+            <div className="animate-on-scroll">
+              <div className="bg-white rounded-3xl overflow-hidden shadow-2xl border border-gray-100">
+                <div className="grid grid-cols-1 lg:grid-cols-2">
+                  {/* Content */}
+                  <div className="p-12 flex flex-col justify-center">
+                    <div className="flex items-center gap-4 mb-6">
+                      <div className="w-16 h-16 bg-gradient-to-br from-accent/20 to-primary/20 rounded-2xl flex items-center justify-center text-accent">
+                        {services[activeService].icon}
                       </div>
-                    ))}
+                      <div>
+                        <div className="text-sm font-semibold text-accent uppercase tracking-wide">
+                          {services[activeService].subtitle}
+                        </div>
+                        <h3 className="text-3xl font-bold text-primary">
+                          {services[activeService].title}
+                        </h3>
+                      </div>
+                    </div>
+
+                    <p className="text-lg text-text-muted mb-8 leading-relaxed">
+                      {services[activeService].description}
+                    </p>
+
+                    <div className="space-y-4 mb-8">
+                      {services[activeService].features.map((feature, idx) => (
+                        <div key={idx} className="flex items-center gap-3">
+                          <CheckCircle className="w-5 h-5 text-green-500" />
+                          <span className="text-text-primary">{feature}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    <Link 
+                      href={services[activeService].link}
+                      className="btn-primary w-fit"
+                    >
+                      Learn More
+                    </Link>
+                  </div>
+
+                  {/* Image */}
+                  <div className="relative h-96 lg:h-full">
+                    <Image
+                      src={services[activeService].image}
+                      alt={services[activeService].title}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                   </div>
                 </div>
               </div>
-            ))}
-          </div>
-
-          <div className="text-center animate-on-scroll">
-            <a
-              href="/accommodation"
-              className="btn-primary text-lg px-8 py-4 inline-flex items-center gap-2 group"
-            >
-              <span>View All Rooms</span>
-              <Eye size={20} className="group-hover:scale-110 transition-transform duration-300" />
-            </a>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Gallery Preview */}
-      <section className="section-padding bg-background">
-        <div className="container mx-auto container-padding">
-          <div className="text-center mb-16 animate-on-scroll">
-            <h2 className="heading-lg text-text-primary mb-6">
-              Visual <span className="gradient-text">Journey</span>
+      {/* Treatments Preview - Optimized */}
+      <section className="py-12 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-text-primary mb-4">
+              Discover Our <span className="text-accent">Treatments</span>
             </h2>
-            <p className="body-lg text-text-muted max-w-3xl mx-auto">
-              Take a glimpse into our peaceful sanctuary and healing experiences
+            <p className="text-lg text-text-muted max-w-2xl mx-auto">
+              Experience authentic Ayurvedic healing through our traditional treatments
             </p>
           </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
-            {[
-              IMAGES.treatments.fullBodyMassage,
-              IMAGES.accommodation.doubleRoom,
-              IMAGES.treatments.panchakarma,
-              IMAGES.accommodation.familyRoom,
-            ].map((image, index) => (
-              <div
-                key={index}
-                className={`relative aspect-square rounded-xl overflow-hidden group cursor-pointer animate-on-scroll`}
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                <Image
-                  src={image}
-                  alt="Gallery preview"
-                  fill
-                  sizes="(max-width: 768px) 50vw, 25vw"
-                  className="object-cover group-hover:scale-110 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-300"></div>
-              </div>
-            ))}
-          </div>
-
-          <div className="text-center animate-on-scroll">
-            <a
-              href="/gallery"
-              className="btn-secondary text-lg px-8 py-4 inline-flex items-center gap-2 group"
-            >
-              <span>View Full Gallery</span>
-              <Eye size={20} className="group-hover:scale-110 transition-transform duration-300" />
-            </a>
-          </div>
         </div>
+        <TreatmentsGrid showOnly={3} showViewMore={true} />
       </section>
 
-      {/* Contact Form Section */}
-      <section className="section-padding bg-gradient-to-r from-primary via-primary-dark to-primary text-white">
-        <div className="container mx-auto container-padding">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div className="space-y-8 animate-on-scroll">
-              <h2 className="heading-lg mb-6">
-                Ready to Begin Your{" "}
-                <span className="text-accent">Wellness Journey?</span>
+      {/* Contact Form */}
+      <section className="py-32 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-16 animate-on-scroll">
+              <h2 className="text-5xl lg:text-6xl font-bold mb-6">
+                Start Your <span className="bg-gradient-to-r from-accent to-yellow-500 bg-clip-text text-transparent">Wellness Journey</span>
               </h2>
-              <p className="body-lg text-primary-light leading-relaxed">
-                Take the first step towards better health and wellness. Our
-                experienced team is here to guide you through authentic Ayurvedic
-                healing.
+              <p className="text-xl text-text-muted">
+                Get in touch with us to begin your transformation
               </p>
-
-              <div className="space-y-4">
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center">
-                    <Phone className="w-6 h-6 text-accent" />
-                  </div>
-                  <div>
-                    <p className="font-semibold">Call Us</p>
-                    <a
-                      href="tel:+94112223344"
-                      className="text-primary-light hover:text-accent transition-colors"
-                    >
-                      +94 11 222 3344
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center">
-                    <Calendar className="w-6 h-6 text-accent" />
-                  </div>
-                  <div>
-                    <p className="font-semibold">Available</p>
-                    <p className="text-primary-light">8:00 AM - 8:00 PM Daily</p>
-                  </div>
-                </div>
-              </div>
             </div>
-
-            <div className="animate-on-scroll animate-delay-300">
-              <QuickInquiryForm className="bg-white/10 backdrop-blur-sm border border-white/20" />
+            <div className="animate-on-scroll animate-delay-200">
+              <QuickInquiryForm />
             </div>
           </div>
         </div>
       </section>
-    </div>
+
+      {/* Modern CTA */}
+      <section className="py-32 bg-gradient-to-br from-primary via-primary-dark to-accent text-white relative overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M0 0h80v80H0z'/%3E%3Cpath d='M0 0h80v80H0z' stroke='%23ffffff' stroke-width='1' fill='none'/%3E%3C/g%3E%3C/svg%3E")`
+          }}></div>
+        </div>
+
+        <div className="relative z-10 container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="w-20 h-20 bg-accent/20 backdrop-blur-xl rounded-3xl flex items-center justify-center mx-auto mb-8">
+              <Sparkles className="w-10 h-10 text-accent" />
+            </div>
+            
+            <h2 className="text-5xl lg:text-7xl font-bold mb-8 leading-tight">
+              Ready to Transform Your Life?
+            </h2>
+            
+            <p className="text-xl lg:text-2xl text-white/90 mb-12 leading-relaxed">
+              Join thousands who have discovered the power of authentic Ayurvedic healing. 
+              Your journey to wellness starts with a single step.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16">
+              <Link 
+                href="/contact" 
+                className="group bg-accent hover:bg-accent/90 text-primary px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 hover:scale-105 hover:shadow-xl flex items-center gap-3 justify-center"
+              >
+                <Calendar className="w-6 h-6" />
+                Book Free Consultation
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </Link>
+              
+              <a 
+                href="tel:+94112223344" 
+                className="group bg-white/10 backdrop-blur-md border-2 border-white/30 text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 hover:bg-white hover:text-primary flex items-center gap-3 justify-center"
+              >
+                <Phone className="w-6 h-6" />
+                Call Now
+              </a>
+            </div>
+
+            {/* Trust Indicators */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-8 text-white/80">
+              <div className="flex items-center gap-2">
+                <MessageCircle className="w-5 h-5 text-accent" />
+                <span>24/7 Support</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Shield className="w-5 h-5 text-accent" />
+                <span>100% Authentic</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Zap className="w-5 h-5 text-accent" />
+                <span>Quick Response</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
   );
 }

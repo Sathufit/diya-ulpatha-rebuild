@@ -14,7 +14,18 @@ import {
   ArrowRight,
   User,
   UsersIcon,
-  Leaf
+  Leaf,
+  Play,
+  ChevronDown,
+  ChevronUp,
+  Calendar,
+  Target,
+  Brain,
+  Heart,
+  Globe,
+  Zap,
+  FileText,
+  Video
 } from "lucide-react";
 
 interface Course {
@@ -57,95 +68,75 @@ const mainCourse: Course = {
   eligibility: "Anyone with genuine interest in gaining practical knowledge in Ayurvedic Healing"
 };
 
-const customOptions = [
+const learningPath = [
   {
-    id: "customized",
-    title: "Customized Training Packages",
-    icon: <UsersIcon className="w-12 h-12" />,
-    description: "Tailor-made training packages for individuals and groups. Course content planned as per your specific requirements.",
-    features: [
-      "Flexible course content",
-      "Group or individual focus",
-      "Customized duration",
-      "Specific treatment focus",
-      "Professional guidance"
-    ]
+    week: "Week 1",
+    title: "Foundation & Theory",
+    topics: ["Ayurveda Principles", "Constitutional Analysis", "Basic Anatomy"],
+    icon: <BookOpen className="w-6 h-6" />
   },
   {
-    id: "individual",
-    title: "Individual Training Sessions", 
-    icon: <User className="w-12 h-12" />,
-    description: "Individual training on almost all treatments. Duration depends on the treatment and ranges from 3 hours to full day.",
-    features: [
-      "One-on-one training",
-      "Flexible scheduling",
-      "3 hours to full day",
-      "All treatments available",
-      "Personalized attention"
-    ]
+    week: "Week 2", 
+    title: "Practical Application",
+    topics: ["Massage Techniques", "Herbal Preparations", "Treatment Protocols"],
+    icon: <Target className="w-6 h-6" />
   }
 ];
 
-const packageFacilities = [
-  {
-    icon: <CheckCircle className="w-6 h-6" />,
-    title: "Accommodation",
-    description: "Comfortable rooms with all amenities"
-  },
-  {
-    icon: <CheckCircle className="w-6 h-6" />,
-    title: "Food",
-    description: "Nutritious Ayurvedic meals"
-  },
-  {
-    icon: <CheckCircle className="w-6 h-6" />,
-    title: "Short Tours & Excursions", 
-    description: "Cultural and nature exploration"
-  },
-  {
-    icon: <CheckCircle className="w-6 h-6" />,
-    title: "Leisure Activities",
-    description: "Yoga, meditation, and relaxation"
-  }
-];
-
-const courseHighlights = [
-  {
-    icon: <BookOpen className="w-8 h-8" />,
-    title: "Comprehensive Curriculum",
-    description: "14-day intensive program covering theory and practical applications"
-  },
-  {
-    icon: <Stethoscope className="w-8 h-8" />,
-    title: "Expert Instructors", 
-    description: "Learn from qualified Ayurvedic doctors and experienced therapists"
-  },
-  {
-    icon: <Users className="w-8 h-8" />,
-    title: "Hands-On Training",
-    description: "Practical demonstrations and supervised practice sessions"
-  },
-  {
-    icon: <Award className="w-8 h-8" />,
-    title: "Certification",
-    description: "Receive official certificate upon successful completion"
-  }
+const stats = [
+  { number: "500+", label: "Graduates", icon: <GraduationCap className="w-6 h-6" /> },
+  { number: "15+", label: "Countries", icon: <Globe className="w-6 h-6" /> },
+  { number: "98%", label: "Success Rate", icon: <Award className="w-6 h-6" /> },
+  { number: "14", label: "Day Program", icon: <Calendar className="w-6 h-6" /> }
 ];
 
 const benefits = [
-  "Learn authentic Ayurvedic principles and practices",
-  "Gain practical experience with traditional treatments",
-  "Understand anatomy from an Ayurvedic perspective", 
-  "Master various massage techniques",
-  "Study herbal medicine and pharmacology",
-  "Receive certification for professional practice",
-  "Network with fellow wellness practitioners",
-  "Experience Sri Lankan Ayurvedic traditions firsthand"
+  {
+    icon: <Brain className="w-8 h-8" />,
+    title: "Deep Understanding",
+    description: "Master the philosophical foundations and practical applications of Ayurveda"
+  },
+  {
+    icon: <Heart className="w-8 h-8" />,
+    title: "Hands-On Experience", 
+    description: "Practice authentic techniques under the guidance of experienced masters"
+  },
+  {
+    icon: <Award className="w-8 h-8" />,
+    title: "Global Certification",
+    description: "Receive internationally recognized certification to practice worldwide"
+  },
+  {
+    icon: <Users className="w-8 h-8" />,
+    title: "Community Network",
+    description: "Join a global network of Ayurvedic practitioners and wellness professionals"
+  }
+];
+
+const faqs = [
+  {
+    question: "What prior experience do I need?",
+    answer: "No prior experience required. Our course is designed for all levels, from complete beginners to healthcare professionals seeking to expand their knowledge."
+  },
+  {
+    question: "Is accommodation included?",
+    answer: "Yes, we offer comprehensive packages that include comfortable accommodation, Ayurvedic meals, and all learning materials."
+  },
+  {
+    question: "What certification will I receive?",
+    answer: "Upon successful completion, you'll receive a Certificate of Practical Awareness in Ayurvedic Therapies, recognized internationally."
+  },
+  {
+    question: "Can I practice professionally after the course?",
+    answer: "Yes, our certification enables you to practice Ayurvedic therapies professionally. We also provide guidance on setting up your practice."
+  }
 ];
 
 export default function TrainingPage() {
   const [isVisible, setIsVisible] = useState(false);
-  const [showMoreDetails, setShowMoreDetails] = useState(false);
+  const [activeTab, setActiveTab] = useState("overview");
+  const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
+  const [currentStep, setCurrentStep] = useState(0);
 
   useEffect(() => {
     const timer = setTimeout(() => setIsVisible(true), 100);
@@ -153,240 +144,88 @@ export default function TrainingPage() {
   }, []);
 
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="section-padding hero-gradient relative overflow-hidden">
-        {/* Decorative Elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-20 left-20 w-32 h-32 bg-accent/10 rounded-full animate-float"></div>
-          <div className="absolute bottom-20 right-20 w-24 h-24 bg-primary/10 rounded-full animate-float animate-delay-300"></div>
-          <div className="absolute top-1/2 right-1/3 w-16 h-16 bg-accent/5 rounded-full animate-pulse-gentle"></div>
+    <div className="min-h-screen bg-gray-50">
+      {/* Hero Section - Modern Split Layout */}
+      <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-primary via-primary-dark to-accent">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+          }}></div>
         </div>
 
-        <div className="container mx-auto container-padding text-center relative z-10">
-          <div className={`max-w-5xl mx-auto transition-all duration-1000 transform ${
-            isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
-          }`}>
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 mb-8">
-              <GraduationCap className="w-5 h-5 text-accent" />
-              <span className="text-primary font-medium">Professional Training</span>
-            </div>
-
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-text-primary mb-8">
-              Ayurveda <span className="gradient-text">Training</span> Programs
-            </h1>
-            <p className="text-xl md:text-2xl text-text-muted max-w-4xl mx-auto leading-relaxed mb-12">
-              Master the ancient art of Ayurvedic healing through our comprehensive training programs. 
-              Learn from experienced practitioners in the birthplace of this timeless healing tradition.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="/contact" className="btn-primary text-lg px-8 py-4">
-                Enroll Now
-              </a>
-              <a href="#course-details" className="btn-secondary text-lg px-8 py-4">
-                Course Details
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Course Highlights */}
-      <section className="section-padding bg-surface">
-        <div className="container mx-auto container-padding">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-text-primary mb-6">
-              Why Choose Our <span className="text-accent">Training?</span>
-            </h2>
-            <p className="text-xl text-text-muted max-w-3xl mx-auto">
-              Learn from the source of Ayurvedic wisdom with hands-on experience and expert guidance
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {courseHighlights.map((highlight, index) => (
-              <div key={index} className={`card text-center group hover-glow transition-all duration-500 transform ${
-                isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
-              }`} style={{ transitionDelay: `${index * 150}ms` }}>
-                <div className="w-20 h-20 bg-gradient-to-br from-accent/20 to-primary/20 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 text-accent">
-                  {highlight.icon}
-                </div>
-                <h3 className="text-xl font-bold text-text-primary mb-3 group-hover:text-accent transition-colors duration-300">
-                  {highlight.title}
-                </h3>
-                <p className="text-text-muted leading-relaxed">
-                  {highlight.description}
-                </p>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Left Content */}
+            <div className="text-white">
+              <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
+                <Leaf className="w-4 h-4 text-accent" />
+                <span className="text-sm font-medium">MASTER ANCIENT WISDOM</span>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* Main Course Section */}
-      <section id="course-details" className="section-padding bg-background">
-        <div className="container mx-auto container-padding">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-16">
-              <div className="inline-flex items-center gap-2 bg-accent/10 rounded-full px-6 py-3 mb-8">
-                <Star className="w-5 h-5 text-accent" />
-                <span className="text-primary font-medium">Featured Course</span>
-              </div>
-              <h2 className="text-4xl md:text-5xl font-bold text-text-primary mb-6">
-                {mainCourse.title}
-              </h2>
-              <p className="text-xl text-text-muted max-w-4xl mx-auto leading-relaxed">
-                {mainCourse.description}
+              <h1 className="text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                Transform Lives Through
+                <span className="block text-accent">Ayurvedic Mastery</span>
+              </h1>
+
+              <p className="text-xl text-white/90 mb-8 leading-relaxed">
+                Join our comprehensive 14-day certification program and master the art of Ayurvedic healing. 
+                Learn from expert practitioners in the birthplace of this ancient science.
               </p>
-            </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-              {/* Course Overview */}
-              <div className="lg:col-span-2 space-y-8">
-                <div className="card">
-                  <h3 className="text-2xl font-bold text-text-primary mb-6">Course Overview</h3>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                    <div className="text-center">
-                      <div className="w-16 h-16 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <Clock className="w-8 h-8 text-accent" />
-                      </div>
-                      <h4 className="font-bold text-text-primary mb-2">Duration</h4>
-                      <p className="text-text-muted">{mainCourse.duration}</p>
-                    </div>
-                    <div className="text-center">
-                      <div className="w-16 h-16 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <Users className="w-8 h-8 text-accent" />
-                      </div>
-                      <h4 className="font-bold text-text-primary mb-2">Level</h4>
-                      <p className="text-text-muted">{mainCourse.level}</p>
-                    </div>
-                    <div className="text-center">
-                      <div className="w-16 h-16 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <Award className="w-8 h-8 text-accent" />
-                      </div>
-                      <h4 className="font-bold text-text-primary mb-2">Certificate</h4>
-                      <p className="text-text-muted">Official Certification</p>
-                    </div>
+              {/* Key Points */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-accent/20 rounded-full flex items-center justify-center">
+                    <CheckCircle className="w-5 h-5 text-accent" />
                   </div>
-
-                  <div className="border-t border-border pt-8">
-                    <h4 className="text-xl font-bold text-text-primary mb-4">Course Curriculum</h4>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      {mainCourse.features.map((feature, index) => (
-                        <div key={index} className="flex items-center gap-3">
-                          <CheckCircle className="w-5 h-5 text-accent flex-shrink-0" />
-                          <span className="text-text-secondary">{feature}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
+                  <span className="font-medium">14-Day Intensive</span>
                 </div>
-
-                {/* Methodology */}
-                <div className="card">
-                  <h3 className="text-2xl font-bold text-text-primary mb-6">Learning Methodology</h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {mainCourse.methodology.map((method, index) => (
-                      <div key={index} className="flex items-center gap-3">
-                        <div className="w-8 h-8 bg-accent/20 rounded-full flex items-center justify-center flex-shrink-0">
-                          <span className="text-accent font-bold text-sm">{index + 1}</span>
-                        </div>
-                        <span className="text-text-secondary font-medium">{method}</span>
-                      </div>
-                    ))}
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-accent/20 rounded-full flex items-center justify-center">
+                    <CheckCircle className="w-5 h-5 text-accent" />
                   </div>
+                  <span className="font-medium">Global Certification</span>
                 </div>
-
-                {/* Additional Details */}
-                {showMoreDetails && (
-                  <div className="card animate-fade-in-up">
-                    <h3 className="text-2xl font-bold text-text-primary mb-6">What You&apos;ll Learn</h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      {benefits.map((benefit, index) => (
-                        <div key={index} className="flex items-start gap-3">
-                          <CheckCircle className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
-                          <span className="text-text-secondary">{benefit}</span>
-                        </div>
-                      ))}
-                    </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-accent/20 rounded-full flex items-center justify-center">
+                    <CheckCircle className="w-5 h-5 text-accent" />
                   </div>
-                )}
-
-                <div className="text-center">
-                  <button
-                    onClick={() => setShowMoreDetails(!showMoreDetails)}
-                    className="btn-outline inline-flex items-center gap-2"
-                  >
-                    {showMoreDetails ? 'Show Less' : 'Show More Details'}
-                    <ArrowRight className={`w-4 h-4 transition-transform duration-300 ${showMoreDetails ? 'rotate-90' : ''}`} />
-                  </button>
+                  <span className="font-medium">Expert Instructors</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-accent/20 rounded-full flex items-center justify-center">
+                    <CheckCircle className="w-5 h-5 text-accent" />
+                  </div>
+                  <span className="font-medium">All Levels Welcome</span>
                 </div>
               </div>
 
-              {/* Enrollment Card */}
-              <div className="space-y-6">
-                <div className="card sticky top-8">
-                  <div className="text-center mb-6">
-                    {mainCourse.popular && (
-                      <div className="inline-flex items-center gap-2 bg-accent text-primary px-4 py-2 rounded-full text-sm font-bold mb-4">
-                        <Star size={16} />
-                        Most Popular
+              <div className="flex flex-col sm:flex-row gap-4">
+                <a href="#enroll" className="btn-secondary text-lg px-8 py-4">
+                  Start Your Journey
+                </a>
+                <button className="btn-outline text-white border-white hover:bg-white hover:text-primary text-lg px-8 py-4 inline-flex items-center gap-2">
+                  <Play size={20} />
+                  Watch Preview
+                </button>
+              </div>
+            </div>
+
+            {/* Right Content - Interactive Stats Card */}
+            <div className="relative">
+              <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/20">
+                <h3 className="text-2xl font-bold text-white mb-8 text-center">Course Impact</h3>
+                <div className="grid grid-cols-2 gap-6">
+                  {stats.map((stat, index) => (
+                    <div key={index} className="text-center group">
+                      <div className="w-16 h-16 bg-accent/20 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                        <div className="text-accent">{stat.icon}</div>
                       </div>
-                    )}
-                    <h3 className="text-2xl font-bold text-text-primary mb-2">Enroll Today</h3>
-                    <p className="text-3xl font-bold text-accent mb-4">{mainCourse.price}</p>
-                    <p className="text-text-muted text-sm">14-day intensive program</p>
-                  </div>
-
-                  <div className="space-y-4 mb-6">
-                    <div className="flex justify-between items-center">
-                      <span className="text-text-muted">Duration</span>
-                      <span className="font-medium text-text-primary">{mainCourse.duration}</span>
+                      <div className="text-3xl font-bold text-white mb-2">{stat.number}</div>
+                      <div className="text-white/80 text-sm">{stat.label}</div>
                     </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-text-muted">Level</span>
-                      <span className="font-medium text-text-primary">{mainCourse.level}</span>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-text-muted">Certificate</span>
-                      <CheckCircle className="w-5 h-5 text-accent" />
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-text-muted">Hands-on Training</span>
-                      <CheckCircle className="w-5 h-5 text-accent" />
-                    </div>
-                  </div>
-
-                  <div className="space-y-3">
-                    <a href="/contact" className="btn-primary w-full text-center">
-                      Enroll Now
-                    </a>
-                    <a href="tel:+94112223344" className="btn-outline w-full text-center inline-flex items-center justify-center gap-2">
-                      <Phone size={16} />
-                      Call for Details
-                    </a>
-                  </div>
-
-                  <div className="mt-6 pt-6 border-t border-border">
-                    <h4 className="font-bold text-text-primary mb-3">Eligibility</h4>
-                    <p className="text-text-muted text-sm leading-relaxed">{mainCourse.eligibility}</p>
-                  </div>
-                </div>
-
-                {/* Quick Contact */}
-                <div className="card">
-                  <h4 className="font-bold text-text-primary mb-4">Quick Contact</h4>
-                  <div className="space-y-3">
-                    <a href="tel:+94112223344" className="flex items-center gap-3 text-text-muted hover:text-accent transition-colors">
-                      <Phone size={16} />
-                      <span>+94 11 222 3344</span>
-                    </a>
-                    <a href="mailto:info@diyaulpatha.com" className="flex items-center gap-3 text-text-muted hover:text-accent transition-colors">
-                      <Mail size={16} />
-                      <span>info@diyaulpatha.com</span>
-                    </a>
-                  </div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -394,61 +233,38 @@ export default function TrainingPage() {
         </div>
       </section>
 
-      {/* Custom Training Options */}
-      <section className="section-padding bg-background">
-        <div className="container mx-auto container-padding">
+      {/* Learning Path Section - Interactive Timeline */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-text-primary mb-6">
-              Flexible <span className="gradient-text">Training Options</span>
-            </h2>
-            <p className="text-xl text-text-muted max-w-3xl mx-auto">
-              Customized programs designed to meet your specific learning needs
-            </p>
+            <h2 className="text-4xl font-bold mb-4 text-primary">Your Learning <span className="text-accent">Journey</span></h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">A structured path to mastery designed by expert practitioners</p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
-            {customOptions.map((option, index) => (
-              <div key={index} className="card-feature hover-lift">
-                <div className="text-accent mb-6 group-hover:scale-110 transition-transform duration-300">
-                  {option.icon}
-                </div>
-                <h3 className="text-2xl font-bold text-text-primary mb-4 group-hover:gradient-text transition-all duration-300">
-                  {option.title}
-                </h3>
-                <p className="text-text-secondary mb-6 leading-relaxed">
-                  {option.description}
-                </p>
-                <ul className="space-y-2 mb-6">
-                  {option.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-center gap-3 text-sm text-text-secondary">
-                      <CheckCircle size={16} className="text-accent" />
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-                <a href="/contact" className="btn-secondary w-full">
-                  Learn More
-                </a>
-              </div>
-            ))}
-          </div>
-
-          {/* Package Facilities */}
-          <div className="bg-gradient-to-br from-primary/5 to-accent/5 rounded-2xl p-8">
-            <div className="text-center mb-8">
-              <h3 className="text-2xl font-bold text-text-primary mb-4">
-                Multi-Day Package Facilities
-              </h3>
-              <p className="text-text-muted">Complete support for your learning journey</p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {packageFacilities.map((facility, index) => (
-                <div key={index} className="text-center">
-                  <div className="text-accent mb-3 flex justify-center">
-                    {facility.icon}
+          <div className="max-w-4xl mx-auto">
+            <div className="relative">
+              {/* Progress Line */}
+              <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gray-200"></div>
+              
+              {learningPath.map((phase, index) => (
+                <div key={index} className={`relative flex items-center mb-12 ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}>
+                  {/* Timeline Dot */}
+                  <div className="absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-accent rounded-full border-4 border-white shadow-lg flex items-center justify-center z-10">
+                    <div className="text-primary">{phase.icon}</div>
                   </div>
-                  <h4 className="font-semibold text-text-primary mb-2">{facility.title}</h4>
-                  <p className="text-text-muted text-sm">{facility.description}</p>
+                  
+                  {/* Content Card */}
+                  <div className={`w-5/12 ${index % 2 === 0 ? 'pr-8 text-right' : 'pl-8'}`}>
+                    <div className="bg-gray-50 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                      <div className="text-accent font-bold text-sm mb-2">{phase.week}</div>
+                      <h4 className="text-xl font-bold text-primary mb-3">{phase.title}</h4>
+                      <div className="space-y-2">
+                        {phase.topics.map((topic, idx) => (
+                          <div key={idx} className="text-gray-600 text-sm">{topic}</div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>
@@ -456,23 +272,243 @@ export default function TrainingPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="section-padding bg-gradient-to-br from-accent/10 to-primary/5">
-        <div className="container mx-auto container-padding text-center">
+      {/* Course Details - Tabbed Interface */}
+      <section id="course-details" className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            {/* Tab Navigation */}
+            <div className="flex justify-center mb-12">
+              <div className="bg-white rounded-2xl p-2 shadow-lg">
+                {[
+                  { id: "overview", label: "Overview", icon: <BookOpen size={20} /> },
+                  { id: "curriculum", label: "Curriculum", icon: <FileText size={20} /> },
+                  { id: "instructors", label: "Instructors", icon: <Users size={20} /> },
+                  { id: "certification", label: "Certification", icon: <Award size={20} /> }
+                ].map((tab) => (
+                  <button
+                    key={tab.id}
+                    onClick={() => setActiveTab(tab.id)}
+                    className={`inline-flex items-center gap-2 px-6 py-3 rounded-xl font-medium transition-all duration-300 ${
+                      activeTab === tab.id
+                        ? 'bg-primary text-white shadow-lg'
+                        : 'text-gray-600 hover:text-primary hover:bg-gray-50'
+                    }`}
+                  >
+                    {tab.icon}
+                    <span className="hidden sm:block">{tab.label}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Tab Content */}
+            <div className="bg-white rounded-3xl shadow-xl overflow-hidden">
+              {activeTab === "overview" && (
+                <div className="p-8 md:p-12">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <div>
+                      <h3 className="text-3xl font-bold text-primary mb-6">{mainCourse.title}</h3>
+                      <p className="text-gray-600 text-lg leading-relaxed mb-8">{mainCourse.description}</p>
+                      
+                      {/* Course Info Cards */}
+                      <div className="grid grid-cols-2 gap-4">
+                        <div className="bg-blue-50 rounded-xl p-4 text-center">
+                          <Clock className="w-8 h-8 text-blue-600 mx-auto mb-2" />
+                          <div className="font-bold text-blue-900">{mainCourse.duration}</div>
+                          <div className="text-blue-600 text-sm">Duration</div>
+                        </div>
+                        <div className="bg-green-50 rounded-xl p-4 text-center">
+                          <Users className="w-8 h-8 text-green-600 mx-auto mb-2" />
+                          <div className="font-bold text-green-900">{mainCourse.level}</div>
+                          <div className="text-green-600 text-sm">Level</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div>
+                      <h4 className="text-xl font-bold text-primary mb-6">Why Choose This Course?</h4>
+                      <div className="space-y-4">
+                        {benefits.map((benefit, index) => (
+                          <div key={index} className="flex items-start gap-4 p-4 rounded-xl hover:bg-gray-50 transition-colors duration-300">
+                            <div className="w-12 h-12 bg-accent/20 rounded-xl flex items-center justify-center text-accent">
+                              {benefit.icon}
+                            </div>
+                            <div>
+                              <h5 className="font-bold text-primary mb-1">{benefit.title}</h5>
+                              <p className="text-gray-600 text-sm">{benefit.description}</p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {activeTab === "curriculum" && (
+                <div className="p-8 md:p-12">
+                  <h3 className="text-3xl font-bold text-primary mb-8 text-center">Comprehensive Curriculum</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    {mainCourse.features.map((feature, index) => (
+                      <div key={index} className="flex items-center gap-4 p-4 rounded-xl bg-gray-50 hover:bg-accent/10 transition-colors duration-300">
+                        <div className="w-10 h-10 bg-accent rounded-full flex items-center justify-center text-white font-bold">
+                          {index + 1}
+                        </div>
+                        <span className="font-medium text-primary">{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+                  
+                  <div className="mt-12 bg-primary/5 rounded-2xl p-8">
+                    <h4 className="text-xl font-bold text-primary mb-4">Learning Methodology</h4>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {mainCourse.methodology.map((method, index) => (
+                        <div key={index} className="flex items-center gap-3">
+                          <Zap className="w-5 h-5 text-accent" />
+                          <span className="text-gray-700">{method}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {activeTab === "instructors" && (
+                <div className="p-8 md:p-12 text-center">
+                  <h3 className="text-3xl font-bold text-primary mb-8">Expert Instructors</h3>
+                  <div className="max-w-2xl mx-auto">
+                    <div className="bg-gray-50 rounded-2xl p-8 mb-8">
+                      <div className="w-24 h-24 bg-accent rounded-full flex items-center justify-center mx-auto mb-4">
+                        <Stethoscope className="w-12 h-12 text-white" />
+                      </div>
+                      <h4 className="text-xl font-bold text-primary mb-2">Qualified Ayurvedic Doctors</h4>
+                      <p className="text-gray-600 leading-relaxed">
+                        Learn from certified practitioners registered with Sri Lanka Ayurvedic Medical Council, 
+                        bringing years of clinical experience and traditional knowledge.
+                      </p>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="text-center">
+                        <div className="text-3xl font-bold text-accent mb-2">15+</div>
+                        <div className="text-gray-600">Years Experience</div>
+                      </div>
+                      <div className="text-center">
+                        <div className="text-3xl font-bold text-accent mb-2">500+</div>
+                        <div className="text-gray-600">Students Trained</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {activeTab === "certification" && (
+                <div className="p-8 md:p-12">
+                  <div className="text-center mb-8">
+                    <div className="w-24 h-24 bg-accent rounded-full flex items-center justify-center mx-auto mb-6">
+                      <Award className="w-12 h-12 text-white" />
+                    </div>
+                    <h3 className="text-3xl font-bold text-primary mb-4">International Certification</h3>
+                    <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+                      Upon successful completion, receive your official Certificate of Practical Awareness in Ayurvedic Therapies
+                    </p>
+                  </div>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div className="text-center p-6 rounded-xl bg-blue-50">
+                      <Globe className="w-8 h-8 text-blue-600 mx-auto mb-4" />
+                      <h4 className="font-bold text-blue-900 mb-2">Global Recognition</h4>
+                      <p className="text-blue-600 text-sm">Practice internationally with our certification</p>
+                    </div>
+                    <div className="text-center p-6 rounded-xl bg-green-50">
+                      <CheckCircle className="w-8 h-8 text-green-600 mx-auto mb-4" />
+                      <h4 className="font-bold text-green-900 mb-2">Quality Assured</h4>
+                      <p className="text-green-600 text-sm">Meets international training standards</p>
+                    </div>
+                    <div className="text-center p-6 rounded-xl bg-purple-50">
+                      <Users className="w-8 h-8 text-purple-600 mx-auto mb-4" />
+                      <h4 className="font-bold text-purple-900 mb-2">Professional Network</h4>
+                      <p className="text-purple-600 text-sm">Join our alumni community worldwide</p>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <Leaf className="w-16 h-16 text-accent mx-auto mb-6" />
-            <h2 className="text-4xl md:text-5xl font-bold text-text-primary mb-6">
-              Ready to Begin Your Learning Journey?
-            </h2>
-            <p className="text-xl text-text-muted mb-10 leading-relaxed">
-              Join us at the birthplace of Ayurveda and gain practical skills that will transform 
-              your understanding of holistic healing. Your journey to becoming a skilled practitioner starts here.
+            <div className="text-center mb-16">
+              <h2 className="text-4xl font-bold text-primary mb-4">Frequently Asked <span className="text-accent">Questions</span></h2>
+              <p className="text-xl text-gray-600">Everything you need to know about our training program</p>
+            </div>
+
+            <div className="space-y-4">
+              {faqs.map((faq, index) => (
+                <div key={index} className="bg-gray-50 rounded-2xl overflow-hidden">
+                  <button
+                    onClick={() => setExpandedFaq(expandedFaq === index ? null : index)}
+                    className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-100 transition-colors duration-300"
+                  >
+                    <h3 className="font-bold text-primary text-lg">{faq.question}</h3>
+                    {expandedFaq === index ? (
+                      <ChevronUp className="w-6 h-6 text-accent" />
+                    ) : (
+                      <ChevronDown className="w-6 h-6 text-accent" />
+                    )}
+                  </button>
+                  {expandedFaq === index && (
+                    <div className="px-6 pb-4">
+                      <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Enrollment CTA */}
+      <section id="enroll" className="py-20 bg-gradient-to-r from-primary to-primary-dark text-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-5xl font-bold mb-6">Ready to Transform Lives?</h2>
+            <p className="text-xl text-primary-light mb-10 max-w-2xl mx-auto leading-relaxed">
+              Join our next cohort and embark on a journey that will not only transform your understanding 
+              of healing but also empower you to make a difference in others&apos; lives.
             </p>
+
+            <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 mb-10">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                <div>
+                  <Calendar className="w-8 h-8 mx-auto mb-3 text-accent" />
+                  <div className="font-bold text-lg">Next Batch</div>
+                  <div className="text-primary-light">January 2025</div>
+                </div>
+                <div>
+                  <Users className="w-8 h-8 mx-auto mb-3 text-accent" />
+                  <div className="font-bold text-lg">Limited Seats</div>
+                  <div className="text-primary-light">Only 20 students</div>
+                </div>
+                <div>
+                  <Clock className="w-8 h-8 mx-auto mb-3 text-accent" />
+                  <div className="font-bold text-lg">Early Bird</div>
+                  <div className="text-primary-light">25% Discount</div>
+                </div>
+              </div>
+            </div>
+
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="/contact" className="btn-primary text-lg px-8 py-4">
-                Enquire About Courses
+              <a href="/contact" className="btn-secondary text-lg px-8 py-4 inline-flex items-center gap-2">
+                <Mail size={20} />
+                Enroll Now
               </a>
-              <a href="tel:+94112223344" className="btn-secondary text-lg px-8 py-4">
+              <a href="tel:+94112223344" className="btn-outline text-white border-white hover:bg-white hover:text-primary text-lg px-8 py-4 inline-flex items-center gap-2">
+                <Phone size={20} />
                 Call: +94 11 222 3344
               </a>
             </div>

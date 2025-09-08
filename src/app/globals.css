@@ -36,11 +36,11 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-/* Professional Animations */
+/* Optimized Animations - Reduce complexity */
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(40px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
@@ -97,16 +97,16 @@ body {
     transform: translateY(0px);
   }
   50% {
-    transform: translateY(-8px);
+    transform: translateY(-4px);
   }
 }
 
 @keyframes gentlePulse {
   0%, 100% {
-    transform: scale(1);
+    opacity: 1;
   }
   50% {
-    transform: scale(1.03);
+    opacity: 0.7;
   }
 }
 
@@ -125,6 +125,24 @@ body {
   }
   50% { 
     background-position: 100% 50%; 
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }
 
@@ -227,15 +245,14 @@ body {
 
   /* Cards - Fixed to remove complex hover states from @apply */
   .card {
-    @apply rounded-2xl shadow-lg p-6 border transition-all duration-500 backdrop-blur-sm;
+    @apply rounded-2xl shadow-md p-6 border transition-all duration-300 backdrop-blur-sm;
     background-color: var(--surface);
     border-color: color-mix(in srgb, var(--border) 50%, transparent);
   }
   
   .card:hover {
-    box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 25px 50px -12px color-mix(in srgb, var(--primary) 5%, transparent);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px -5px rgb(0 0 0 / 0.15);
   }
   
   .card-interactive {
@@ -368,13 +385,23 @@ body {
     animation: shimmer 2s infinite;
   }
 
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-spin-slow {
+    animation: spin-slow 3s linear infinite;
+  }
+
   /* Animation Delays */
+  .animate-delay-100 { animation-delay: 50ms; }
+  .animate-delay-200 { animation-delay: 100ms; }
+  .animate-delay-300 { animation-delay: 150ms; }
+  .animate-delay-400 { animation-delay: 200ms; }
+  .animate-delay-500 { animation-delay: 250ms; }
   .animate-delay-100 { animation-delay: 100ms; }
   .animate-delay-200 { animation-delay: 200ms; }
   .animate-delay-300 { animation-delay: 300ms; }
-  .animate-delay-400 { animation-delay: 400ms; }
-  .animate-delay-500 { animation-delay: 500ms; }
-  .animate-delay-600 { animation-delay: 600ms; }
 
   /* Hover Effects */
   .hover-lift {
@@ -413,21 +440,16 @@ body {
 .card-feature {
   background-color: var(--surface);
   border-radius: 1rem;
-  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
   padding: 1.5rem;
   border: 1px solid color-mix(in srgb, var(--border) 50%, transparent);
-  transition: all 0.5s;
-  backdrop-filter: blur(4px);
+  transition: all 0.3s ease;
   text-align: center;
 }
 
 .card-feature:hover {
-  box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
-  transform: translateY(-8px) scale(1.02);
-  background: linear-gradient(to bottom right, 
-    color-mix(in srgb, var(--accent) 5%, transparent), 
-    color-mix(in srgb, var(--primary) 5%, transparent)
-  );
+  transform: translateY(-4px);
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.15);
 }
 
 /* Intersection Observer Animation Base */

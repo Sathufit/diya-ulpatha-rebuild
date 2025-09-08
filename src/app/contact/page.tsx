@@ -2,75 +2,22 @@
 import { useState, useEffect } from "react";
 import { QuickInquiryForm } from "@/components/QuickInquiryForm";
 import {
-  Mail,
   Phone,
+  Mail,
   MapPin,
   Clock,
-  Facebook,
-  Instagram,
   MessageCircle,
   Send,
+  ChevronDown,
+  ChevronUp,
   Globe,
-  Leaf,
+  Zap,
+  Shield,
+  Users,
 } from "lucide-react";
-
-const contactInfo = [
-  {
-    icon: <Phone className="w-6 h-6" />,
-    title: "Phone",
-    details: "+94 11 222 3344",
-    subtext: "Available 24/7 for emergencies",
-    href: "tel:+94112223344",
-  },
-  {
-    icon: <Mail className="w-6 h-6" />,
-    title: "Email",
-    details: "info@diyaulpatha.com",
-    subtext: "We respond within 24 hours",
-    href: "mailto:info@diyaulpatha.com",
-  },
-  {
-    icon: <MapPin className="w-6 h-6" />,
-    title: "Address",
-    details: "123 Wellness Road, Kandy, Sri Lanka",
-    subtext: "15 minutes from city center",
-    href: "https://maps.google.com",
-  },
-  {
-    icon: <Clock className="w-6 h-6" />,
-    title: "Hours",
-    details: "8:00 AM - 8:00 PM",
-    subtext: "Monday to Sunday",
-    href: null,
-  },
-];
-
-const faqs = [
-  {
-    question: "How do I book a treatment?",
-    answer:
-      "You can book a treatment by filling out our contact form, calling us directly, or visiting our center. We recommend booking in advance to ensure availability.",
-  },
-  {
-    question: "What should I expect during my first visit?",
-    answer:
-      "Your first visit includes a consultation with our Ayurvedic doctor to assess your constitution (prakriti) and current imbalances (vikriti), followed by a personalized treatment plan.",
-  },
-  {
-    question: "Do you offer accommodation packages?",
-    answer:
-      "Yes, we offer various accommodation packages that include meals, treatments, and wellness activities. Contact us for detailed package information.",
-  },
-  {
-    question: "Are your practitioners certified?",
-    answer:
-      "All our practitioners are certified Ayurveda specialists with years of training and experience in traditional healing methods.",
-  },
-];
 
 export default function ContactPage() {
   const [isVisible, setIsVisible] = useState(false);
-  const [activeTab, setActiveTab] = useState("contact");
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
 
   useEffect(() => {
@@ -78,384 +25,328 @@ export default function ContactPage() {
     return () => clearTimeout(timer);
   }, []);
 
+  const contactMethods = [
+    {
+      icon: <Phone className="w-8 h-8" />,
+      title: "Call Us",
+      primary: "+94 11 222 3344",
+      secondary: "Available 24/7",
+      action: "tel:+94112223344",
+      color: "bg-green-50 text-green-600 border-green-200",
+    },
+    {
+      icon: <Mail className="w-8 h-8" />,
+      title: "Email Us",
+      primary: "info@diyaulpatha.com",
+      secondary: "Response within 2 hours",
+      action: "mailto:info@diyaulpatha.com",
+      color: "bg-blue-50 text-blue-600 border-blue-200",
+    },
+    {
+      icon: <MapPin className="w-8 h-8" />,
+      title: "Visit Us",
+      primary: "Kandy, Sri Lanka",
+      secondary: "15 min from city center",
+      action: "https://maps.google.com",
+      color: "bg-purple-50 text-purple-600 border-purple-200",
+    },
+    {
+      icon: <Clock className="w-8 h-8" />,
+      title: "Open Hours",
+      primary: "8:00 AM - 8:00 PM",
+      secondary: "Monday to Sunday",
+      action: null,
+      color: "bg-orange-50 text-orange-600 border-orange-200",
+    },
+  ];
+
+  const faqs = [
+    {
+      question: "How do I book my first consultation?",
+      answer:
+        "You can book through our contact form, call us directly, or visit our center. We recommend advance booking to ensure availability. Your first visit includes a comprehensive consultation with our Ayurvedic doctor.",
+    },
+    {
+      question: "What should I expect during treatments?",
+      answer:
+        "Each treatment begins with a personal consultation to assess your constitution and current health status. Treatments are customized to your needs and performed by qualified therapists in a peaceful environment.",
+    },
+    {
+      question: "Do you offer residential packages?",
+      answer:
+        "Yes, we offer comprehensive residential packages that include accommodation, meals, treatments, and wellness activities. Packages range from 3-day retreats to 21-day intensive programs.",
+    },
+    {
+      question: "Are your practitioners certified?",
+      answer:
+        "All our doctors are registered with Sri Lanka Ayurvedic Medical Council, and our therapists hold qualifications from reputed institutions with extensive practical experience.",
+    },
+    {
+      question: "What is included in training programs?",
+      answer:
+        "Our 14-day certification program includes theoretical knowledge, practical demonstrations, hands-on training, accommodation, meals, and official certification upon completion.",
+    },
+  ];
+
+  const quickStats = [
+    { icon: <Zap className="w-6 h-6" />, label: "Quick Response", value: "< 2 hours" },
+    { icon: <Shield className="w-6 h-6" />, label: "Trust Score", value: "4.9/5" },
+    { icon: <Users className="w-6 h-6" />, label: "Happy Clients", value: "500+" },
+    { icon: <Globe className="w-6 h-6" />, label: "Countries", value: "15+" },
+  ];
+
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="section-padding hero-gradient relative overflow-hidden">
-        {/* Decorative Elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-20 left-20 w-32 h-32 bg-accent/10 rounded-full animate-float"></div>
-          <div className="absolute bottom-20 right-20 w-24 h-24 bg-primary/10 rounded-full animate-float animate-delay-300"></div>
-          <div className="absolute top-1/2 right-1/3 w-16 h-16 bg-accent/5 rounded-full animate-pulse-gentle"></div>
+      {/* Hero - Contact focused */}
+      <section className="relative py-32 bg-gradient-to-br from-primary via-primary-dark to-accent text-white overflow-hidden">
+        <div className="absolute inset-0 opacity-20">
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M30 30c0-16.569-13.431-30-30-30v60c16.569 0 30-13.431 30-30zM0 30c16.569 0 30 13.431 30 30H0V30z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+            }}
+          ></div>
         </div>
 
-        <div className="container mx-auto container-padding text-center relative z-10">
-          <div
-            className={`max-w-5xl mx-auto transition-all duration-1000 transform ${
-              isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
-            }`}
-          >
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 mb-8">
-              <MessageCircle className="w-5 h-5 text-accent" />
-              <span className="text-primary font-medium">Get in Touch</span>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="inline-flex items-center gap-2 bg-white/20 rounded-full px-4 py-2 mb-8">
+              <MessageCircle className="w-4 h-4" />
+              <span className="text-sm font-medium">GET IN TOUCH</span>
             </div>
 
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-text-primary mb-8">
-              Contact <span className="gradient-text">Us</span>
+            <h1 className="text-5xl lg:text-7xl font-bold mb-6 leading-tight">
+              Let&apos;s Start Your
+              <br />
+              <span className="text-accent">Wellness Journey</span>
             </h1>
-            <p className="text-xl md:text-2xl text-text-muted max-w-4xl mx-auto leading-relaxed mb-12">
-              Ready to begin your wellness journey? We&apos;re here to guide you every
-              step of the way. Reach out and let&apos;s start your healing
-              transformation.
+
+            <p className="text-xl text-white/90 max-w-3xl mx-auto mb-12 leading-relaxed">
+              Ready to transform your life through authentic Ayurveda? We&apos;re here to guide you every step of the way. Reach out and let&apos;s begin your healing journey together.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="#contact-form"
-                className="btn-primary text-lg px-8 py-4"
-              >
-                Send Message
-              </a>
-              <a
-                href="tel:+94112223344"
-                className="btn-secondary text-lg px-8 py-4"
-              >
-                Call Now
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Tab Navigation */}
-      <section className="bg-surface border-b border-border sticky top-0 z-40">
-        <div className="container mx-auto container-padding">
-          <div className="flex justify-center">
-            <div className="flex bg-muted rounded-xl p-1">
-              {[
-                { id: "contact", label: "Contact Info", icon: <Phone size={16} /> },
-                { id: "form", label: "Send Message", icon: <Send size={16} /> },
-                { id: "faq", label: "FAQ", icon: <MessageCircle size={16} /> },
-              ].map((tab) => (
-                <button
-                  key={tab.id}
-                  onClick={() => setActiveTab(tab.id)}
-                  className={`flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-all duration-300 ${
-                    activeTab === tab.id
-                      ? "bg-accent text-primary shadow-lg"
-                      : "text-text-secondary hover:text-primary"
-                  }`}
+            {/* Quick stats */}
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+              {quickStats.map((stat, index) => (
+                <div
+                  key={index}
+                  className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center"
                 >
-                  {tab.icon}
-                  <span className="hidden sm:block">{tab.label}</span>
-                </button>
+                  <div className="text-accent mb-2 flex justify-center">
+                    {stat.icon}
+                  </div>
+                  <div className="font-bold text-lg">{stat.value}</div>
+                  <div className="text-sm text-white/80">{stat.label}</div>
+                </div>
               ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* Contact Information Tab */}
-      {activeTab === "contact" && (
-        <section className="section-padding bg-background">
-          <div className="container mx-auto container-padding">
+      {/* Contact Methods - Card grid */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-4 text-primary">
+              Multiple Ways to{" "}
+              <span className="text-accent">Connect</span>
+            </h2>
+            <p className="text-xl text-text-muted max-w-3xl mx-auto">
+              Choose your preferred method to reach us
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+            {contactMethods.map((method, index) => (
+              <div key={index} className="group">
+                {method.action ? (
+                  <a
+                    href={method.action}
+                    className={`block p-8 rounded-2xl border-2 transition-all duration-300 hover:scale-105 hover:shadow-xl ${method.color}`}
+                  >
+                    <div className="text-center">
+                      <div className="mb-4">{method.icon}</div>
+                      <h3 className="font-bold text-lg mb-2">{method.title}</h3>
+                      <p className="font-semibold mb-1">{method.primary}</p>
+                      <p className="text-sm opacity-75">{method.secondary}</p>
+                    </div>
+                  </a>
+                ) : (
+                  <div className={`p-8 rounded-2xl border-2 ${method.color}`}>
+                    <div className="text-center">
+                      <div className="mb-4">{method.icon}</div>
+                      <h3 className="font-bold text-lg mb-2">{method.title}</h3>
+                      <p className="font-semibold mb-1">{method.primary}</p>
+                      <p className="text-sm opacity-75">{method.secondary}</p>
+                    </div>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Form - Two column layout */}
+      <section className="py-20 bg-surface">
+        <div className="container mx-auto px-4">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+              {/* Left side - Form */}
+              <div>
+                <h2 className="text-4xl font-bold mb-6 text-primary">
+                  Send Us a{" "}
+                  <span className="text-accent">Message</span>
+                </h2>
+                <p className="text-xl text-text-muted mb-8">
+                  Fill out the form below and we&apos;ll get back to you as soon as possible.
+                </p>
+                <QuickInquiryForm />
+              </div>
+
+              {/* Right side - Info & Map */}
+              <div className="space-y-8">
+                {/* Location info */}
+                <div className="bg-white rounded-2xl p-8 shadow-lg">
+                  <h3 className="text-2xl font-bold mb-6 text-primary">
+                    Visit Our Sanctuary
+                  </h3>
+                  <div className="space-y-4">
+                    <div className="flex items-start gap-4">
+                      <MapPin className="w-6 h-6 text-accent mt-1" />
+                      <div>
+                        <p className="font-semibold">123 Wellness Road</p>
+                        <p className="text-text-muted">Kandy, Sri Lanka</p>
+                        <p className="text-sm text-text-muted">
+                          15 minutes from city center
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-4">
+                      <Clock className="w-6 h-6 text-accent mt-1" />
+                      <div>
+                        <p className="font-semibold">Operating Hours</p>
+                        <p className="text-text-muted">8:00 AM - 8:00 PM</p>
+                        <p className="text-sm text-text-muted">
+                          Monday to Sunday
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Map placeholder */}
+                <div className="bg-muted rounded-2xl h-64 flex items-center justify-center">
+                  <div className="text-center text-text-muted">
+                    <MapPin className="w-12 h-12 mx-auto mb-4" />
+                    <p className="font-medium">Interactive Map</p>
+                    <p className="text-sm">Coming soon</p>
+                  </div>
+                </div>
+
+                {/* Emergency contact */}
+                <div className="bg-red-50 border border-red-200 rounded-2xl p-6">
+                  <h4 className="font-bold text-red-800 mb-2">
+                    24/7 Emergency Support
+                  </h4>
+                  <p className="text-red-700 text-sm mb-3">
+                    For urgent wellness consultations
+                  </p>
+                  <a
+                    href="tel:+94112223344"
+                    className="inline-flex items-center gap-2 bg-red-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-red-700 transition-colors"
+                  >
+                    <Phone size={16} />
+                    Call Emergency Line
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ - Expandable section */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold text-text-primary mb-6">
-                Get in <span className="text-accent">Touch</span>
+              <h2 className="text-4xl font-bold mb-4 text-primary">
+                Frequently Asked{" "}
+                <span className="text-accent">Questions</span>
               </h2>
-              <p className="text-xl text-text-muted max-w-3xl mx-auto">
-                Multiple ways to reach us - choose what works best for you
+              <p className="text-xl text-text-muted">
+                Quick answers to common questions
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-              {contactInfo.map((info, index) => (
+            <div className="space-y-4">
+              {faqs.map((faq, index) => (
                 <div
                   key={index}
-                  className={`card text-center group hover-glow transition-all duration-500 transform ${
-                    isVisible
-                      ? "translate-y-0 opacity-100"
-                      : "translate-y-8 opacity-0"
-                  }`}
-                  style={{ transitionDelay: `${index * 150}ms` }}
+                  className="border border-border rounded-xl overflow-hidden"
                 >
-                  <div className="text-accent mb-6 group-hover:scale-110 transition-transform duration-300 flex justify-center">
-                    {info.icon}
-                  </div>
-                  <h3 className="text-xl font-bold text-text-primary mb-3">
-                    {info.title}
-                  </h3>
-                  {info.href ? (
-                    <a
-                      href={info.href}
-                      className="text-text-secondary hover:text-accent transition-colors duration-300 font-medium block mb-2"
-                    >
-                      {info.details}
-                    </a>
-                  ) : (
-                    <p className="text-text-secondary font-medium mb-2">
-                      {info.details}
-                    </p>
+                  <button
+                    onClick={() =>
+                      setExpandedFaq(expandedFaq === index ? null : index)
+                    }
+                    className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-muted/50 transition-colors"
+                  >
+                    <h3 className="font-semibold text-lg text-primary">
+                      {faq.question}
+                    </h3>
+                    {expandedFaq === index ? (
+                      <ChevronUp className="w-5 h-5 text-accent" />
+                    ) : (
+                      <ChevronDown className="w-5 h-5 text-accent" />
+                    )}
+                  </button>
+                  {expandedFaq === index && (
+                    <div className="px-6 pb-4 pt-2">
+                      <p className="text-text-muted leading-relaxed">
+                        {faq.answer}
+                      </p>
+                    </div>
                   )}
-                  <p className="text-text-muted text-sm">{info.subtext}</p>
                 </div>
               ))}
             </div>
 
-            {/* Map Section */}
-            <div className="bg-surface rounded-2xl p-8 shadow-lg">
-              <div className="text-center mb-8">
-                <h3 className="text-2xl font-bold text-text-primary mb-4">
-                  Visit Our Center
-                </h3>
-                <p className="text-text-muted">
-                  Located in the peaceful hills near Kandy
-                </p>
-              </div>
-
-              <div className="bg-muted rounded-xl h-64 flex items-center justify-center mb-8">
-                <div className="text-center text-text-muted">
-                  <MapPin className="w-16 h-16 mx-auto mb-4 text-accent" />
-                  <p className="text-lg font-medium">
-                    Interactive Map Coming Soon
-                  </p>
-                  <p className="text-sm">123 Wellness Road, Kandy, Sri Lanka</p>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-                <div className="space-y-2">
-                  <h4 className="font-semibold text-text-primary">By Car</h4>
-                  <p className="text-text-muted text-sm">
-                    15 minutes from Kandy city center via A1 highway
-                  </p>
-                </div>
-                <div className="space-y-2">
-                  <h4 className="font-semibold text-text-primary">By Train</h4>
-                  <p className="text-text-muted text-sm">
-                    Kandy Railway Station + 10 min taxi ride
-                  </p>
-                </div>
-                <div className="space-y-2">
-                  <h4 className="font-semibold text-text-primary">From Airport</h4>
-                  <p className="text-text-muted text-sm">
-                    2.5 hours from Colombo International Airport
-                  </p>
-                </div>
-              </div>
+            <div className="text-center mt-12">
+              <p className="text-text-muted mb-4">Still have questions?</p>
+              <a
+                href="mailto:info@diyaulpatha.com"
+                className="btn-primary inline-flex items-center gap-2"
+              >
+                <Send size={16} />
+                Email Us Directly
+              </a>
             </div>
           </div>
-        </section>
-      )}
+        </div>
+      </section>
 
-      {/* Contact Form Tab */}
-      {activeTab === "form" && (
-        <section id="contact-form" className="section-padding bg-background">
-          <div className="container mx-auto container-padding">
-            <div className="max-w-4xl mx-auto">
-              <div className="text-center mb-12">
-                <h2 className="text-4xl md:text-5xl font-bold text-text-primary mb-6">
-                  Send Us a <span className="gradient-text">Message</span>
-                </h2>
-                <p className="text-xl text-text-muted">
-                  Fill out the form below and we&apos;ll get back to you within 24
-                  hours
-                </p>
-              </div>
-
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-                {/* Form */}
-                <div className="lg:col-span-2">
-                  <QuickInquiryForm className="max-w-none shadow-xl" />
-                </div>
-
-                {/* Quick Contact Options */}
-                <div className="space-y-6">
-                  <div className="card">
-                    <h3 className="text-xl font-bold text-text-primary mb-4">
-                      Quick Contact
-                    </h3>
-                    <div className="space-y-4">
-                      <a
-                        href="tel:+94112223344"
-                        className="flex items-center gap-3 p-3 rounded-lg hover:bg-muted transition-colors duration-300"
-                      >
-                        <Phone className="w-5 h-5 text-accent" />
-                        <div>
-                          <p className="font-medium text-text-primary">Call Us</p>
-                          <p className="text-sm text-text-muted">
-                            +94 11 222 3344
-                          </p>
-                        </div>
-                      </a>
-                      <a
-                        href="mailto:info@diyaulpatha.com"
-                        className="flex items-center gap-3 p-3 rounded-lg hover:bg-muted transition-colors duration-300"
-                      >
-                        <Mail className="w-5 h-5 text-accent" />
-                        <div>
-                          <p className="font-medium text-text-primary">Email Us</p>
-                          <p className="text-sm text-text-muted">
-                            info@diyaulpatha.com
-                          </p>
-                        </div>
-                      </a>
-                    </div>
-                  </div>
-
-                  <div className="card">
-                    <h3 className="text-xl font-bold text-text-primary mb-4">
-                      Follow Us
-                    </h3>
-                    <div className="flex gap-4">
-                      <a
-                        href="https://facebook.com"
-                        className="w-12 h-12 bg-muted rounded-full flex items-center justify-center hover:bg-accent hover:text-primary transition-all duration-300"
-                        aria-label="Facebook"
-                      >
-                        <Facebook size={20} />
-                      </a>
-                      <a
-                        href="https://instagram.com"
-                        className="w-12 h-12 bg-muted rounded-full flex items-center justify-center hover:bg-accent hover:text-primary transition-all duration-300"
-                        aria-label="Instagram"
-                      >
-                        <Instagram size={20} />
-                      </a>
-                    </div>
-                  </div>
-
-                  <div className="card bg-gradient-to-br from-accent/10 to-primary/10">
-                    <div className="text-center">
-                      <Leaf className="w-12 h-12 text-accent mx-auto mb-4" />
-                      <h3 className="text-lg font-bold text-text-primary mb-2">
-                        Emergency Contact
-                      </h3>
-                      <p className="text-text-muted text-sm mb-4">
-                        For urgent matters outside business hours
-                      </p>
-                      <a
-                        href="tel:+94112223344"
-                        className="btn-primary w-full text-center"
-                      >
-                        Call Emergency Line
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* FAQ Tab */}
-      {activeTab === "faq" && (
-        <section className="section-padding bg-background">
-          <div className="container mx-auto container-padding">
-            <div className="max-w-4xl mx-auto">
-              <div className="text-center mb-16">
-                <h2 className="text-4xl md:text-5xl font-bold text-text-primary mb-6">
-                  Frequently Asked <span className="text-accent">Questions</span>
-                </h2>
-                <p className="text-xl text-text-muted">
-                  Quick answers to common questions about our services
-                </p>
-              </div>
-
-              <div className="space-y-6">
-                {faqs.map((faq, index) => (
-                  <div
-                    key={index}
-                    className={`card cursor-pointer transition-all duration-500 transform ${
-                      isVisible
-                        ? "translate-y-0 opacity-100"
-                        : "translate-y-8 opacity-0"
-                    } ${expandedFaq === index ? "ring-2 ring-accent" : ""}`}
-                    style={{ transitionDelay: `${index * 100}ms` }}
-                    onClick={() =>
-                      setExpandedFaq(expandedFaq === index ? null : index)
-                    }
-                  >
-                    <div className="flex items-center justify-between">
-                      <h3 className="text-lg font-bold text-text-primary pr-4">
-                        {faq.question}
-                      </h3>
-                      <div
-                        className={`text-accent transition-transform duration-300 ${
-                          expandedFaq === index ? "rotate-45" : ""
-                        }`}
-                      >
-                        <Send size={20} />
-                      </div>
-                    </div>
-
-                    {expandedFaq === index && (
-                      <div className="mt-4 pt-4 border-t border-border animate-fade-in-up">
-                        <p className="text-text-secondary leading-relaxed">
-                          {faq.answer}
-                        </p>
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
-
-              <div className="mt-12 text-center">
-                <div className="bg-gradient-to-r from-accent/20 to-primary/10 rounded-2xl p-8">
-                  <h3 className="text-2xl font-bold text-text-primary mb-4">
-                    Still Have Questions?
-                  </h3>
-                  <p className="text-text-muted mb-6">
-                    Our team is here to help with any specific questions about
-                    treatments, accommodations, or training programs.
-                  </p>
-                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                    <button
-                      onClick={() => setActiveTab("form")}
-                      className="btn-primary px-8 py-3"
-                    >
-                      Contact Us
-                    </button>
-                    <a
-                      href="/treatments"
-                      className="btn-secondary px-8 py-3"
-                    >
-                      View Treatments
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* CTA Section */}
-      <section className="section-padding bg-gradient-to-r from-primary via-primary-dark to-primary text-white">
-        <div className="container mx-auto container-padding text-center">
-          <div className="max-w-4xl mx-auto">
-            <Globe className="w-16 h-16 text-accent mx-auto mb-6" />
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Your Wellness Journey Starts Here
-            </h2>
-            <p className="text-xl text-primary-light mb-10 leading-relaxed">
-              Whether you&apos;re seeking healing treatments, learning opportunities,
-              or a peaceful retreat, we&apos;re here to guide you on your path to
-              wellness.
+      {/* CTA - Final call to action */}
+      <section className="py-20 bg-primary text-white">
+        <div className="container mx-auto px-4 text-center">
+          <div className="max-w-3xl mx-auto">
+            <h3 className="text-4xl font-bold mb-6">
+              Your Wellness Journey Awaits
+            </h3>
+            <p className="text-xl text-primary-light mb-8">
+              Don&apos;t wait any longer. Take the first step towards a healthier, more balanced you.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="/treatments"
-                className="btn-secondary text-lg px-8 py-4"
-              >
-                Explore Treatments
+              <a href="tel:+94112223344" className="btn-secondary">
+                Call Now
               </a>
               <a
-                href="/accommodation"
-                className="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold hover:bg-white hover:text-primary transition-all duration-300"
+                href="/treatments"
+                className="btn-outline text-white border-white hover:bg-white hover:text-primary"
               >
-                View Accommodation
+                View Treatments
               </a>
             </div>
           </div>
