@@ -130,10 +130,6 @@ export default function TrainingPage() {
                   <BookOpen className="w-6 h-6" />
                   Explore Program
                 </a>
-                <button className="bg-white/10 backdrop-blur-md border-2 border-white/30 text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 hover:bg-white hover:text-primary flex items-center gap-3 justify-center">
-                  <Play className="w-6 h-6" />
-                  Watch Preview
-                </button>
               </div>
             </div>
 
@@ -174,9 +170,6 @@ export default function TrainingPage() {
                   <a href="/contact" className="flex-1 bg-primary hover:bg-primary-dark text-white py-3 px-4 rounded-xl font-semibold text-center transition-colors">
                     Apply Now
                   </a>
-                  <button className="flex-1 border border-primary text-primary hover:bg-primary hover:text-white py-3 px-4 rounded-xl font-semibold transition-colors">
-                    Get Brochure
-                  </button>
                 </div>
               </div>
             </div>

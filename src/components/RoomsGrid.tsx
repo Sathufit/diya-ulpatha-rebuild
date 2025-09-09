@@ -195,41 +195,6 @@ export function RoomsGrid() {
 						</div>
 					))}
 				</div>
-
-				{/* Additional Info */}
-				<div className="mt-16 text-center">
-					<div className="bg-accent/10 rounded-2xl p-8 max-w-4xl mx-auto">
-						<h3 className="text-2xl font-bold text-primary mb-4">
-							All Rooms Include
-						</h3>
-						<div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-							<div className="flex flex-col items-center gap-2">
-								<TreePine className="w-8 h-8 text-accent" />
-								<span className="text-sm font-medium text-primary">
-									Garden Views
-								</span>
-							</div>
-							<div className="flex flex-col items-center gap-2">
-								<Mountain className="w-8 h-8 text-accent" />
-								<span className="text-sm font-medium text-primary">
-									Natural Features
-								</span>
-							</div>
-							<div className="flex flex-col items-center gap-2">
-								<Wifi className="w-8 h-8 text-accent" />
-								<span className="text-sm font-medium text-primary">
-									Free WiFi
-								</span>
-							</div>
-							<div className="flex flex-col items-center gap-2">
-								<CheckCircle className="w-8 h-8 text-accent" />
-								<span className="text-sm font-medium text-primary">
-									Modern Comfort
-								</span>
-							</div>
-						</div>
-					</div>
-				</div>
 			</div>
 		</section>
 	);

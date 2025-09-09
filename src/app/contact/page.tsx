@@ -309,31 +309,6 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-
-      {/* CTA - Final call to action */}
-      <section className="py-20 bg-primary text-white">
-        <div className="container mx-auto px-4 text-center">
-          <div className="max-w-3xl mx-auto">
-            <h3 className="text-4xl font-bold mb-6">
-              Your Wellness Journey Awaits
-            </h3>
-            <p className="text-xl text-primary-light mb-8">
-              Don&apos;t wait any longer. Take the first step towards a healthier, more balanced you.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="tel:+94112223344" className="btn-secondary">
-                Call Now
-              </a>
-              <a
-                href="/treatments"
-                className="btn-outline text-white border-white hover:bg-white hover:text-primary"
-              >
-                View Treatments
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
     </div>
   );
 }

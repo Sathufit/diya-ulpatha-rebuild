@@ -18,13 +18,6 @@ export default function TreatmentsPage() {
     return () => clearTimeout(timer);
   }, []);
 
-  const categories = [
-    { id: "all", label: "All Treatments", count: 10 },
-    { id: "massage", label: "Massage Therapy", count: 4 },
-    { id: "detox", label: "Detoxification", count: 3 },
-    { id: "beauty", label: "Beauty Care", count: 3 },
-  ];
-
   const principles = [
     {
       icon: <Heart className="w-6 h-6 sm:w-8 sm:h-8" />,
@@ -113,39 +106,6 @@ export default function TreatmentsPage() {
                 </div>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Mobile-Optimized Filter Bar */}
-      <section className="sticky top-0 z-40 bg-white border-b shadow-sm">
-        <div className="container mx-auto px-4 py-3 sm:py-4">
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-3 sm:gap-4">
-            <div className="flex items-center gap-2 sm:gap-4 overflow-x-auto w-full lg:w-auto">
-              {categories.map((category) => (
-                <button
-                  key={category.id}
-                  onClick={() => setActiveFilter(category.id)}
-                  className={`px-3 sm:px-4 py-2 rounded-xl font-semibold text-xs sm:text-sm whitespace-nowrap transition-all duration-300 ${
-                    activeFilter === category.id
-                      ? 'bg-primary text-white shadow-lg'
-                      : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                  }`}
-                >
-                  {category.label} ({category.count})
-                </button>
-              ))}
-            </div>
-
-            <div className="flex items-center gap-2">
-              <span className="text-xs sm:text-sm text-gray-500">View:</span>
-              <button
-                onClick={() => setViewMode("grid")}
-                className={`p-2 rounded-lg ${viewMode === "grid" ? 'bg-primary text-white' : 'bg-gray-100'}`}
-              >
-                <span className="text-xs sm:text-sm">Grid</span>
-              </button>
-            </div>
           </div>
         </div>
       </section>

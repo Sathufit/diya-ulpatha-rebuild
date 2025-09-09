@@ -70,13 +70,6 @@ export default function AboutPage() {
             </div>
           </div>
         </div>
-
-        {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
-          <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center">
-            <div className="w-1 h-3 bg-white/50 rounded-full mt-2"></div>
-          </div>
-        </div>
       </section>
 
       {/* Mission Statement - Centered focus */}
@@ -97,7 +90,7 @@ export default function AboutPage() {
               </div>
               <div className="text-center">
                 <Users className="w-12 h-12 text-accent mx-auto mb-4" />
-                <div className="text-3xl font-bold text-primary">1000+</div>
+                <div className="text-3xl font-bold text-primary">100+</div>
                 <div className="text-text-muted">Lives Healed</div>
               </div>
               <div className="text-center">
@@ -173,8 +166,8 @@ export default function AboutPage() {
                 <Heart className="w-8 h-8 text-primary" />
               </div>
               <div className="text-left">
-                <div className="font-bold text-xl">Dr. Ayurveda Master</div>
-                <div className="text-primary-light">Founder & Chief Physician</div>
+                <div className="font-bold text-xl">Mr.Niranjan</div>
+                <div className="text-primary-light">Founder</div>
               </div>
             </div>
           </div>

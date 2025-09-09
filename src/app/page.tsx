@@ -108,7 +108,7 @@ export default function HomePage() {
 
   const stats = [
     { number: "5000+", label: "Years of Wisdom", icon: <Award className="w-4 h-4 sm:w-6 sm:h-6" /> },
-    { number: "1000+", label: "Lives Transformed", icon: <Heart className="w-4 h-4 sm:w-6 sm:h-6" /> },
+    { number: "100+", label: "Lives Transformed", icon: <Heart className="w-4 h-4 sm:w-6 sm:h-6" /> },
     { number: "15+", label: "Expert Treatments", icon: <Sparkles className="w-4 h-4 sm:w-6 sm:h-6" /> },
     { number: "98%", label: "Satisfaction Rate", icon: <Star className="w-4 h-4 sm:w-6 sm:h-6" /> }
   ];

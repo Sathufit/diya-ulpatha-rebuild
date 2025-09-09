@@ -558,42 +558,6 @@ export default function GalleryPage() {
           </div>
         </div>
       )}
-
-      {/* CTA Section */}
-      <section className="py-32 bg-gradient-to-r from-primary via-primary-dark to-primary text-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/svg%3E")`
-          }}></div>
-        </div>
-
-        <div className="container mx-auto px-4 text-center relative z-10">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-5xl md:text-6xl font-bold mb-8 leading-tight">
-              Experience These Moments Yourself
-            </h2>
-            <p className="text-xl md:text-2xl text-primary-light mb-12 leading-relaxed">
-              Ready to create your own wellness memories? Book your transformative journey and become part of our healing sanctuary.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <a 
-                href="/contact" 
-                className="group bg-accent hover:bg-accent/90 text-primary px-10 py-5 rounded-2xl font-bold text-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl flex items-center gap-3 justify-center"
-              >
-                <Camera className="w-6 h-6" />
-                Book Your Journey
-                <ChevronRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
-              </a>
-              <a 
-                href="/treatments" 
-                className="group bg-white/10 backdrop-blur-md border-2 border-white/30 text-white px-10 py-5 rounded-2xl font-bold text-xl transition-all duration-300 hover:bg-white hover:text-primary flex items-center gap-3 justify-center"
-              >
-                Explore Treatments
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
     </div>
   );
 }
