@@ -27,11 +27,11 @@ export default function AboutPage() {
   }, []);
 
   const timeline = [
-    { year: "Ancient", title: "Ayurveda Origins", description: "5000-year-old healing science begins in ancient India" },
-    { year: "2015", title: "Vision Born", description: "Founder dreams of authentic healing sanctuary" },
-    { year: "2018", title: "Center Founded", description: "Diya Ulpatha opens with traditional treatments" },
-    { year: "2021", title: "Training Added", description: "Professional certification programs launched" },
-    { year: "Today", title: "Holistic Hub", description: "Complete wellness ecosystem serving global community" }
+    { year: "Ancient", title: "Ayurveda Origins", description: "5000-year-old healing science from ancient India" },
+    { year: "2015", title: "Vision Born", description: "Founder's dream of authentic healing center" },
+    { year: "2018", title: "Center Opens", description: "Diya Ulpatha begins with traditional treatments" },
+    { year: "2021", title: "Training Program", description: "Professional certification courses added" },
+    { year: "Today", title: "Growing Community", description: "Serving patients and students from many countries" }
   ];
 
   return (
@@ -61,46 +61,47 @@ export default function AboutPage() {
                 <span className="text-sm font-medium">OUR STORY</span>
               </div>
               <h1 className="text-5xl lg:text-7xl font-bold mb-6 leading-tight">
-                Healing Through<br/>
-                <span className="text-accent">Ancient Wisdom</span>
+                Traditional
+                <br/>
+                <span className="text-accent">Ayurveda Center</span>
               </h1>
               <p className="text-xl text-primary-light max-w-2xl">
-                From a simple vision to a transformative wellness sanctuary - discover the journey that brought authentic Ayurveda to modern seekers.
+                A simple vision to bring authentic Ayurvedic healing to those seeking natural health solutions in a peaceful environment.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Mission Statement - Centered focus */}
+      {/* Mission Statement */}
       <section className="py-32 bg-white relative">
         <div className="container mx-auto px-4 text-center">
           <div className="max-w-4xl mx-auto animate-on-scroll">
             <h2 className="text-4xl lg:text-6xl font-bold mb-8 text-primary">
-              Our <span className="text-accent">Mission</span>
+              Our <span className="text-accent">Purpose</span>
             </h2>
             <p className="text-2xl text-text-muted leading-relaxed mb-12">
-              &ldquo;To be the bridge between ancient Ayurvedic wisdom and modern wellness seekers, creating a sanctuary where healing happens naturally and transformation is inevitable.&rdquo;
+              &ldquo;To provide authentic Ayurvedic treatments and education in a peaceful natural setting, making traditional healing accessible to all who seek it.&rdquo;
             </p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               <div className="text-center">
                 <Heart className="w-12 h-12 text-accent mx-auto mb-4" />
-                <div className="text-3xl font-bold text-primary">5000+</div>
-                <div className="text-text-muted">Years Wisdom</div>
+                <div className="text-3xl font-bold text-primary">Traditional</div>
+                <div className="text-text-muted">Methods</div>
               </div>
               <div className="text-center">
                 <Users className="w-12 h-12 text-accent mx-auto mb-4" />
-                <div className="text-3xl font-bold text-primary">100+</div>
-                <div className="text-text-muted">Lives Healed</div>
+                <div className="text-3xl font-bold text-primary">50+</div>
+                <div className="text-text-muted">Patients Helped</div>
               </div>
               <div className="text-center">
                 <Award className="w-12 h-12 text-accent mx-auto mb-4" />
-                <div className="text-3xl font-bold text-primary">15+</div>
+                <div className="text-3xl font-bold text-primary">10+</div>
                 <div className="text-text-muted">Treatments</div>
               </div>
               <div className="text-center">
                 <Globe className="w-12 h-12 text-accent mx-auto mb-4" />
-                <div className="text-3xl font-bold text-primary">20+</div>
+                <div className="text-3xl font-bold text-primary">15+</div>
                 <div className="text-text-muted">Countries</div>
               </div>
             </div>
@@ -108,12 +109,12 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Interactive Timeline */}
+      {/* Timeline */}
       <section className="py-32 bg-surface">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16 animate-on-scroll">
             <h2 className="text-4xl font-bold mb-4">Our <span className="text-accent">Journey</span></h2>
-            <p className="text-xl text-text-muted">The evolution of healing</p>
+            <p className="text-xl text-text-muted">How we grew from an idea to a healing center</p>
           </div>
 
           <div className="max-w-6xl mx-auto">
@@ -146,92 +147,65 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Founder Story - Personal touch */}
+      {/* Founder Story */}
       <section className="py-32 bg-primary text-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M20 20c0-11.046-8.954-20-20-20v40c11.046 0 20-8.954 20-20z'/%3E%3C/g%3E%3C/svg%3E")`
-          }}></div>
-        </div>
-        
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center animate-on-scroll">
             <Star className="w-16 h-16 text-accent mx-auto mb-8" />
-            <h2 className="text-4xl font-bold mb-8">The Visionary Behind It All</h2>
+            <h2 className="text-4xl font-bold mb-8">About Our Founder</h2>
             <blockquote className="text-2xl font-medium leading-relaxed mb-8 italic">
-              &ldquo;When I first envisioned Diya Ulpatha, I saw more than just a wellness center. I saw a place where ancient wisdom could flourish in modern times, where every guest would leave transformed, carrying with them not just healing, but hope.&rdquo;
+              &ldquo;I wanted to create a place where people could experience authentic Ayurveda in a simple, honest way. Not luxury, but genuine healing in a peaceful environment.&rdquo;
             </blockquote>
             <div className="flex items-center justify-center gap-4">
               <div className="w-16 h-16 bg-accent rounded-full flex items-center justify-center">
                 <Heart className="w-8 h-8 text-primary" />
               </div>
               <div className="text-left">
-                <div className="font-bold text-xl">Mr.Niranjan</div>
-                <div className="text-primary-light">Founder</div>
+                <div className="font-bold text-xl">Mr. Niranjan</div>
+                <div className="text-primary-light">Founder & Director</div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Why Choose Us - Grid showcase */}
+      {/* Why Choose Us */}
       <section className="py-32 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16 animate-on-scroll">
-            <h2 className="text-4xl font-bold mb-4">Why <span className="text-accent">Diya Ulpatha?</span></h2>
-            <p className="text-xl text-text-muted max-w-3xl mx-auto">Three pillars that make us the perfect choice for your wellness journey</p>
+            <h2 className="text-4xl font-bold mb-4">Why Choose <span className="text-accent">Diya Ulpatha?</span></h2>
+            <p className="text-xl text-text-muted max-w-3xl mx-auto">Three reasons why patients trust us with their health</p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {/* Qualification */}
             <div className="relative group animate-on-scroll">
               <div className="bg-white rounded-2xl p-8 h-full shadow-lg group-hover:shadow-2xl transition-all duration-500 border-l-4 border-accent">
                 <Stethoscope className="w-16 h-16 text-accent mb-6" />
-                <h3 className="text-2xl font-bold mb-4">Expert Qualification</h3>
+                <h3 className="text-2xl font-bold mb-4">Qualified Doctors</h3>
                 <p className="text-text-muted leading-relaxed">
-                  Our practitioners are certified by Sri Lanka Ayurvedic Medical Council with extensive training in traditional healing methods.
+                  Our doctors are registered with Sri Lanka Ayurvedic Medical Council and have years of experience in traditional healing.
                 </p>
               </div>
             </div>
 
-            {/* Facility */}
             <div className="relative group animate-on-scroll animate-delay-200">
               <div className="bg-gradient-to-br from-accent/5 to-primary/5 rounded-2xl p-8 h-full border border-accent/20 group-hover:border-accent/40 transition-all duration-500">
                 <Award className="w-16 h-16 text-accent mb-6" />
-                <h3 className="text-2xl font-bold mb-4">World-Class Facility</h3>
+                <h3 className="text-2xl font-bold mb-4">Authentic Methods</h3>
                 <p className="text-text-muted leading-relaxed">
-                  Modern amenities seamlessly integrated with traditional architecture in the heart of Sri Lanka&apos;s natural beauty.
+                  We use traditional Ayurvedic methods passed down through generations, with natural herbs and time-tested techniques.
                 </p>
               </div>
             </div>
 
-            {/* Access */}
             <div className="relative group animate-on-scroll animate-delay-400">
               <div className="bg-white rounded-2xl p-8 h-full shadow-lg group-hover:shadow-2xl transition-all duration-500 border-l-4 border-primary">
                 <Clock className="w-16 h-16 text-primary mb-6" />
-                <h3 className="text-2xl font-bold mb-4">Convenient Access</h3>
+                <h3 className="text-2xl font-bold mb-4">Convenient Location</h3>
                 <p className="text-text-muted leading-relaxed">
-                  Located just 15 minutes from Kandy city center with easy access to transportation and nearby attractions.
+                  Located in Kandy with easy access from the city center, surrounded by natural beauty that supports healing.
                 </p>
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA - Call to action */}
-      <section className="py-20 bg-surface">
-        <div className="container mx-auto px-4 text-center">
-          <div className="max-w-3xl mx-auto animate-on-scroll">
-            <h3 className="text-4xl font-bold mb-6 text-primary">Begin Your Transformation</h3>
-            <p className="text-xl text-text-muted mb-8">Join thousands who have discovered the power of authentic Ayurveda</p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="/contact" className="btn-primary text-lg px-8 py-4">
-                Start Your Journey
-              </a>
-              <a href="/treatments" className="btn-outline text-lg px-8 py-4">
-                Explore Treatments
-              </a>
             </div>
           </div>
         </div>
