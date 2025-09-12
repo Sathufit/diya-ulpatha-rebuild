@@ -1,84 +1,149 @@
 "use client";
 import { useState, useEffect } from "react";
-import { RoomsGrid } from "@/components/RoomsGrid";
 import Image from "next/image";
 import { 
-  TreePine, Mountain, Utensils, Waves, Dumbbell, Wifi, Coffee, Shield, 
-  CheckCircle, Star, ArrowRight, Heart,
-  Calendar, Phone, Users, Sparkles, Eye, Camera
+  TreePine, Mountain, Utensils, Wifi, Coffee, Shield, 
+  CheckCircle, Star, ArrowRight, Heart, Crown, Snowflake, Thermometer,
+  Phone, Users, Sparkles, Eye, Camera, Mail
 } from "lucide-react";
 import { IMAGES } from "@/constants/images";
+
+const roomRates = [
+  {
+    type: "DAY ROOM",
+    category: "",
+    acRate: "5,500/-",
+    nonAcRate: "4,500/-",
+    isHeader: false
+  },
+  {
+    type: "STANDARD ROOMS",
+    category: "",
+    acRate: "",
+    nonAcRate: "",
+    isHeader: true
+  },
+  {
+    type: "Double",
+    category: "Standard",
+    acRate: "7,500/-",
+    nonAcRate: "6,500/-",
+    isHeader: false
+  },
+  {
+    type: "Triple",
+    category: "Standard", 
+    acRate: "9,500/-",
+    nonAcRate: "8,000/-",
+    isHeader: false
+  },
+  {
+    type: "Family (Quad)",
+    category: "Standard",
+    acRate: "12,000/-",
+    nonAcRate: "10,500/-",
+    isHeader: false
+  },
+  {
+    type: "LUXURY ROOMS",
+    category: "",
+    acRate: "",
+    nonAcRate: "",
+    isHeader: true
+  },
+  {
+    type: "Double",
+    category: "Luxury",
+    acRate: "10,000/-",
+    nonAcRate: "N/A",
+    isHeader: false
+  },
+  {
+    type: "Triple",
+    category: "Luxury",
+    acRate: "12,500/-",
+    nonAcRate: "N/A",
+    isHeader: false
+  },
+  {
+    type: "Family",
+    category: "Luxury",
+    acRate: "15,000/-",
+    nonAcRate: "N/A",
+    isHeader: false
+  }
+];
 
 const amenities = [
   {
     icon: <TreePine className="w-8 h-8" />,
-    title: "Garden Views",
-    description: "Pleasant views of our medicinal herb gardens",
+    title: "Tea Garden Views",
+    description: "Wake up to stunning views of our lush tea plantations",
     highlight: "Natural Setting"
   },
   {
     icon: <Mountain className="w-8 h-8" />,
-    title: "Natural Features",
-    description: "Rooms incorporate natural rock surfaces",
-    highlight: "Unique Design"
+    title: "Mountain Location",
+    description: "Nestled in the beautiful hills of Sri Lanka",
+    highlight: "Scenic Beauty"
   },
   {
     icon: <Utensils className="w-8 h-8" />,
-    title: "Simple Meals",
-    description: "Healthy Ayurvedic meals available",
-    highlight: "Traditional Food"
+    title: "Resort Dining",
+    description: "Optional meal packages available for complete experience",
+    highlight: "Culinary Options"
   },
   {
-    icon: <Waves className="w-8 h-8" />,
-    title: "Treatment Support",
-    description: "Convenient for daily treatment sessions",
-    highlight: "Easy Access"
+    icon: <Snowflake className="w-8 h-8" />,
+    title: "Climate Options",
+    description: "Choose between AC and non-AC rooms for your comfort",
+    highlight: "Flexible Comfort"
   },
   {
-    icon: <Dumbbell className="w-8 h-8" />,
-    title: "Training Friendly",
-    description: "Suitable for course participants",
-    highlight: "Educational Stay"
+    icon: <Crown className="w-8 h-8" />,
+    title: "Luxury Upgrades",
+    description: "Premium rooms with elegant furnishings available",
+    highlight: "Premium Experience"
   },
   {
     icon: <Wifi className="w-8 h-8" />,
-    title: "Basic Amenities",
-    description: "Essential modern facilities provided",
-    highlight: "Comfortable"
+    title: "Modern Amenities",
+    description: "Essential facilities for a comfortable stay",
+    highlight: "Well-Equipped"
   },
   {
     icon: <Coffee className="w-8 h-8" />,
-    title: "Extended Stays",
-    description: "Suitable for longer treatment periods",
-    highlight: "Flexible Duration"
+    title: "Tea Experience",
+    description: "Immerse yourself in authentic tea culture",
+    highlight: "Authentic Experience"
   },
   {
     icon: <Shield className="w-8 h-8" />,
     title: "Peaceful Environment",
-    description: "Quiet location for rest and recovery",
-    highlight: "Restful"
+    description: "Tranquil setting perfect for relaxation",
+    highlight: "Serene Atmosphere"
   }
 ];
 
 const experienceHighlights = [
   {
     icon: <Eye className="w-10 h-10" />,
-    title: "Natural Views",
-    description: "Wake up to views of our medicinal garden and surrounding nature",
+    title: "Standard Comfort",
+    description: "Our Standard Rooms offer cozy and affordable comfort, perfect for travelers and families looking for a relaxing stay. Available with or without air conditioning, they provide all the essential amenities for a pleasant visit.",
     color: "from-green-500/20 to-emerald-500/20",
     accent: "text-green-600"
   },
   {
-    icon: <Mountain className="w-10 h-10" />,
-    title: "Simple Comfort",
-    description: "Clean, comfortable rooms with unique natural rock features",
-    color: "from-stone-500/20 to-gray-500/20",
-    accent: "text-gray-600"
+    icon: <Crown className="w-10 h-10" />,
+    title: "Luxury Experience", 
+    description: "Elevate your experience in our spacious and elegantly appointed Luxury Rooms. Featuring premium furnishings and exclusive amenities, these rooms are designed for guests seeking an extra layer of comfort and indulgence.",
+    color: "from-amber-500/20 to-yellow-500/20",
+    accent: "text-amber-600"
   },
   {
     icon: <Heart className="w-10 h-10" />,
-    title: "Treatment Focus",
-    description: "Accommodation designed to support your healing journey",
+    title: "Tea Garden Setting",
+    description: "All rooms are situated within our beautiful tea garden resort, offering guests an authentic Sri Lankan experience surrounded by nature's tranquility.",
     color: "from-rose-500/20 to-pink-500/20",
     accent: "text-rose-600"
   }
@@ -93,6 +158,8 @@ export default function AccommodationPage() {
     
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener('scroll', handleScroll);
+    
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
@@ -105,7 +172,7 @@ export default function AccommodationPage() {
         >
           <Image
             src={IMAGES.accommodation.doubleRoom}
-            alt="Simple, comfortable accommodation"
+            alt="Diya Ulpatha Tea Garden Resort accommodation"
             fill
             className="object-cover"
             priority
@@ -117,51 +184,51 @@ export default function AccommodationPage() {
         <div className="relative z-20 text-center text-white max-w-5xl mx-auto px-4">
           <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <div className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md rounded-full px-6 py-3 mb-8 border border-white/20">
-              <Mountain className="w-5 h-5 text-accent" />
-              <span className="font-semibold">PATIENT ACCOMMODATION</span>
+              <TreePine className="w-5 h-5 text-accent" />
+              <span className="font-semibold">TEA GARDEN RESORT</span>
             </div>
 
             <h1 className="text-5xl md:text-6xl lg:text-8xl font-bold mb-8 leading-[0.9]">
-              Comfortable
+              Our
               <span className="block bg-gradient-to-r from-accent via-yellow-400 to-accent bg-clip-text text-transparent">
-                Stay for Healing
+                Rooms
               </span>
             </h1>
 
             <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto mb-12 leading-relaxed">
-              Simple, clean accommodation with garden views. Perfect for patients undergoing treatment or participants in our training programs.
+              Discover your perfect sanctuary at Diya Ulpatha Tea Garden Resort. Whether you&apos;re seeking simple comfort or luxury, our rooms provide a peaceful retreat surrounded by nature.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16">
               <a 
-                href="#rooms" 
+                href="#rates" 
                 className="group bg-accent hover:bg-accent/90 text-primary px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 hover:scale-105 hover:shadow-xl flex items-center gap-3 justify-center"
               >
                 <Camera className="w-6 h-6" />
-                View Rooms
+                View Rates
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </a>
             </div>
 
             <div className="grid grid-cols-3 gap-8 max-w-2xl mx-auto">
               <div className="text-center">
-                <div className="text-3xl font-bold text-accent mb-2">3</div>
-                <div className="text-sm text-white/80">Room Types</div>
+                <div className="text-3xl font-bold text-accent mb-2">2</div>
+                <div className="text-sm text-white/80">Room Categories</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-accent mb-2">Garden</div>
-                <div className="text-sm text-white/80">Views</div>
+                <div className="text-3xl font-bold text-accent mb-2">Tea</div>
+                <div className="text-sm text-white/80">Garden Views</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-accent mb-2">Clean</div>
-                <div className="text-sm text-white/80">& Comfortable</div>
+                <div className="text-3xl font-bold text-accent mb-2">Choice</div>
+                <div className="text-sm text-white/80">AC / Non-AC</div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* What We Offer */}
+      {/* Room Categories */}
       <section className="py-32 bg-gradient-to-br from-surface via-background to-white relative">
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-20">
@@ -169,7 +236,7 @@ export default function AccommodationPage() {
               What We <span className="bg-gradient-to-r from-accent to-yellow-500 bg-clip-text text-transparent">Offer</span>
             </h2>
             <p className="text-xl text-text-muted max-w-3xl mx-auto leading-relaxed">
-              Simple, comfortable accommodation focused on supporting your treatment and recovery
+              Choose from our Standard and Luxury options to find the space that&apos;s right for you. Please note that the rates below are for room-only bookings.
             </p>
           </div>
 
@@ -198,25 +265,162 @@ export default function AccommodationPage() {
         </div>
       </section>
 
-      {/* Room Showcase */}
-      <section className="py-20 bg-background">
+      {/* Room Showcase Section - NEW */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              Our <span className="bg-gradient-to-r from-accent to-yellow-500 bg-clip-text text-transparent">Rooms</span>
+            </h2>
+            <p className="text-xl text-text-muted max-w-3xl mx-auto">
+              Take a closer look at our comfortable accommodations
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <div className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500">
+              <div className="relative h-64">
+                <Image
+                  src={IMAGES.accommodation.doubleRoom}
+                  alt="Superior Double Room"
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-700"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                <div className="absolute bottom-4 left-4 text-white">
+                  <h3 className="text-lg font-bold">Double Room</h3>
+                  <p className="text-sm text-white/90">Perfect for couples</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500">
+              <div className="relative h-64">
+                <Image
+                  src={IMAGES.accommodation.tripleRoom}
+                  alt="Superior Triple Room"
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-700"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                <div className="absolute bottom-4 left-4 text-white">
+                  <h3 className="text-lg font-bold">Triple Room</h3>
+                  <p className="text-sm text-white/90">Ideal for small groups</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500">
+              <div className="relative h-64">
+                <Image
+                  src={IMAGES.accommodation.familyRoom}
+                  alt="Superior Family Room"
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-700"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                <div className="absolute bottom-4 left-4 text-white">
+                  <h3 className="text-lg font-bold">Family Room</h3>
+                  <p className="text-sm text-white/90">Perfect for families</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Room Rates Section */}
+      <section id="rates" className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 bg-accent/10 rounded-full px-6 py-3 mb-6">
               <Sparkles className="w-5 h-5 text-accent" />
-              <span className="text-primary font-semibold">ACCOMMODATION OPTIONS</span>
+              <span className="text-primary font-semibold">ROOM RATES</span>
             </div>
             <h2 className="text-5xl md:text-6xl font-bold mb-6">
               Choose Your <span className="bg-gradient-to-r from-accent to-yellow-500 bg-clip-text text-transparent">Room</span>
             </h2>
             <p className="text-xl text-text-muted max-w-3xl mx-auto">
-              Simple, clean rooms suitable for patients and course participants
+              Transparent pricing for all room categories - rates shown are for room-only bookings
             </p>
           </div>
-        </div>
-        
-        <div id="rooms">
-          <RoomsGrid />
+
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100">
+              <div className="bg-gradient-to-r from-primary to-primary-dark text-white p-6">
+                <h3 className="text-2xl font-bold text-center">Room Rates</h3>
+              </div>
+              
+              <div className="overflow-x-auto">
+                <table className="w-full">
+                  <thead>
+                    <tr className="bg-gray-50">
+                      <th className="text-left p-4 font-semibold text-primary">Room Type</th>
+                      <th className="text-center p-4 font-semibold text-primary">
+                        <div className="flex items-center justify-center gap-2">
+                          <Snowflake className="w-4 h-4" />
+                          AC Rate
+                        </div>
+                      </th>
+                      <th className="text-center p-4 font-semibold text-primary">
+                        <div className="flex items-center justify-center gap-2">
+                          <Thermometer className="w-4 h-4" />
+                          Non-AC Rate
+                        </div>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {roomRates.map((rate, index) => (
+                      <tr 
+                        key={index}
+                        className={`
+                          ${rate.isHeader 
+                            ? 'bg-accent/5 border-l-4 border-accent' 
+                            : 'hover:bg-gray-50 transition-colors duration-200'
+                          }
+                          ${index !== roomRates.length - 1 ? 'border-b border-gray-100' : ''}
+                        `}
+                      >
+                        <td className={`p-4 ${rate.isHeader ? 'font-bold text-primary text-lg' : 'text-text-secondary'}`}>
+                          {rate.isHeader ? (
+                            <div className="flex items-center gap-3">
+                              {rate.type.includes('LUXURY') ? (
+                                <Crown className="w-5 h-5 text-accent" />
+                              ) : rate.type.includes('STANDARD') ? (
+                                <CheckCircle className="w-5 h-5 text-primary" />
+                              ) : null}
+                              {rate.type}
+                            </div>
+                          ) : (
+                            <div className="flex items-center gap-2">
+                              {rate.category === 'Luxury' && <Crown className="w-4 h-4 text-accent" />}
+                              {rate.type}
+                            </div>
+                          )}
+                        </td>
+                        <td className={`p-4 text-center ${rate.isHeader ? 'font-bold text-primary' : 'text-text-secondary font-medium'}`}>
+                          {rate.acRate}
+                        </td>
+                        <td className={`p-4 text-center ${rate.isHeader ? 'font-bold text-primary' : 'text-text-secondary font-medium'}`}>
+                          {rate.nonAcRate}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              
+              <div className="bg-gray-50 p-6 text-center">
+                <p className="text-sm text-text-muted">
+                  All rates are in Sri Lankan Rupees. Room-only pricing - meal packages available separately.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -225,10 +429,10 @@ export default function AccommodationPage() {
         <div className="container mx-auto px-4">
           <div className="text-center mb-20">
             <h2 className="text-5xl md:text-6xl font-bold mb-6">
-              Room <span className="bg-gradient-to-r from-accent to-yellow-500 bg-clip-text text-transparent">Features</span>
+              Resort <span className="bg-gradient-to-r from-accent to-yellow-500 bg-clip-text text-transparent">Features</span>
             </h2>
             <p className="text-xl text-text-muted max-w-3xl mx-auto">
-              Basic amenities to ensure a comfortable stay during your treatment
+              Experience the charm of our tea garden resort with these exceptional features
             </p>
           </div>
 
@@ -269,36 +473,36 @@ export default function AccommodationPage() {
             </div>
             
             <h2 className="text-5xl md:text-7xl font-bold mb-8 leading-tight">
-              Book Your Stay
+              Ready to Book?
             </h2>
             
             <p className="text-xl md:text-2xl text-white/90 mb-12 leading-relaxed max-w-3xl mx-auto">
-              Reserve a room for your treatment period or training course. Simple booking process with flexible dates.
+              Contact us today to reserve your perfect room at Diya Ulpatha Tea Garden Resort. Looking for an all-inclusive experience? Check out our value-packed packages!
             </p>
 
             <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16">
               <a 
-                href="/contact" 
+                href="tel:+94776251855" 
                 className="group bg-accent hover:bg-accent/90 text-primary px-10 py-5 rounded-2xl font-bold text-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl flex items-center gap-3 justify-center"
               >
-                <Calendar className="w-6 h-6" />
-                Book Now
+                <Phone className="w-6 h-6" />
+                +94 776 251 855
                 <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
               </a>
               
               <a 
-                href="tel:+94112223344" 
+                href="mailto:diyaulpatha@gmail.com" 
                 className="group bg-white/10 backdrop-blur-md border-2 border-white/30 text-white px-10 py-5 rounded-2xl font-bold text-xl transition-all duration-300 hover:bg-white hover:text-primary flex items-center gap-3 justify-center"
               >
-                <Phone className="w-6 h-6" />
-                Call Us
+                <Mail className="w-6 h-6" />
+                Email Us
               </a>
             </div>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-8 text-white/80">
               <div className="flex items-center gap-3">
                 <CheckCircle className="w-6 h-6 text-accent" />
-                <span className="font-medium">Flexible Booking</span>
+                <span className="font-medium">Instant Confirmation</span>
               </div>
               <div className="flex items-center gap-3">
                 <Users className="w-6 h-6 text-accent" />
@@ -306,7 +510,7 @@ export default function AccommodationPage() {
               </div>
               <div className="flex items-center gap-3">
                 <Heart className="w-6 h-6 text-accent" />
-                <span className="font-medium">Treatment Support</span>
+                <span className="font-medium">Package Deals Available</span>
               </div>
             </div>
           </div>

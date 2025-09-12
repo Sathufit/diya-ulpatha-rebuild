@@ -3,9 +3,6 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import {
 	Users,
-	Wifi,
-	TreePine,
-	Mountain,
 	CheckCircle,
 	ArrowRight,
 	Star,

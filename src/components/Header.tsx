@@ -3,12 +3,13 @@ import Link from "next/link";
 import { useState } from "react";
 import { Menu, X, Leaf } from "lucide-react";
 
-const navLinks = [
+const navItems = [
 	{ href: "/", label: "Home" },
 	{ href: "/about", label: "About" },
 	{ href: "/treatments", label: "Treatments" },
-	{ href: "/training", label: "Training" },
 	{ href: "/accommodation", label: "Accommodation" },
+	{ href: "/packages", label: "Packages" }, // Add this line
+	{ href: "/training", label: "Training" },
 	{ href: "/gallery", label: "Gallery" },
 	{ href: "/contact", label: "Contact" },
 ];
@@ -36,7 +37,7 @@ export function Header() {
 				</button>
 
 				<ul className="hidden md:flex gap-8 items-center">
-					{navLinks.map((link) => (
+					{navItems.map((link) => (
 						<li key={link.href}>
 							<Link
 								href={link.href}
@@ -52,7 +53,7 @@ export function Header() {
 			{open && (
 				<div className="md:hidden bg-surface border-t border-border">
 					<ul className="px-4 py-4 space-y-2">
-						{navLinks.map((link) => (
+						{navItems.map((link) => (
 							<li key={link.href}>
 								<Link
 									href={link.href}

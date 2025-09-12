@@ -1,10 +1,9 @@
 "use client";
 import { useState, useEffect } from "react";
 import { HeroCarousel } from "@/components/HeroCarousel";
-import { TreatmentsGrid } from "@/components/TreatmentsGrid";
 import { QuickInquiryForm } from "@/components/QuickInquiryForm";
 import { 
-  Leaf, Heart, Users, Award, Star, ArrowRight, Play, Sparkles, 
+  Leaf, Heart, Award, Star, ArrowRight, Play, Sparkles, 
   CheckCircle, TreePine, ChevronDown
 } from "lucide-react";
 import { IMAGES } from "@/constants/images";
@@ -36,13 +35,10 @@ const heroSlides = [
 ];
 
 export default function HomePage() {
-  const [isVisible, setIsVisible] = useState(false);
   const [scrollY, setScrollY] = useState(0);
   const [activeService, setActiveService] = useState(0);
 
   useEffect(() => {
-    setIsVisible(true);
-    
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener('scroll', handleScroll);
     

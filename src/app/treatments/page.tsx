@@ -9,8 +9,6 @@ import {
 import { IMAGES } from "@/constants/images";
 
 export default function TreatmentsPage() {
-  const [viewMode, setViewMode] = useState("grid");
-  const [activeFilter, setActiveFilter] = useState("all");
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {

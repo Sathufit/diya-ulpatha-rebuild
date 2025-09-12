@@ -1,0 +1,27 @@
+{
+  "name": "Diya Ulpatha - Ayurvedic Wellness Center",
+  "short_name": "Diya Ulpatha",
+  "description": "Authentic Ayurvedic wellness center in Sri Lanka",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F8FBF6",
+  "theme_color": "#2D5017",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icons/icon-512x512.png", 
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "categories": ["health", "medical", "wellness"],
+  "lang": "en",
+  "dir": "ltr"
+}
