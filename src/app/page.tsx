@@ -4,7 +4,7 @@ import { HeroCarousel } from "@/components/HeroCarousel";
 import { QuickInquiryForm } from "@/components/QuickInquiryForm";
 import { 
   Leaf, Heart, Award, Star, ArrowRight, Play, Sparkles, 
-  CheckCircle, TreePine, ChevronDown, Swimming, Utensils,
+  CheckCircle, TreePine, ChevronDown, Utensils,
   MapPin, Calendar
 } from "lucide-react";
 import { IMAGES } from "@/constants/images";
