@@ -4,7 +4,8 @@ import { HeroCarousel } from "@/components/HeroCarousel";
 import { QuickInquiryForm } from "@/components/QuickInquiryForm";
 import { 
   Leaf, Heart, Award, Star, ArrowRight, Play, Sparkles, 
-  CheckCircle, TreePine, ChevronDown
+  CheckCircle, TreePine, ChevronDown, Swimming, Utensils,
+  MapPin, Calendar
 } from "lucide-react";
 import { IMAGES } from "@/constants/images";
 import Image from "next/image";
@@ -13,24 +14,24 @@ import Link from "next/link";
 const heroSlides = [
   {
     image: IMAGES.hero.slide1,
-    alt: "Traditional Ayurveda treatment room",
-    heading: "Authentic Ayurveda Center",
-    subheading: "Experience traditional healing treatments in a peaceful, natural setting in Kandy",
-    cta: { label: "Book Treatment", href: "/contact" },
+    alt: "Diya Ulpatha Tea Garden Resort",
+    heading: "Tea Garden Resort",
+    subheading: "Experience comfort and nature at our beautiful tea garden resort in Matugama",
+    cta: { label: "View Packages", href: "/packages" },
   },
   {
     image: IMAGES.hero.slide2,
-    alt: "Natural medicinal garden",
-    heading: "Traditional Healing",
-    subheading: "Learn about ancient Ayurvedic wisdom and natural healing methods",
-    cta: { label: "View Treatments", href: "/treatments" },
+    alt: "Resort accommodation and facilities",
+    heading: "Comfortable Stay",
+    subheading: "Enjoy our comfortable rooms and excellent facilities surrounded by tea gardens",
+    cta: { label: "Book Now", href: "/contact" },
   },
   {
     image: IMAGES.hero.slide3,
-    alt: "Comfortable accommodation",
-    heading: "Stay & Heal",
-    subheading: "Simple, clean accommodation for patients and training participants",
-    cta: { label: "View Rooms", href: "/accommodation" },
+    alt: "Day out and events at the resort",
+    heading: "Perfect Events",
+    subheading: "Host your events and gatherings in our beautiful natural setting",
+    cta: { label: "Plan Event", href: "/contact" },
   },
 ];
 
@@ -67,22 +68,46 @@ export default function HomePage() {
     {
       id: "accommodation",
       icon: <TreePine className="w-6 h-6 sm:w-8 sm:h-8" />,
-      title: "Patient Accommodation",
-      subtitle: "Comfortable Stay",
-      description: "Clean, comfortable rooms with garden views for treatment patients and training participants.",
-      features: ["Garden views", "Clean facilities", "Quiet environment"],
+      title: "Comfortable Accommodation",
+      subtitle: "Stay with Us",
+      description: "Choose from our Standard and Luxury rooms, all set in beautiful tea garden surroundings with modern amenities and peaceful atmosphere.",
+      features: ["Tea garden views", "Modern amenities", "Peaceful environment", "Multiple room types"],
       image: IMAGES.accommodation.doubleRoom,
       color: "from-green-500/20 to-emerald-500/20",
       borderColor: "border-green-200",
       link: "/accommodation"
+    },
+    {
+      id: "packages",
+      icon: <Utensils className="w-6 h-6 sm:w-8 sm:h-8" />,
+      title: "Experience Packages",
+      subtitle: "Day & Overnight",
+      description: "From day out adventures to full board overnight stays, our packages include delicious meals, activities, and unforgettable experiences.",
+      features: ["Full board meals", "Day out packages", "Swimming pool", "Activities included"],
+      image: IMAGES.hero.slide2,
+      color: "from-blue-500/20 to-indigo-500/20",
+      borderColor: "border-blue-200",
+      link: "/packages"
+    },
+    {
+      id: "events",
+      icon: <Calendar className="w-6 h-6 sm:w-8 sm:h-8" />,
+      title: "Events & Gatherings",
+      subtitle: "Special Occasions",
+      description: "Perfect venue for family gatherings, team building, celebrations, and corporate events in our beautiful natural setting.",
+      features: ["Team building", "Family events", "Corporate functions", "Natural setting"],
+      image: IMAGES.hero.slide3,
+      color: "from-purple-500/20 to-violet-500/20",
+      borderColor: "border-purple-200",
+      link: "/contact"
     }
   ];
 
   const stats = [
-    { number: "5000+", label: "Years of Tradition", icon: <Award className="w-4 h-4 sm:w-6 sm:h-6" /> },
-    { number: "50+", label: "Patients Treated", icon: <Heart className="w-4 h-4 sm:w-6 sm:h-6" /> },
-    { number: "10+", label: "Treatment Types", icon: <Sparkles className="w-4 h-4 sm:w-6 sm:h-6" /> },
-    { number: "95%", label: "Patient Satisfaction", icon: <Star className="w-4 h-4 sm:w-6 sm:h-6" /> }
+    { number: "Beautiful", label: "Tea Garden Setting", icon: <TreePine className="w-4 h-4 sm:w-6 sm:h-6" /> },
+    { number: "100+", label: "Happy Guests", icon: <Heart className="w-4 h-4 sm:w-6 sm:h-6" /> },
+    { number: "3", label: "Package Types", icon: <Sparkles className="w-4 h-4 sm:w-6 sm:h-6" /> },
+    { number: "5⭐", label: "Guest Rating", icon: <Star className="w-4 h-4 sm:w-6 sm:h-6" /> }
   ];
 
   const getParallaxOffset = () => {
@@ -114,7 +139,7 @@ export default function HomePage() {
 
         <div className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce z-20">
           <div className="flex flex-col items-center gap-1 sm:gap-2 text-white/80">
-            <span className="text-xs sm:text-sm">Learn more</span>
+            <span className="text-xs sm:text-sm">Discover more</span>
             <ChevronDown className="w-4 h-4 sm:w-6 sm:h-6" />
           </div>
         </div>
@@ -152,20 +177,20 @@ export default function HomePage() {
               <div className="animate-on-scroll order-2 lg:order-1">
                 <div className="inline-flex items-center gap-2 bg-accent/10 rounded-full px-4 sm:px-6 py-2 sm:py-3 mb-6 sm:mb-8">
                   <Leaf className="w-4 h-4 sm:w-5 sm:h-5 text-accent" />
-                  <span className="text-primary font-semibold text-sm sm:text-base">WELCOME TO DIYA ULPATHA</span>
+                  <span className="text-primary font-semibold text-sm sm:text-base">DIYA ULPATHA TEA GARDEN RESORT</span>
                 </div>
 
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 sm:mb-8 leading-tight">
-                  Traditional 
+                  Experience 
                   <span className="block bg-gradient-to-r from-accent via-yellow-400 to-accent bg-clip-text text-transparent">
-                    Ayurveda Center
+                    Tea Garden Resort
                   </span>
-                  in Kandy
+                  in Matugama
                 </h2>
 
                 <p className="text-lg sm:text-xl text-text-muted mb-6 sm:mb-8 leading-relaxed">
-                  We offer authentic Ayurvedic treatments in a peaceful natural environment. 
-                  Our qualified practitioners provide traditional healing methods for various health conditions.
+                  Nestled in the beautiful hills of Matugama, our tea garden resort offers comfortable accommodation, 
+                  delicious dining, and unforgettable experiences in a natural setting.
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-8 sm:mb-12">
@@ -174,27 +199,27 @@ export default function HomePage() {
                     <span>About Us</span>
                     <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
                   </Link>
-                  <Link href="/treatments" className="btn-outline text-center">
-                    View Treatments
+                  <Link href="/packages" className="btn-outline text-center">
+                    View Packages
                   </Link>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                   <div className="flex items-center gap-2 sm:gap-3">
                     <CheckCircle className="w-4 h-4 sm:w-6 sm:h-6 text-green-500 flex-shrink-0" />
-                    <span className="text-text-primary font-medium text-sm sm:text-base">Qualified Doctors</span>
+                    <span className="text-text-primary font-medium text-sm sm:text-base">Beautiful Location</span>
                   </div>
                   <div className="flex items-center gap-2 sm:gap-3">
                     <CheckCircle className="w-4 h-4 sm:w-6 sm:h-6 text-green-500 flex-shrink-0" />
-                    <span className="text-text-primary font-medium text-sm sm:text-base">Natural Setting</span>
+                    <span className="text-text-primary font-medium text-sm sm:text-base">Comfortable Rooms</span>
                   </div>
                   <div className="flex items-center gap-2 sm:gap-3">
                     <CheckCircle className="w-4 h-4 sm:w-6 sm:h-6 text-green-500 flex-shrink-0" />
-                    <span className="text-text-primary font-medium text-sm sm:text-base">Affordable Rates</span>
+                    <span className="text-text-primary font-medium text-sm sm:text-base">Great Packages</span>
                   </div>
                   <div className="flex items-center gap-2 sm:gap-3">
                     <CheckCircle className="w-4 h-4 sm:w-6 sm:h-6 text-green-500 flex-shrink-0" />
-                    <span className="text-text-primary font-medium text-sm sm:text-base">Traditional Methods</span>
+                    <span className="text-text-primary font-medium text-sm sm:text-base">Swimming Pool</span>
                   </div>
                 </div>
               </div>
@@ -203,8 +228,8 @@ export default function HomePage() {
                 <div className="relative">
                   <div className="relative h-64 sm:h-80 lg:h-96 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl sm:shadow-2xl">
                     <Image
-                      src={IMAGES.treatments.fullBodyMassage}
-                      alt="Ayurvedic treatment"
+                      src={IMAGES.accommodation.doubleRoom}
+                      alt="Diya Ulpatha Tea Garden Resort"
                       fill
                       className="object-cover"
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 40vw"
@@ -215,10 +240,10 @@ export default function HomePage() {
                   <div className="absolute -top-3 sm:-top-6 -right-3 sm:-right-6 bg-accent/90 backdrop-blur-xl rounded-xl sm:rounded-2xl p-2 sm:p-4 shadow-xl animate-float">
                     <Star className="w-4 h-4 sm:w-8 sm:h-8 text-white" />
                   </div>
-                  
+
                   <div className="absolute -bottom-3 sm:-bottom-6 -left-3 sm:-left-6 bg-primary/90 backdrop-blur-xl rounded-xl sm:rounded-2xl p-3 sm:p-6 shadow-xl text-white animate-float animate-delay-300">
-                    <div className="text-lg sm:text-2xl font-bold">Traditional</div>
-                    <div className="text-xs sm:text-sm opacity-90">Methods</div>
+                    <div className="text-lg sm:text-2xl font-bold">Resort</div>
+                    <div className="text-xs sm:text-sm opacity-90">Experience</div>
                   </div>
                 </div>
               </div>
@@ -232,10 +257,10 @@ export default function HomePage() {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12 sm:mb-16 animate-on-scroll">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6">
-              Our <span className="bg-gradient-to-r from-accent to-yellow-500 bg-clip-text text-transparent">Services</span>
+              What We <span className="bg-gradient-to-r from-accent to-yellow-500 bg-clip-text text-transparent">Offer</span>
             </h2>
             <p className="text-lg sm:text-xl text-text-muted max-w-3xl mx-auto">
-              Traditional treatments and comfortable accommodation for your healing journey
+              Discover our comfortable accommodation, exciting packages, and beautiful event spaces
             </p>
           </div>
 
@@ -249,10 +274,14 @@ export default function HomePage() {
                     className={`px-3 sm:px-6 py-2 sm:py-3 rounded-lg sm:rounded-xl font-semibold text-sm sm:text-base transition-all duration-300 whitespace-nowrap ${
                       activeService === index
                         ? 'bg-primary text-white shadow-lg'
-                        : 'text-text-muted hover:text-primary'
+                        : 'text-text-muted hover:text-primary hover:bg-gray-50'
                     }`}
                   >
-                    {service.title}
+                    <div className="flex items-center gap-2">
+                      {service.icon}
+                      <span className="hidden sm:inline">{service.title}</span>
+                      <span className="sm:hidden">{service.subtitle}</span>
+                    </div>
                   </button>
                 ))}
               </div>
@@ -261,15 +290,15 @@ export default function HomePage() {
             <div className="animate-on-scroll">
               <div className="bg-white rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl sm:shadow-2xl border border-gray-100">
                 <div className="grid grid-cols-1 lg:grid-cols-2">
-                  <div className="p-6 sm:p-8 lg:p-12 flex flex-col justify-center order-2 lg:order-1">
-                    <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
-                      <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-accent/20 to-primary/20 rounded-xl sm:rounded-2xl flex items-center justify-center text-accent">
+                  <div className="p-6 sm:p-8 lg:p-12 order-2 lg:order-1">
+                    <div className="mb-6 sm:mb-8">
+                      <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
                         {services[activeService].icon}
-                      </div>
-                      <div>
                         <div className="text-xs sm:text-sm font-semibold text-accent uppercase tracking-wide">
                           {services[activeService].subtitle}
                         </div>
+                      </div>
+                      <div className="mb-3 sm:mb-4">
                         <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-primary">
                           {services[activeService].title}
                         </h3>
@@ -320,10 +349,10 @@ export default function HomePage() {
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12 sm:mb-16 animate-on-scroll">
               <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6">
-                Book Your <span className="bg-gradient-to-r from-accent to-yellow-500 bg-clip-text text-transparent">Getaway</span>
+                Plan Your <span className="bg-gradient-to-r from-accent to-yellow-500 bg-clip-text text-transparent">Visit</span>
               </h2>
               <p className="text-lg sm:text-xl text-text-muted">
-                Contact us to schedule your consultation and treatment
+                Contact us to book your stay or plan your event at our beautiful resort
               </p>
             </div>
             <div className="animate-on-scroll animate-delay-200">

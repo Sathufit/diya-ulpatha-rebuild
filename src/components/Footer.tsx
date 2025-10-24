@@ -13,7 +13,7 @@ export function Footer() {
               <span className="text-xl font-bold">Diya Ulpatha</span>
             </div>
             <p className="text-primary-light text-sm leading-relaxed">
-              Authentic Ayurvedic healing in Sri Lanka&apos;s natural sanctuary.
+              Tea Garden Resort in the heart of Matugama, Sri Lanka.
             </p>
           </div>
 
@@ -22,10 +22,11 @@ export function Footer() {
             <h4 className="font-semibold mb-4 text-accent">Explore</h4>
             <div className="space-y-2">
               {[
+                { href: "/accommodation", label: "Accommodation" },
+                { href: "/packages", label: "Packages" },
                 { href: "/treatments", label: "Treatments" },
-                { href: "/training", label: "Training" },
-                { href: "/accommodation", label: "Rooms" },
-                { href: "/gallery", label: "Gallery" }
+                { href: "/gallery", label: "Gallery" },
+                { href: "/about", label: "About Us" }
               ].map((link) => (
                 <Link
                   key={link.href}
@@ -38,23 +39,20 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Company */}
+          {/* Services */}
           <div>
-            <h4 className="font-semibold mb-4 text-accent">Company</h4>
+            <h4 className="font-semibold mb-4 text-accent">Services</h4>
             <div className="space-y-2">
               {[
-                { href: "/about", label: "About Us" },
-                { href: "/contact", label: "Contact" },
-                { href: "/privacy", label: "Privacy" },
-                { href: "/terms", label: "Terms" }
-              ].map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="block text-primary-light hover:text-accent transition-colors text-sm"
-                >
-                  {link.label}
-                </Link>
+                { label: "Day Out Packages" },
+                { label: "Overnight Stays" },
+                { label: "Event Spaces" },
+                { label: "Swimming Pool" },
+                { label: "Tea Garden Experience" }
+              ].map((item, index) => (
+                <div key={index} className="text-primary-light text-sm">
+                  {item.label}
+                </div>
               ))}
             </div>
           </div>
@@ -64,20 +62,22 @@ export function Footer() {
             <h4 className="font-semibold mb-4 text-accent">Contact</h4>
             <div className="space-y-3">
               <div className="flex items-center gap-2 text-sm">
-                <Phone className="w-4 h-4 text-accent" />
-                <a href="tel:+94112223344" className="text-primary-light hover:text-accent transition-colors">
-                  +94 11 222 3344
+                <Phone className="w-4 h-4 text-accent flex-shrink-0" />
+                <a href="https://wa.me/94776251855" className="text-primary-light hover:text-accent transition-colors">
+                  +94 77 625 1855
                 </a>
               </div>
               <div className="flex items-center gap-2 text-sm">
-                <Mail className="w-4 h-4 text-accent" />
-                <a href="mailto:info@diyaulpatha.com" className="text-primary-light hover:text-accent transition-colors">
-                  info@diyaulpatha.com
+                <Mail className="w-4 h-4 text-accent flex-shrink-0" />
+                <a href="mailto:diyaulpatha@gmail.com" className="text-primary-light hover:text-accent transition-colors">
+                  diyaulpatha@gmail.com
                 </a>
               </div>
-              <div className="flex items-center gap-2 text-sm">
-                <MapPin className="w-4 h-4 text-accent" />
-                <span className="text-primary-light">Kandy, Sri Lanka</span>
+              <div className="flex items-start gap-2 text-sm">
+                <MapPin className="w-4 h-4 text-accent flex-shrink-0 mt-1" />
+                <span className="text-primary-light">
+                  Horawala Welipenna, Mawathagoda Road, Matugama 12100
+                </span>
               </div>
             </div>
           </div>
@@ -86,7 +86,7 @@ export function Footer() {
         {/* Bottom */}
         <div className="border-t border-primary-light/30 mt-8 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-primary-light text-sm">
-            &copy; {new Date().getFullYear()} Diya Ulpatha. All rights reserved.
+            &copy; {new Date().getFullYear()} Diya Ulpatha Tea Garden Resort. All rights reserved.
           </p>
           <a 
             href="/contact" 

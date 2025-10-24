@@ -16,6 +16,9 @@ const nextConfig: NextConfig = {
         pathname: "/**",
       },
     ],
+    // Add quality configuration to fix the warning
+    qualities: [75, 85, 90, 95],
+    formats: ['image/webp', 'image/avif'],
   },
   /* other config options here */
 };

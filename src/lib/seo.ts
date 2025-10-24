@@ -1,27 +1,32 @@
 import type { Metadata } from 'next'
 
 export const siteConfig = {
-  name: "Diya Ulpatha - Authentic Ayurvedic Wellness Center",
-  description: "Experience authentic Ayurvedic healing in Sri Lanka. Traditional treatments, Panchakarma therapy, accommodation, and professional training programs. Expert doctors, natural healing.",
+  name: "Diya Ulpatha - Tea Garden Resort",
+  description: "Experience comfort and nature at Diya Ulpatha Tea Garden Resort in Matugama. Accommodation packages, day outings, and event spaces in a beautiful tea garden setting.",
   url: "https://diyaulpatha.com",
   ogImage: "/images/og-image.jpg",
-  creator: "Diya Ulpatha Wellness Center",
+  creator: "Diya Ulpatha Tea Garden Resort",
+  location: {
+    full: "Diya Ulpatha Tea Garden Resort, Horawala Welipenna, Mawathagoda Road, Matugama 12100",
+    city: "Matugama",
+    district: "Kalutara",
+    country: "Sri Lanka"
+  },
+  contact: {
+    whatsapp: "+94776251855",
+    phone: "+94776251855",
+    email: "diyaulpatha@gmail.com"
+  },
   keywords: [
-    "Ayurveda Sri Lanka",
-    "Panchakarma treatment",
-    "Ayurvedic massage",
-    "traditional healing",
-    "wellness retreat",
-    "herbal medicine",
-    "Ayurvedic doctor",
-    "natural healing",
-    "detox therapy",
-    "meditation retreat",
-    "Kandy wellness center",
-    "authentic Ayurveda",
-    "holistic healing",
-    "Ayurvedic accommodation",
-    "wellness training"
+    "tea garden resort Sri Lanka",
+    "Matugama accommodation",
+    "day out packages Sri Lanka",
+    "resort near Colombo",
+    "family resort Sri Lanka",
+    "wedding venues Sri Lanka",
+    "team building Sri Lanka",
+    "overnight packages",
+    "swimming pool resort"
   ]
 }
 
@@ -100,74 +105,44 @@ export function generateMetadata({
         'max-snippet': -1,
       },
     },
-    verification: {
-      google: 'your-google-verification-code',
-      yandex: 'your-yandex-verification-code',
-    },
   }
 }
 
-// Structured Data Schemas
 export const organizationSchema = {
   "@context": "https://schema.org",
-  "@type": "MedicalOrganization",
-  "name": "Diya Ulpatha Ayurvedic Wellness Center",
+  "@type": "Resort",
+  "name": "Diya Ulpatha Tea Garden Resort",
   "alternateName": "Diya Ulpatha",
   "url": "https://diyaulpatha.com",
   "logo": "https://diyaulpatha.com/images/logo.png",
-  "description": "Authentic Ayurvedic wellness center in Sri Lanka offering traditional treatments, Panchakarma therapy, and professional training programs.",
+  "description": "Tea garden resort offering accommodation, day packages, and event spaces in Matugama, Sri Lanka",
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "Wellness Center Road",
-    "addressLocality": "Kandy",
-    "addressRegion": "Central Province",
-    "postalCode": "20000",
+    "streetAddress": "Horawala Welipenna, Mawathagoda Road",
+    "addressLocality": "Matugama",
+    "addressRegion": "Kalutara District",
+    "postalCode": "12100",
     "addressCountry": "LK"
   },
   "geo": {
     "@type": "GeoCoordinates",
-    "latitude": 7.2906,
-    "longitude": 80.6337
+    "latitude": 6.5444,
+    "longitude": 80.1607
   },
   "contactPoint": {
     "@type": "ContactPoint",
-    "telephone": "+94-11-222-3344",
-    "contactType": "customer service",
-    "email": "info@diyaulpatha.com",
+    "telephone": "+94-77-625-1855",
+    "contactType": "reservations",
+    "email": "diyaulpatha@gmail.com",
     "availableLanguage": ["English", "Sinhala"]
   },
-  "medicalSpecialty": [
-    "Ayurvedic Medicine",
-    "Panchakarma Therapy",
-    "Herbal Medicine",
-    "Wellness Therapy"
-  ],
   "priceRange": "$$",
-  "openingHoursSpecification": {
-    "@type": "OpeningHoursSpecification",
-    "dayOfWeek": [
-      "Monday",
-      "Tuesday", 
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday",
-      "Sunday"
-    ],
-    "opens": "08:00",
-    "closes": "20:00"
-  }
-}
-
-export const websiteSchema = {
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "Diya Ulpatha",
-  "url": "https://diyaulpatha.com",
-  "description": "Authentic Ayurvedic wellness center offering traditional healing treatments in Sri Lanka",
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": "https://diyaulpatha.com/search?q={search_term_string}",
-    "query-input": "required name=search_term_string"
-  }
+  "amenityFeature": [
+    "Swimming Pool",
+    "Restaurant",
+    "Playground",
+    "Volleyball Court",
+    "Badminton Court",
+    "Tea Garden"
+  ]
 }

@@ -12,11 +12,44 @@ import { IMAGES } from "@/constants/images";
 
 const packages = [
   {
+    id: "day-out",
+    category: "dayout",
+    name: "Day Out Package",
+    tagline: "Perfect Day Experience",
+    description: "Experience the perfect day at our tea garden resort with activities, meals, and relaxation - all included in one great package.",
+    priceAdult: "3,000",
+    priceChild: "1,500",
+    image: IMAGES.hero.slide1,
+    duration: "8 Hours",
+    features: [
+      "Welcome drink on arrival",
+      "Lunch buffet (Vegetable Fried Rice, Steamed Rice, Noodles)",
+      "Chicken Curry or Devilled, Fish Stew, Dhal Curry",
+      "Potato Tempered, Mixed Salad, Chili Paste, Papadam",
+      "Ice cream dessert",
+      "Evening snack with hot coffee",
+      "Swimming pool access (free)",
+      "Playground, Children's Park, Sports courts",
+      "1 Changing room (groups 25+)"
+    ],
+    timings: {
+      day: "9:00 AM – 5:00 PM (Pool until 4:30 PM)",
+      night: "4:00 PM – 10:00 PM (Pool until 7:00 PM)"
+    },
+    mealTimes: {
+      day: "1:00 PM – 3:00 PM",
+      night: "7:00 PM – 10:00 PM"
+    },
+    popular: true,
+    gradient: "from-green-500 via-emerald-600 to-teal-700",
+    bgPattern: "radial-gradient(circle at 20% 80%, rgba(34, 197, 94, 0.3) 0%, transparent 50%)"
+  },
+  {
     id: "full-board",
     category: "overnight",
-    name: "Full Board Experience",
-    tagline: "Complete Culinary Journey",
-    description: "Immerse yourself in luxury with our all-inclusive dining experience featuring breakfast, lunch, and dinner crafted from the finest local ingredients.",
+    name: "Full Board Package",
+    tagline: "Complete Overnight Experience",
+    description: "Enjoy our comprehensive overnight package with all meals included - from welcome drink to breakfast, experience true hospitality.",
     acPrice: "9,000",
     nonAcPrice: "7,500",
     acPriceChild: "4,500",
@@ -24,24 +57,30 @@ const packages = [
     image: IMAGES.accommodation.doubleRoom,
     duration: "24 Hours",
     features: [
-      "Welcome cocktail on arrival",
-      "Luxury overnight accommodation", 
-      "Three gourmet meals daily",
-      "Premium tea & coffee service",
-      "Swimming pool & spa access",
-      "Garden walks & nature tours"
+      "Welcome drink on arrival",
+      "Evening soup service",
+      "Dinner: Vegetable Rice & Noodles, Chicken Curry or Devilled",
+      "Dhal Curry, Vegetable Chop Suey, Chili Paste, Papadam",
+      "Mixed Salad, Ice Cream dessert",
+      "Bed tea service",
+      "Breakfast: Coconut Roti & String Hopper",
+      "Chicken Curry or Fish Curry, Dhal/Potato Curry, Coconut Sambal",
+      "10:00 AM Coffee or Black Tea",
+      "Lunch: Steamed Rice, Chicken/Fish Curry, Mango & Ambarella Curry",
+      "Dhal Curry, Pala Mallum, Papadam, Ice Cream/Fruit Salad",
+      "Swimming pool access",
+      "Sports facilities (groups 20+)"
     ],
-    timing: "3:00 PM Check-in | 12:00 PM Check-out",
-    popular: true,
-    gradient: "from-emerald-500 via-green-600 to-teal-700",
-    bgPattern: "radial-gradient(circle at 20% 80%, rgba(34, 197, 94, 0.3) 0%, transparent 50%)"
+    timing: "Check-in: 3:00 PM | Check-out: 12:00 PM",
+    gradient: "from-blue-500 via-indigo-600 to-purple-700",
+    bgPattern: "radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.3) 0%, transparent 50%)"
   },
   {
     id: "half-board",
     category: "overnight", 
-    name: "Half Board Retreat",
-    tagline: "Perfect for Explorers",
-    description: "Ideal for adventurous souls! Enjoy comfortable accommodation with hearty breakfast and dinner while you explore the beautiful surroundings.",
+    name: "Half Board Package",
+    tagline: "Dinner & Breakfast Included",
+    description: "Perfect for those who want to explore during the day. Includes comfortable accommodation with dinner and breakfast.",
     acPrice: "8,500",
     nonAcPrice: "7,000",
     acPriceChild: "4,250",
@@ -49,86 +88,21 @@ const packages = [
     image: IMAGES.accommodation.tripleRoom,
     duration: "24 Hours",
     features: [
-      "Welcome refreshment",
-      "Comfortable accommodation",
-      "Breakfast & dinner included", 
-      "Tea plantation tours",
-      "Swimming & recreation",
-      "Scenic photography spots"
+      "Welcome drink on arrival",
+      "Evening soup service",
+      "Dinner: Vegetable Rice & Noodles, Chicken Curry or Devilled",
+      "Dhal Curry, Vegetable Chop Suey, Chili Paste, Papadam",
+      "Mixed Salad, Ice Cream dessert",
+      "Bed tea service",
+      "Breakfast: Coconut Roti & String Hopper",
+      "Chicken Curry or Fish Curry, Dhal/Potato Curry, Coconut Sambal",
+      "10:00 AM Coffee or Black Tea",
+      "Swimming pool access",
+      "Sports facilities (groups 20+)"
     ],
-    timing: "3:00 PM Check-in | 12:00 PM Check-out",
+    timing: "Check-in: 3:00 PM | Check-out: 12:00 PM",
     gradient: "from-amber-500 via-orange-600 to-red-600",
-    bgPattern: "radial-gradient(circle at 80% 20%, rgba(245, 158, 11, 0.3) 0%, transparent 50%)"
-  },
-  {
-    id: "romantic-luxury",
-    category: "overnight",
-    name: "Romantic Luxury Suite", 
-    tagline: "Ultimate Couples Experience",
-    description: "Indulge in pure romance with our premium luxury rooms featuring elegant decor, private amenities, and personalized service.",
-    fullBoardPrice: "19,750",
-    halfBoardPrice: "17,750",
-    image: IMAGES.accommodation.familyRoom,
-    duration: "24 Hours",
-    features: [
-      "Decorated luxury suite",
-      "Romantic setup & ambiance",
-      "Private dining options",
-      "Couples spa treatments",
-      "Exclusive amenities",
-      "Personal butler service"
-    ],
-    timing: "3:00 PM Check-in | 12:00 PM Check-out",
-    isCouple: true,
-    badge: "Luxury",
-    gradient: "from-rose-500 via-pink-600 to-red-700",
-    bgPattern: "radial-gradient(circle at 50% 50%, rgba(244, 114, 182, 0.3) 0%, transparent 50%)"
-  },
-  {
-    id: "couples-day",
-    category: "dayout",
-    name: "Couples Day Paradise",
-    tagline: "Romantic Day Escape", 
-    description: "Escape into romance with a perfect day surrounded by lush tea gardens, gourmet dining, and intimate moments.",
-    acPrice: "7,500",
-    nonAcPrice: "6,500",
-    image: IMAGES.hero.slide2,
-    duration: "8 Hours",
-    features: [
-      "Private welcome ceremony",
-      "Gourmet lunch for two",
-      "Exclusive pool access",
-      "Professional photography",
-      "Garden picnic setup",
-      "Sunset viewing deck"
-    ],
-    timing: "9:00 AM – 5:00 PM",
-    isCouple: true,
-    gradient: "from-violet-500 via-purple-600 to-indigo-700",
-    bgPattern: "radial-gradient(circle at 30% 70%, rgba(139, 92, 246, 0.3) 0%, transparent 50%)"
-  },
-  {
-    id: "group-day",
-    category: "dayout",
-    name: "Group Adventure",
-    tagline: "Ultimate Team Experience",
-    description: "Perfect for celebrations, team building, or family gatherings. Enjoy a full day of activities, dining, and unforgettable memories.",
-    priceAdult: "3,000",
-    priceChild: "1,500",
-    image: IMAGES.hero.slide3,
-    duration: "8 Hours",
-    features: [
-      "Group welcome ceremony",
-      "Extensive buffet spread",
-      "Team building activities",
-      "Entertainment programs",
-      "All recreational facilities",
-      "Professional event coordination"
-    ],
-    timing: "9:00 AM – 5:00 PM",
-    badge: "Best Value",
-    gradient: "from-yellow-500 via-amber-600 to-orange-700",
-    bgPattern: "radial-gradient(circle at 70% 30%, rgba(251, 191, 36, 0.3) 0%, transparent 50%)"
+    bgPattern: "radial-gradient(circle at 50% 50%, rgba(245, 158, 11, 0.3) 0%, transparent 50%)"
   }
 ];
 
@@ -138,7 +112,7 @@ const policies = [
     title: "Child Policy",
     items: [
       { label: "Under 5 years", value: "Complimentary", desc: "Free for all packages" },
-      { label: "Ages 5-10", value: "50% Discount", desc: "Special rates apply" }
+      { label: "Ages 5-10 years", value: "Special Rate", desc: "Day Out: Rs. 1,500/=, Overnight: 50% discount" }
     ],
     gradient: "from-green-50 to-emerald-50"
   },
@@ -146,12 +120,22 @@ const policies = [
     icon: <Shield className="w-6 h-6" />,
     title: "Booking Terms",
     items: [
-      { label: "Advance Payment", value: "25% Required", desc: "Secure your booking" },
-      { label: "Cancellation", value: "Reschedule Option", desc: "Up to 2 months flexibility" },
-      { label: "Pool Hours", value: "Limited Times", desc: "4:30 PM (day) / 7:00 PM (night)" }
+      { label: "Advance Payment", value: "25% Required", desc: "Send receipt via WhatsApp +94 77 625 1855" },
+      { label: "Pool Hours", value: "Time Limits Apply", desc: "Day: until 4:30 PM, Night: until 7:00 PM" },
+      { label: "Music Policy", value: "Until 7:00 PM", desc: "Evening events only" }
     ],
     gradient: "from-amber-50 to-orange-50"
   }
+];
+
+const aLaCarteMenu = [
+  { item: "Beef (Fried/Devilled/Stew)", price: "6,000", unit: "1Kg" },
+  { item: "Pork (Fried/Devilled/Stew)", price: "5,500", unit: "1Kg" },
+  { item: "Fish (Fried/Devilled/Stew)", price: "5,500", unit: "1Kg" },
+  { item: "Chicken (Fried/Devilled/Stew)", price: "4,000", unit: "1Kg" },
+  { item: "Sausage", price: "3,000", unit: "1Kg" },
+  { item: "French Fries", price: "3,000", unit: "1Kg" },
+  { item: "Boiled Vegetables", price: "3,500", unit: "1Kg" }
 ];
 
 export default function PackagesPage() {
@@ -189,140 +173,84 @@ export default function PackagesPage() {
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center min-h-screen py-20">
-            
-            {/* Left Content - 7 columns */}
-            <div className="lg:col-span-7">
-              <div className="space-y-8 transition-all duration-1000 delay-300 opacity-100 translate-x-0">
-                
-                {/* Animated Badge */}
-                <div className="inline-flex items-center gap-3 bg-white/70 backdrop-blur-xl rounded-full px-6 py-3 border border-green-200/50 shadow-lg">
-                  <div className="w-8 h-8 bg-gradient-to-r from-green-600 to-emerald-600 rounded-full flex items-center justify-center">
-                    <Sparkles className="w-4 h-4 text-white" />
-                  </div>
-                  <span className="font-bold text-green-800">EXCLUSIVE PACKAGES</span>
-                  <div className="w-2 h-2 bg-green-600 rounded-full animate-pulse" />
-                </div>
+          <div className="grid grid-cols-1 lg:grid-cols-7 gap-16 items-center min-h-screen py-20">
+            {/* Content Column */}
+            <div className="lg:col-span-5 order-2 lg:order-1">
+              <div className="inline-flex items-center gap-3 bg-white/80 backdrop-blur-md rounded-full px-8 py-4 mb-8 shadow-lg border border-white/40">
+                <Package className="w-6 h-6 text-green-600" />
+                <span className="text-primary font-bold">EXPERIENCE PACKAGES</span>
+              </div>
 
-                {/* Main Title with Animation */}
-                <div className="space-y-4">
-                  <h1 className="text-6xl lg:text-8xl font-bold leading-none tracking-tight">
-                    <span className="block text-green-800 mb-2">Discover</span>
-                    <span className="block bg-gradient-to-r from-green-600 via-amber-600 to-orange-700 bg-clip-text text-transparent mb-2">
-                      Your Perfect
-                    </span>
-                    <span className="block text-green-800">Experience</span>
-                  </h1>
-                </div>
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 leading-[0.9]">
+                Perfect
+                <span className="block bg-gradient-to-r from-green-600 via-emerald-500 to-teal-600 bg-clip-text text-transparent">
+                  Packages
+                </span>
+                for Every Need
+              </h1>
 
-                {/* Description */}
-                <p className="text-xl text-green-700 leading-relaxed max-w-2xl">
-                  From romantic getaways to family adventures, our curated packages combine luxury accommodation, 
-                  gourmet dining, and unique experiences in Sri Lanka&apos;s most beautiful tea garden setting.
-                </p>
+              <p className="text-xl md:text-2xl text-gray-600 mb-12 leading-relaxed max-w-2xl">
+                From exciting day adventures to relaxing overnight stays, discover packages designed to create unforgettable memories at our beautiful tea garden resort.
+              </p>
 
-                {/* CTA Buttons */}
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <button
-                    onClick={() => document.getElementById('packages')?.scrollIntoView({ behavior: 'smooth' })}
-                    className="group bg-gradient-to-r from-green-600 to-emerald-700 hover:from-green-700 hover:to-emerald-800 text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl flex items-center gap-3 justify-center"
-                  >
-                    <Play className="w-5 h-5" />
-                    Explore Packages
-                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                  </button>
-                  
-                  <button className="group bg-white/80 backdrop-blur-sm border border-green-200 text-green-800 px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 hover:bg-white hover:shadow-lg flex items-center gap-3 justify-center">
-                    <Phone className="w-5 h-5" />
-                    Contact Us
-                  </button>
-                </div>
+              <div className="flex flex-col sm:flex-row gap-6 mb-16">
+                <a href="#packages" className="group bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 hover:scale-105 hover:shadow-xl flex items-center gap-3 justify-center">
+                  <Gift className="w-6 h-6" />
+                  Explore Packages
+                  <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+                </a>
 
-                {/* Stats */}
-                <div className="grid grid-cols-3 gap-8 pt-8">
-                  {[
-                    { number: "5+", label: "Unique Packages", icon: <Gift className="w-5 h-5" /> },
-                    { number: "24/7", label: "Premium Service", icon: <Star className="w-5 h-5" /> },
-                    { number: "100%", label: "Satisfaction", icon: <Heart className="w-5 h-5" /> }
-                  ].map((stat, index) => (
-                    <div key={index} className="text-center group">
-                      <div className="w-12 h-12 bg-gradient-to-r from-green-100 to-emerald-100 rounded-2xl flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform">
-                        {stat.icon}
-                      </div>
-                      <div className="text-2xl font-bold text-green-800">{stat.number}</div>
-                      <div className="text-sm text-green-600">{stat.label}</div>
-                    </div>
-                  ))}
-                </div>
+                <a
+                  href="https://wa.me/94776251855"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group bg-white/10 backdrop-blur-md border-2 border-green-600/30 text-green-800 px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 hover:bg-green-600 hover:text-white flex items-center gap-3 justify-center"
+                >
+                  <Phone className="w-6 h-6" />
+                  <span>WhatsApp Us</span>
+                </a>
               </div>
             </div>
 
-            {/* Right Content - 5 columns */}
-            <div className="lg:col-span-5">
-              <div className="transition-all duration-1000 delay-500 opacity-100 translate-x-0">
-                
-                {/* Floating Package Preview Cards */}
-                <div className="relative">
+            {/* Visual Column */}
+            <div className="lg:col-span-2 order-1 lg:order-2">
+              <div className="relative">
+                {/* Main Image */}
+                <div className={`relative rounded-3xl overflow-hidden shadow-2xl transition-all duration-1000 ${hoveredCard ? 'scale-95' : 'scale-100'}`}>
+                  <Image
+                    src={IMAGES.hero.slide1}
+                    alt="Diya Ulpatha Tea Garden Resort"
+                    width={600}
+                    height={700}
+                    className="object-cover w-full h-[500px]"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
                   
-                  {/* Main Featured Card */}
-                  <div className="relative bg-white/80 backdrop-blur-xl rounded-3xl shadow-2xl overflow-hidden border border-white/50 hover:scale-105 transition-all duration-700 hover:shadow-3xl">
-                    <div className="relative h-64">
-                      <Image
-                        src={packages[0].image}
-                        alt={packages[0].name}
-                        fill
-                        className="object-cover"
-                        sizes="(max-width: 1024px) 100vw, 50vw"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                      
-                      {/* Floating Badge */}
-                      <div className="absolute top-4 left-4 bg-gradient-to-r from-emerald-600 to-green-700 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg flex items-center gap-2">
-                        <Star className="w-4 h-4" />
-                        Most Popular
+                  <div className="absolute bottom-8 left-8 right-8 text-white">
+                    <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20">
+                      <div className="flex items-center gap-3 mb-3">
+                        <Star className="w-6 h-6 text-yellow-400 fill-current" />
+                        <span className="font-bold text-lg">Featured Experience</span>
                       </div>
-                    </div>
-                    
-                    <div className="p-6">
-                      <div className="flex items-center gap-3 mb-4">
-                        <div className="w-10 h-10 bg-gradient-to-r from-emerald-100 to-green-100 rounded-xl flex items-center justify-center">
-                          <Utensils className="w-5 h-5 text-emerald-700" />
-                        </div>
-                        <div>
-                          <h3 className="text-xl font-bold text-green-800">{packages[0].name}</h3>
-                          <p className="text-sm text-emerald-700 font-medium">{packages[0].tagline}</p>
-                        </div>
-                      </div>
-                      
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <div className="text-2xl font-bold text-green-800">Rs. {packages[0].nonAcPrice}</div>
-                          <div className="text-xs text-green-600">per person</div>
-                        </div>
-                        <button className="bg-gradient-to-r from-green-600 to-emerald-700 text-white px-6 py-2 rounded-xl font-medium hover:scale-105 transition-transform">
-                          View Details
-                        </button>
-                      </div>
+                      <p className="text-white/90 leading-relaxed">
+                        Beautiful tea garden setting with modern amenities and authentic Sri Lankan hospitality.
+                      </p>
                     </div>
                   </div>
+                </div>
 
-                  {/* Floating Mini Cards */}
-                  <div className="absolute -top-6 -right-6 bg-white/90 backdrop-blur-xl rounded-2xl shadow-lg p-4 border border-white/50 transform rotate-12 hover:rotate-6 transition-transform duration-500">
-                    <div className="flex items-center gap-2 text-sm font-medium text-green-700">
-                      <Clock className="w-4 h-4 text-amber-600" />
-                      24h Experience
-                    </div>
+                {/* Floating Stats */}
+                <div className="absolute -top-6 -right-6 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-2xl px-6 py-4 shadow-xl animate-float">
+                  <div className="text-center">
+                    <div className="text-2xl font-bold">3</div>
+                    <div className="text-sm opacity-90">Packages</div>
                   </div>
+                </div>
 
-                  <div className="absolute -bottom-6 -left-6 bg-white/90 backdrop-blur-xl rounded-2xl shadow-lg p-4 border border-white/50 transform -rotate-12 hover:-rotate-6 transition-transform duration-500">
-                    <div className="flex items-center gap-2 text-sm font-medium text-green-700">
-                      <Award className="w-4 h-4 text-orange-600" />
-                      Premium Service
-                    </div>
-                  </div>
-
-                  <div className="absolute top-1/2 -right-4 bg-gradient-to-r from-rose-600 to-pink-700 text-white rounded-2xl shadow-lg p-3 transform rotate-45 hover:rotate-12 transition-transform duration-500">
-                    <Heart className="w-5 h-5" />
+                <div className="absolute -bottom-6 -left-6 bg-gradient-to-r from-amber-500 to-orange-600 text-white rounded-2xl px-6 py-4 shadow-xl animate-float animate-delay-300">
+                  <div className="text-center">
+                    <div className="text-2xl font-bold">5⭐</div>
+                    <div className="text-sm opacity-90">Rating</div>
                   </div>
                 </div>
               </div>
@@ -334,30 +262,38 @@ export default function PackagesPage() {
       {/* Filter Navigation */}
       <section id="packages" className="py-16 bg-white/80 backdrop-blur-sm sticky top-0 z-50 border-b border-green-200/50">
         <div className="container mx-auto px-4">
-          <div className="flex flex-wrap items-center justify-center gap-4">
-            {[
-              { id: "all", label: "All Packages", icon: <Package className="w-5 h-5" /> },
-              { id: "overnight", label: "Overnight Stays", icon: <Moon className="w-5 h-5" /> },
-              { id: "dayout", label: "Day Experiences", icon: <Sun className="w-5 h-5" /> }
-            ].map((filter) => (
-              <button
-                key={filter.id}
-                onClick={() => setActiveCategory(filter.id)}
-                className={`group flex items-center gap-3 px-8 py-4 rounded-2xl font-bold transition-all duration-300 ${
-                  activeCategory === filter.id
-                    ? "bg-gradient-to-r from-green-600 to-emerald-700 text-white shadow-lg scale-105"
-                    : "bg-green-100 text-green-700 hover:bg-green-200 hover:scale-105"
-                }`}
-              >
-                <div className={`transition-transform duration-300 ${activeCategory === filter.id ? 'scale-110' : 'group-hover:scale-110'}`}>
-                  {filter.icon}
-                </div>
-                {filter.label}
-                {activeCategory === filter.id && (
-                  <div className="w-2 h-2 bg-white rounded-full animate-pulse" />
-                )}
-              </button>
-            ))}
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div>
+              <h2 className="text-3xl font-bold text-primary mb-2">Choose Your Experience</h2>
+              <p className="text-text-muted">Select the perfect package for your visit</p>
+            </div>
+
+            <div className="flex bg-white rounded-2xl p-2 shadow-lg border border-gray-100">
+              {[
+                { id: "all", label: "All Packages", count: packages.length },
+                { id: "dayout", label: "Day Out", count: packages.filter(p => p.category === "dayout").length },
+                { id: "overnight", label: "Overnight", count: packages.filter(p => p.category === "overnight").length }
+              ].map((category) => (
+                <button
+                  key={category.id}
+                  onClick={() => setActiveCategory(category.id)}
+                  className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 flex items-center gap-2 ${
+                    activeCategory === category.id
+                      ? 'bg-gradient-to-r from-green-500 to-emerald-600 text-white shadow-lg'
+                      : 'text-gray-600 hover:text-green-600 hover:bg-green-50'
+                  }`}
+                >
+                  <span>{category.label}</span>
+                  <span className={`text-xs px-2 py-1 rounded-full ${
+                    activeCategory === category.id 
+                      ? 'bg-white/20' 
+                      : 'bg-gray-200'
+                  }`}>
+                    {category.count}
+                  </span>
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -365,168 +301,125 @@ export default function PackagesPage() {
       {/* Modern Package Cards */}
       <section className="py-32 bg-gradient-to-br from-green-50 to-amber-50">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-20">
-            <h2 className="text-5xl md:text-6xl font-bold mb-6 text-green-800">
-              Our <span className="bg-gradient-to-r from-green-600 to-amber-600 bg-clip-text text-transparent">Packages</span>
-            </h2>
-            <p className="text-xl text-green-700 max-w-3xl mx-auto">
-              Each package is carefully crafted to provide you with the perfect blend of comfort, cuisine, and unforgettable experiences
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-7xl mx-auto">
-            {filteredPackages.map((pkg) => (
-              <div
+          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            {filteredPackages.map((pkg, index) => (
+              <div 
                 key={pkg.id}
-                className="group relative"
+                className="group relative bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-100"
                 onMouseEnter={() => setHoveredCard(pkg.id)}
                 onMouseLeave={() => setHoveredCard(null)}
+                style={{ animationDelay: `${index * 200}ms` }}
               >
-                {/* Background Pattern */}
-                <div 
-                  className="absolute inset-0 rounded-3xl opacity-30 transition-opacity duration-700"
-                  style={{ background: pkg.bgPattern }}
-                />
-
-                {/* Main Card */}
-                <div className={`relative bg-white/90 backdrop-blur-xl rounded-3xl overflow-hidden border border-white/50 shadow-xl hover:shadow-3xl transition-all duration-700 hover:-translate-y-4 ${
-                  hoveredCard === pkg.id ? 'scale-105' : ''
-                }`}>
+                {/* Package Header Image */}
+                <div className="relative h-64 overflow-hidden">
+                  <Image
+                    src={pkg.image}
+                    alt={pkg.name}
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-700"
+                    sizes="(max-width: 1024px) 100vw, 33vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
                   
-                  {/* Image Section */}
-                  <div className="relative h-80 overflow-hidden">
-                    <Image
-                      src={pkg.image}
-                      alt={pkg.name}
-                      fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-110"
-                      sizes="(max-width: 1024px) 100vw, 50vw"
-                    />
-                    
-                    {/* Gradient Overlay */}
-                    <div className={`absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent transition-opacity duration-500 ${
-                      hoveredCard === pkg.id ? 'opacity-80' : 'opacity-60'
-                    }`} />
+                  {pkg.popular && (
+                    <div className="absolute top-4 right-4 bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg flex items-center gap-2">
+                      <Crown className="w-4 h-4" />
+                      Most Popular
+                    </div>
+                  )}
 
-                    {/* Floating Elements */}
-                    <div className="absolute top-6 left-6 flex gap-3">
-                      {pkg.badge && (
-                        <div className={`bg-gradient-to-r ${pkg.gradient} text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg flex items-center gap-2 animate-pulse`}>
-                          {pkg.badge === "Luxury" && <Crown className="w-4 h-4" />}
-                          {pkg.badge === "Best Value" && <Award className="w-4 h-4" />}
-                          {pkg.badge}
+                  <div className="absolute bottom-4 left-4 right-4">
+                    <div className="text-white">
+                      <p className="text-sm opacity-90 mb-1">{pkg.tagline}</p>
+                      <h3 className="text-2xl font-bold mb-2">{pkg.name}</h3>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Package Content */}
+                <div className="p-8">
+                  <p className="text-gray-600 mb-6 leading-relaxed">{pkg.description}</p>
+
+                  {/* Pricing */}
+                  <div className="mb-6">
+                    {pkg.priceAdult ? (
+                      <div className="space-y-2">
+                        <div className="flex justify-between items-center">
+                          <span className="text-gray-600">Adult</span>
+                          <span className="text-2xl font-bold text-green-600">Rs. {pkg.priceAdult}/=</span>
+                        </div>
+                        <div className="flex justify-between items-center">
+                          <span className="text-gray-600">Child (5-10)</span>
+                          <span className="text-lg font-semibold text-green-600">Rs. {pkg.priceChild}/=</span>
+                        </div>
+                        <div className="flex justify-between items-center">
+                          <span className="text-gray-600">Under 5</span>
+                          <span className="text-lg font-semibold text-green-600">FREE</span>
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="space-y-3">
+                        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-4 border border-blue-200">
+                          <div className="flex justify-between items-center mb-2">
+                            <span className="font-semibold text-blue-900">A/C Room</span>
+                            <span className="text-xl font-bold text-blue-600">Rs. {pkg.acPrice}/=</span>
+                          </div>
+                          <div className="flex justify-between items-center text-sm">
+                            <span className="text-blue-700">Child (5-10)</span>
+                            <span className="font-semibold text-blue-600">Rs. {pkg.acPriceChild}/=</span>
+                          </div>
+                        </div>
+                        <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg p-4 border border-green-200">
+                          <div className="flex justify-between items-center mb-2">
+                            <span className="font-semibold text-green-900">Non-A/C Room</span>
+                            <span className="text-xl font-bold text-green-600">Rs. {pkg.nonAcPrice}/=</span>
+                          </div>
+                          <div className="flex justify-between items-center text-sm">
+                            <span className="text-green-700">Child (5-10)</span>
+                            <span className="font-semibold text-green-600">Rs. {pkg.nonAcPriceChild}/=</span>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Features Preview */}
+                  <div className="mb-6">
+                    <h4 className="font-bold text-gray-800 mb-3 flex items-center gap-2">
+                      <CheckCircle className="w-5 h-5 text-green-500" />
+                      Package Includes
+                    </h4>
+                    <div className="space-y-2">
+                      {pkg.features.slice(0, 4).map((feature, idx) => (
+                        <div key={idx} className="flex items-start gap-2 text-sm text-gray-600">
+                          <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" />
+                          <span>{feature}</span>
+                        </div>
+                      ))}
+                      {pkg.features.length > 4 && (
+                        <div className="text-sm text-green-600 font-medium">
+                          +{pkg.features.length - 4} more inclusions
                         </div>
                       )}
-                      {pkg.popular && (
-                        <div className="bg-gradient-to-r from-emerald-600 to-green-700 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg flex items-center gap-2">
-                          <Star className="w-4 h-4" />
-                          Popular
-                        </div>
-                      )}
-                    </div>
-
-                    {/* Duration Badge */}
-                    <div className="absolute top-6 right-6 bg-white/20 backdrop-blur-sm text-white px-3 py-2 rounded-full text-sm font-medium flex items-center gap-2">
-                      <Timer className="w-4 h-4" />
-                      {pkg.duration}
-                    </div>
-
-                    {/* Package Info Overlay */}
-                    <div className="absolute bottom-6 left-6 right-6 text-white">
-                      <h3 className="text-3xl font-bold mb-2">{pkg.name}</h3>
-                      <p className="text-white/90 font-medium text-lg">{pkg.tagline}</p>
                     </div>
                   </div>
 
-                  {/* Content Section */}
-                  <div className="p-8">
-                    <p className="text-green-700 text-lg leading-relaxed mb-8">
-                      {pkg.description}
-                    </p>
-
-                    {/* Pricing Section */}
-                    <div className="mb-8">
-                      <div className="bg-gradient-to-r from-green-50 to-amber-50 rounded-2xl p-6">
-                        <h4 className="font-bold text-green-800 mb-4 text-center">Package Pricing</h4>
-                        
-                        {pkg.isCouple ? (
-                          pkg.fullBoardPrice ? (
-                            <div className="grid grid-cols-2 gap-4">
-                              <div className="text-center bg-white rounded-xl p-4 shadow-sm">
-                                <div className="text-2xl font-bold text-green-800">Rs. {pkg.fullBoardPrice}</div>
-                                <div className="text-sm text-green-600">Full Board</div>
-                              </div>
-                              <div className="text-center bg-white rounded-xl p-4 shadow-sm">
-                                <div className="text-2xl font-bold text-green-800">Rs. {pkg.halfBoardPrice}</div>
-                                <div className="text-sm text-green-600">Half Board</div>
-                              </div>
-                            </div>
-                          ) : (
-                            <div className="grid grid-cols-2 gap-4">
-                              <div className="text-center bg-white rounded-xl p-4 shadow-sm">
-                                <div className="text-2xl font-bold text-green-800">Rs. {pkg.acPrice}</div>
-                                <div className="text-sm text-green-600">With A/C</div>
-                              </div>
-                              <div className="text-center bg-white rounded-xl p-4 shadow-sm">
-                                <div className="text-2xl font-bold text-green-800">Rs. {pkg.nonAcPrice}</div>
-                                <div className="text-sm text-green-600">Non A/C</div>
-                              </div>
-                            </div>
-                          )
-                        ) : pkg.priceAdult ? (
-                          <div className="grid grid-cols-2 gap-4">
-                            <div className="text-center bg-white rounded-xl p-4 shadow-sm">
-                              <div className="text-2xl font-bold text-green-800">Rs. {pkg.priceAdult}</div>
-                              <div className="text-sm text-green-600">Adult</div>
-                            </div>
-                            <div className="text-center bg-white rounded-xl p-4 shadow-sm">
-                              <div className="text-xl font-bold text-amber-700">Rs. {pkg.priceChild}</div>
-                              <div className="text-sm text-green-600">Child (5-10)</div>
-                            </div>
-                          </div>
-                        ) : (
-                          <div className="grid grid-cols-2 gap-4">
-                            <div className="text-center bg-white rounded-xl p-4 shadow-sm">
-                              <div className="text-xl font-bold text-green-800">Rs. {pkg.acPrice}</div>
-                              <div className="text-sm text-green-600">A/C Room</div>
-                            </div>
-                            <div className="text-center bg-white rounded-xl p-4 shadow-sm">
-                              <div className="text-xl font-bold text-green-800">Rs. {pkg.nonAcPrice}</div>
-                              <div className="text-sm text-green-600">Non A/C</div>
-                            </div>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-
-                    {/* Features Grid */}
-                    <div className="mb-8">
-                      <h4 className="font-bold text-green-800 mb-4 flex items-center gap-2">
-                        <Sparkles className="w-5 h-5 text-amber-600" />
-                        Package Highlights
-                      </h4>
-                      <div className="grid grid-cols-2 gap-3">
-                        {pkg.features.map((feature, idx) => (
-                          <div key={idx} className="flex items-center gap-3 bg-green-50 rounded-lg p-3 hover:bg-amber-50 transition-colors duration-200">
-                            <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0" />
-                            <span className="text-sm text-green-700">{feature}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Timing */}
-                    <div className="flex items-center gap-3 text-green-600 mb-8 bg-amber-50 rounded-lg p-4">
-                      <Clock className="w-5 h-5 text-amber-600" />
-                      <span className="font-medium">{pkg.timing}</span>
-                    </div>
-
-                    {/* CTA Button */}
-                    <button className={`w-full bg-gradient-to-r ${pkg.gradient} hover:shadow-2xl text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 hover:scale-105 flex items-center gap-3 justify-center group`}>
-                      Book This Package
-                      <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                    </button>
+                  {/* Timing Info */}
+                  <div className="flex items-center gap-3 text-green-600 mb-8 bg-amber-50 rounded-lg p-4">
+                    <Clock className="w-5 h-5 text-amber-600" />
+                    <span className="font-medium">{pkg.timing || `${pkg.timings?.day} (Day) / ${pkg.timings?.night} (Night)`}</span>
                   </div>
+
+                  {/* CTA Button */}
+                  <a
+                    href="https://wa.me/94776251855"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`w-full bg-gradient-to-r ${pkg.gradient} hover:shadow-2xl text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 hover:scale-105 flex items-center gap-3 justify-center group`}
+                  >
+                    Book This Package
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </a>
                 </div>
               </div>
             ))}
@@ -534,41 +427,79 @@ export default function PackagesPage() {
         </div>
       </section>
 
-      {/* Modern Policy Section */}
+      {/* À La Carte Menu Section */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-green-800">
-              Important <span className="bg-gradient-to-r from-green-600 to-amber-600 bg-clip-text text-transparent">Information</span>
-            </h2>
-            <p className="text-xl text-green-700">Please review our policies before booking</p>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-            {policies.map((policy, index) => (
-              <div key={index} className={`bg-gradient-to-br ${policy.gradient} rounded-3xl p-8 border border-green-200/50 hover:shadow-xl transition-shadow duration-300`}>
-                <div className="flex items-center gap-4 mb-8">
-                  <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-green-700 shadow-sm">
-                    {policy.icon}
-                  </div>
-                  <h3 className="text-2xl font-bold text-green-800">{policy.title}</h3>
-                </div>
-                
-                <div className="space-y-4">
-                  {policy.items.map((item, idx) => (
-                    <div key={idx} className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow duration-200">
-                      <div className="flex items-center justify-between mb-3">
-                        <span className="font-bold text-green-800">{item.label}</span>
-                        <span className="bg-gradient-to-r from-green-600 to-emerald-700 text-white px-3 py-1 rounded-full text-sm font-bold">
-                          {item.value}
-                        </span>
-                      </div>
-                      <p className="text-green-700 text-sm">{item.desc}</p>
-                    </div>
-                  ))}
-                </div>
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-16">
+              <div className="inline-flex items-center gap-2 bg-amber-100 rounded-full px-6 py-3 mb-6">
+                <Utensils className="w-5 h-5 text-amber-600" />
+                <span className="text-amber-800 font-semibold">À LA CARTE MENU</span>
               </div>
-            ))}
+              <h2 className="text-4xl font-bold mb-4">
+                Bites Per <span className="text-amber-600">Kilo</span>
+              </h2>
+              <p className="text-xl text-gray-600">
+                Additional items available for order - all prices per 1kg
+              </p>
+            </div>
+
+            <div className="bg-gradient-to-br from-amber-50 to-orange-50 rounded-3xl p-8 border border-amber-200">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {aLaCarteMenu.map((menuItem, index) => (
+                  <div key={index} className="flex justify-between items-center p-4 bg-white rounded-xl shadow-sm border border-amber-100 hover:shadow-md transition-shadow">
+                    <div>
+                      <h4 className="font-semibold text-gray-800">{menuItem.item}</h4>
+                      <p className="text-sm text-gray-500">{menuItem.unit}</p>
+                    </div>
+                    <div className="text-right">
+                      <span className="text-xl font-bold text-amber-600">Rs. {menuItem.price}/=</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Modern Policy Section */}
+      <section className="py-20 bg-gradient-to-br from-green-50 to-amber-50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl font-bold mb-4">
+                Booking <span className="text-green-600">Policies</span>
+              </h2>
+              <p className="text-xl text-gray-600">
+                Important information for your booking
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              {policies.map((policy, index) => (
+                <div key={index} className={`bg-gradient-to-br ${policy.gradient} rounded-3xl p-8 border border-gray-200 shadow-lg hover:shadow-xl transition-shadow`}>
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-green-600">
+                      {policy.icon}
+                    </div>
+                    <h3 className="text-2xl font-bold text-gray-800">{policy.title}</h3>
+                  </div>
+
+                  <div className="space-y-4">
+                    {policy.items.map((item, idx) => (
+                      <div key={idx} className="bg-white rounded-xl p-4 shadow-sm">
+                        <div className="flex justify-between items-start mb-2">
+                          <span className="font-semibold text-gray-800">{item.label}</span>
+                          <span className="text-green-600 font-bold">{item.value}</span>
+                        </div>
+                        <p className="text-sm text-gray-600">{item.desc}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -586,7 +517,7 @@ export default function PackagesPage() {
           <div className="max-w-5xl mx-auto">
             {/* Icon */}
             <div className="w-24 h-24 bg-gradient-to-r from-green-400/20 to-amber-400/20 backdrop-blur-xl rounded-3xl flex items-center justify-center mx-auto mb-12 border border-white/10">
-              <CreditCard className="w-12 h-12 text-green-400" />
+              <MessageCircle className="w-12 h-12 text-green-400" />
             </div>
             
             {/* Title */}
@@ -599,68 +530,57 @@ export default function PackagesPage() {
             
             {/* Description */}
             <p className="text-xl md:text-2xl text-white/80 mb-16 leading-relaxed max-w-3xl mx-auto">
-              Secure your perfect package with just 25% advance payment. Share your receipt via WhatsApp for instant confirmation and let us take care of the rest.
+              Book your perfect package today! Contact us via WhatsApp for instant confirmation and let us create an unforgettable experience for you.
             </p>
-
-            {/* Payment Info Card */}
-            <div className="bg-white/10 backdrop-blur-2xl rounded-3xl p-8 mb-16 border border-white/20 shadow-2xl max-w-3xl mx-auto">
-              <h3 className="text-2xl font-bold mb-6 flex items-center justify-center gap-3">
-                <MapPin className="w-6 h-6 text-green-400" />
-                Bank Transfer Details
-              </h3>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div className="bg-white/10 rounded-2xl p-4 backdrop-blur-sm">
-                  <div className="text-green-400 font-semibold mb-2 text-sm">Account Holder</div>
-                  <div className="text-lg font-bold">MADRN MANNATHUNGA</div>
-                </div>
-                <div className="bg-white/10 rounded-2xl p-4 backdrop-blur-sm">
-                  <div className="text-green-400 font-semibold mb-2 text-sm">Bank & Branch</div>
-                  <div className="text-lg font-bold">SAMPATH BANK, WADDUWA</div>
-                </div>
-                <div className="bg-white/10 rounded-2xl p-4 backdrop-blur-sm">
-                  <div className="text-green-400 font-semibold mb-2 text-sm">Account Number</div>
-                  <div className="text-xl font-bold font-mono tracking-wider">10755 203 1659</div>
-                </div>
-              </div>
-            </div>
-
-            {/* Action Buttons */}
+            
+            {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16">
-              <a 
-                href="https://wa.me/94776251855" 
+              <a
+                href="https://wa.me/94776251855"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group bg-gradient-to-r from-green-600 to-emerald-700 hover:from-green-700 hover:to-emerald-800 text-white px-12 py-6 rounded-2xl font-bold text-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl flex items-center gap-3 justify-center"
+                className="group bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white px-10 py-5 rounded-2xl font-bold text-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl flex items-center gap-3 justify-center"
               >
-                <MessageCircle className="w-6 h-6" />
+                <Phone className="w-6 h-6" />
                 WhatsApp: +94 77 625 1855
                 <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
               </a>
               
-              <a 
-                href="tel:+94776251855" 
-                className="group bg-white/10 backdrop-blur-lg border-2 border-white/30 text-white px-12 py-6 rounded-2xl font-bold text-xl transition-all duration-300 hover:bg-white hover:text-green-900 flex items-center gap-3 justify-center"
+              <a
+                href="mailto:diyaulpatha@gmail.com"
+                className="group bg-white/10 backdrop-blur-md border-2 border-white/30 text-white px-10 py-5 rounded-2xl font-bold text-xl transition-all duration-300 hover:bg-white hover:text-green-800 flex items-center gap-3 justify-center"
               >
-                <Phone className="w-6 h-6" />
-                Call Now
+                <CreditCard className="w-6 h-6" />
+                Email Inquiry
               </a>
             </div>
 
-            {/* Trust Indicators */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-2xl mx-auto">
-              {[
-                { icon: <Shield className="w-6 h-6" />, text: "25% Advance Only", desc: "Secure booking" },
-                { icon: <Calendar className="w-6 h-6" />, text: "Flexible Dates", desc: "Easy rescheduling" },
-                { icon: <Zap className="w-6 h-6" />, text: "Instant Confirmation", desc: "Quick response" }
-              ].map((item, index) => (
-                <div key={index} className="text-center group">
-                  <div className="w-16 h-16 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 border border-white/20">
-                    <div className="text-green-400">{item.icon}</div>
+            {/* Booking Process */}
+            <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 max-w-4xl mx-auto">
+              <h3 className="text-2xl font-bold mb-6">Simple Booking Process</h3>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-green-400/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <MessageCircle className="w-8 h-8 text-green-400" />
                   </div>
-                  <div className="font-bold text-lg mb-1">{item.text}</div>
-                  <div className="text-sm text-white/60">{item.desc}</div>
+                  <h4 className="font-bold mb-2">1. Contact Us</h4>
+                  <p className="text-white/80 text-sm">Send us a message via WhatsApp or email</p>
                 </div>
-              ))}
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-amber-400/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <CreditCard className="w-8 h-8 text-amber-400" />
+                  </div>
+                  <h4 className="font-bold mb-2">2. Pay 25% Advance</h4>
+                  <p className="text-white/80 text-sm">Secure your booking with advance payment</p>
+                </div>
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-emerald-400/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <CheckCircle className="w-8 h-8 text-emerald-400" />
+                  </div>
+                  <h4 className="font-bold mb-2">3. Confirmation</h4>
+                  <p className="text-white/80 text-sm">Send payment receipt for instant confirmation</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

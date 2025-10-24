@@ -51,7 +51,6 @@ export function HeroCarousel({ slides }: HeroCarouselProps) {
                 className="object-cover"
                 priority={idx === 0}
                 sizes="100vw"
-                quality={85}
               />
               
               {/* Gradient Overlay */}

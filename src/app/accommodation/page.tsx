@@ -65,13 +65,6 @@ const roomRates = [
     nonAcRate: "N/A",
     isHeader: false
   },
-  {
-    type: "Family",
-    category: "Luxury",
-    acRate: "15,000/-",
-    nonAcRate: "N/A",
-    isHeader: false
-  }
 ];
 
 const amenities = [

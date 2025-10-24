@@ -27,11 +27,10 @@ export default function AboutPage() {
   }, []);
 
   const timeline = [
-    { year: "Ancient", title: "Ayurveda Origins", description: "5000-year-old healing science from ancient India" },
-    { year: "2015", title: "Vision Born", description: "Founder's dream of authentic healing center" },
-    { year: "2018", title: "Center Opens", description: "Diya Ulpatha begins with traditional treatments" },
-    { year: "2021", title: "Training Program", description: "Professional certification courses added" },
-    { year: "Today", title: "Growing Community", description: "Serving patients and students from many countries" }
+    { year: "2015", title: "Vision Born", description: "Dream of creating a tea garden resort experience" },
+    { year: "2018", title: "Resort Opens", description: "Diya Ulpatha begins welcoming guests" },
+    { year: "2020", title: "Expansion", description: "Added new facilities and improved services" },
+    { year: "Today", title: "Growing Community", description: "Serving guests from many countries with authentic hospitality" }
   ];
 
   return (
@@ -44,7 +43,7 @@ export default function AboutPage() {
             <div className="relative">
               <Image 
                 src={IMAGES.hero.nature}
-                alt="Natural healing environment"
+                alt="Natural tea garden environment"
                 fill
                 className="object-cover"
                 sizes="50vw"
@@ -61,12 +60,12 @@ export default function AboutPage() {
                 <span className="text-sm font-medium">OUR STORY</span>
               </div>
               <h1 className="text-5xl lg:text-7xl font-bold mb-6 leading-tight">
-                Traditional
+                Tea Garden
                 <br/>
-                <span className="text-accent">Ayurveda Center</span>
+                <span className="text-accent">Resort Experience</span>
               </h1>
               <p className="text-xl text-primary-light max-w-2xl">
-                A simple vision to bring authentic Ayurvedic healing to those seeking natural health solutions in a peaceful environment.
+                A simple vision to create an authentic Sri Lankan tea garden resort experience in the beautiful hills of Matugama.
               </p>
             </div>
           </div>
@@ -81,28 +80,28 @@ export default function AboutPage() {
               Our <span className="text-accent">Purpose</span>
             </h2>
             <p className="text-2xl text-text-muted leading-relaxed mb-12">
-              &ldquo;To provide authentic Ayurvedic treatments and education in a peaceful natural setting, making traditional healing accessible to all who seek it.&rdquo;
+              &ldquo;To provide authentic Sri Lankan hospitality and comfortable accommodation in a beautiful tea garden setting, creating memorable experiences for families, groups, and event celebrations.&rdquo;
             </p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               <div className="text-center">
                 <Heart className="w-12 h-12 text-accent mx-auto mb-4" />
-                <div className="text-3xl font-bold text-primary">Traditional</div>
-                <div className="text-text-muted">Methods</div>
+                <div className="text-3xl font-bold text-primary">Authentic</div>
+                <div className="text-text-muted">Hospitality</div>
               </div>
               <div className="text-center">
                 <Users className="w-12 h-12 text-accent mx-auto mb-4" />
-                <div className="text-3xl font-bold text-primary">50+</div>
-                <div className="text-text-muted">Patients Helped</div>
+                <div className="text-3xl font-bold text-primary">500+</div>
+                <div className="text-text-muted">Happy Guests</div>
               </div>
               <div className="text-center">
                 <Award className="w-12 h-12 text-accent mx-auto mb-4" />
-                <div className="text-3xl font-bold text-primary">10+</div>
-                <div className="text-text-muted">Treatments</div>
+                <div className="text-3xl font-bold text-primary">3</div>
+                <div className="text-text-muted">Package Options</div>
               </div>
               <div className="text-center">
                 <Globe className="w-12 h-12 text-accent mx-auto mb-4" />
-                <div className="text-3xl font-bold text-primary">15+</div>
-                <div className="text-text-muted">Countries</div>
+                <div className="text-3xl font-bold text-primary">Beautiful</div>
+                <div className="text-text-muted">Location</div>
               </div>
             </div>
           </div>
@@ -114,7 +113,7 @@ export default function AboutPage() {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16 animate-on-scroll">
             <h2 className="text-4xl font-bold mb-4">Our <span className="text-accent">Journey</span></h2>
-            <p className="text-xl text-text-muted">How we grew from an idea to a healing center</p>
+            <p className="text-xl text-text-muted">How we grew from an idea to a beloved resort</p>
           </div>
 
           <div className="max-w-6xl mx-auto">
@@ -130,16 +129,16 @@ export default function AboutPage() {
                   onClick={() => setActiveTimeline(index)}
                 >
                   <div className={`w-1/2 p-6 ${index % 2 === 0 ? 'pr-8 text-right' : 'pl-8 text-left'}`}>
-                    <div className={`bg-white rounded-2xl p-6 shadow-lg border transition-all duration-300 hover:shadow-xl ${
+                    <div className={`bg-white rounded-xl p-6 shadow-lg border-l-4 ${
                       activeTimeline === index ? 'border-accent bg-accent/5' : 'border-gray-200'
-                    }`}>
-                      <div className="text-accent font-bold text-lg mb-2">{item.year}</div>
+                    } transition-all duration-300`}>
+                      <div className="text-2xl font-bold text-accent mb-2">{item.year}</div>
                       <h3 className="text-xl font-bold text-primary mb-2">{item.title}</h3>
                       <p className="text-text-muted">{item.description}</p>
                     </div>
                   </div>
                   
-                  <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-accent rounded-full border-4 border-white shadow-md"></div>
+                  <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-accent rounded-full border-4 border-white shadow-lg"></div>
                 </div>
               ))}
             </div>
@@ -154,7 +153,7 @@ export default function AboutPage() {
             <Star className="w-16 h-16 text-accent mx-auto mb-8" />
             <h2 className="text-4xl font-bold mb-8">About Our Founder</h2>
             <blockquote className="text-2xl font-medium leading-relaxed mb-8 italic">
-              &ldquo;I wanted to create a place where people could experience authentic Ayurveda in a simple, honest way. Not luxury, but genuine healing in a peaceful environment.&rdquo;
+              &ldquo;I wanted to create a place where families and friends could come together to enjoy the beauty of Sri Lanka's tea country, with genuine hospitality and memorable experiences.&rdquo;
             </blockquote>
             <div className="flex items-center justify-center gap-4">
               <div className="w-16 h-16 bg-accent rounded-full flex items-center justify-center">
@@ -174,16 +173,16 @@ export default function AboutPage() {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16 animate-on-scroll">
             <h2 className="text-4xl font-bold mb-4">Why Choose <span className="text-accent">Diya Ulpatha?</span></h2>
-            <p className="text-xl text-text-muted max-w-3xl mx-auto">Three reasons why patients trust us with their health</p>
+            <p className="text-xl text-text-muted max-w-3xl mx-auto">Three reasons why guests love our tea garden resort</p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <div className="relative group animate-on-scroll">
               <div className="bg-white rounded-2xl p-8 h-full shadow-lg group-hover:shadow-2xl transition-all duration-500 border-l-4 border-accent">
-                <Stethoscope className="w-16 h-16 text-accent mb-6" />
-                <h3 className="text-2xl font-bold mb-4">Qualified Doctors</h3>
+                <Leaf className="w-16 h-16 text-accent mb-6" />
+                <h3 className="text-2xl font-bold mb-4">Authentic Setting</h3>
                 <p className="text-text-muted leading-relaxed">
-                  Our doctors are registered with Sri Lanka Ayurvedic Medical Council and have years of experience in traditional healing.
+                  Experience genuine Sri Lankan hospitality in our beautiful tea garden resort surrounded by natural beauty.
                 </p>
               </div>
             </div>
@@ -191,9 +190,9 @@ export default function AboutPage() {
             <div className="relative group animate-on-scroll animate-delay-200">
               <div className="bg-gradient-to-br from-accent/5 to-primary/5 rounded-2xl p-8 h-full border border-accent/20 group-hover:border-accent/40 transition-all duration-500">
                 <Award className="w-16 h-16 text-accent mb-6" />
-                <h3 className="text-2xl font-bold mb-4">Authentic Methods</h3>
+                <h3 className="text-2xl font-bold mb-4">Complete Packages</h3>
                 <p className="text-text-muted leading-relaxed">
-                  We use traditional Ayurvedic methods passed down through generations, with natural herbs and time-tested techniques.
+                  From day out adventures to overnight stays, we offer comprehensive packages with meals, activities, and memorable experiences.
                 </p>
               </div>
             </div>
@@ -201,9 +200,9 @@ export default function AboutPage() {
             <div className="relative group animate-on-scroll animate-delay-400">
               <div className="bg-white rounded-2xl p-8 h-full shadow-lg group-hover:shadow-2xl transition-all duration-500 border-l-4 border-primary">
                 <Clock className="w-16 h-16 text-primary mb-6" />
-                <h3 className="text-2xl font-bold mb-4">Convenient Location</h3>
+                <h3 className="text-2xl font-bold mb-4">Perfect Location</h3>
                 <p className="text-text-muted leading-relaxed">
-                  Located in Kandy with easy access from the city center, surrounded by natural beauty that supports healing.
+                  Located in Matugama with easy access from Colombo, our resort offers the perfect escape into nature's tranquility.
                 </p>
               </div>
             </div>

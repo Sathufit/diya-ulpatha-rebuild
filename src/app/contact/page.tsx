@@ -1,19 +1,9 @@
 "use client";
 import { useState, useEffect } from "react";
 import { QuickInquiryForm } from "@/components/QuickInquiryForm";
-import {
-  Phone,
-  Mail,
-  MapPin,
-  Clock,
-  MessageCircle,
-  Send,
-  ChevronDown,
-  ChevronUp,
-  Globe,
-  Zap,
-  Shield,
-  Users,
+import { 
+  Phone, Mail, MapPin, Clock, MessageCircle, Send,
+  Shield, Users, Globe, Zap, Star, ChevronDown, ChevronUp
 } from "lucide-react";
 
 export default function ContactPage() {
@@ -29,24 +19,24 @@ export default function ContactPage() {
     {
       icon: <Phone className="w-8 h-8" />,
       title: "Call Us",
-      primary: "+94 11 222 3344",
-      secondary: "Available 24/7",
-      action: "tel:+94112223344",
+      primary: "+94 77 625 1855",
+      secondary: "Available 8AM - 8PM",
+      action: "tel:+94776251855",
       color: "bg-green-50 text-green-600 border-green-200",
     },
     {
       icon: <Mail className="w-8 h-8" />,
       title: "Email Us",
-      primary: "info@diyaulpatha.com",
-      secondary: "Response within 2 hours",
-      action: "mailto:info@diyaulpatha.com",
+      primary: "diyaulpatha@gmail.com",
+      secondary: "Response within 24 hours",
+      action: "mailto:diyaulpatha@gmail.com",
       color: "bg-blue-50 text-blue-600 border-blue-200",
     },
     {
       icon: <MapPin className="w-8 h-8" />,
       title: "Visit Us",
-      primary: "Kandy, Sri Lanka",
-      secondary: "15 min from city center",
+      primary: "Matugama, Sri Lanka",
+      secondary: "Horawala Welipenna, Mawathagoda Road",
       action: "https://maps.google.com",
       color: "bg-purple-50 text-purple-600 border-purple-200",
     },
@@ -62,37 +52,42 @@ export default function ContactPage() {
 
   const faqs = [
     {
-      question: "How do I book my first consultation?",
+      question: "How do I make a reservation?",
       answer:
-        "You can book through our contact form, call us directly, or visit our center. We recommend advance booking to ensure availability. Your first visit includes a comprehensive consultation with our Ayurvedic doctor.",
+        "You can book through our contact form, WhatsApp (+94 77 625 1855), or email. We require 25% advance payment to confirm your booking. After payment, send the receipt via WhatsApp for instant confirmation.",
     },
     {
-      question: "What should I expect during treatments?",
+      question: "What packages do you offer?",
       answer:
-        "Each treatment begins with a personal consultation to assess your constitution and current health status. Treatments are customized to your needs and performed by qualified therapists in a peaceful environment.",
+        "We offer Day Out Packages (Rs. 3,000 per adult), Full Board overnight packages (Rs. 9,000 A/C, Rs. 7,500 Non-A/C), and Half Board packages (Rs. 8,500 A/C, Rs. 7,000 Non-A/C). All include meals and swimming pool access.",
     },
     {
-      question: "Do you offer residential packages?",
+      question: "Do you offer discounts for children?",
       answer:
-        "Yes, we offer comprehensive residential packages that include accommodation, meals, treatments, and wellness activities. Packages range from 3-day retreats to 21-day intensive programs.",
+        "Yes! Children under 5 years stay free. Children aged 5-10 years get 50% discount on overnight packages and pay Rs. 1,500 for day out packages.",
     },
     {
-      question: "Are your practitioners certified?",
+      question: "What facilities do you have?",
       answer:
-        "All our doctors are registered with Sri Lanka Ayurvedic Medical Council, and our therapists hold qualifications from reputed institutions with extensive practical experience.",
+        "We have swimming pool, playground, children's park, volleyball court, badminton court, restaurant, and beautiful tea garden surroundings. Changing rooms are provided for groups of 25+ people.",
     },
     {
-      question: "What is included in training programs?",
+      question: "Can we host events at your resort?",
       answer:
-        "Our 14-day certification program includes theoretical knowledge, practical demonstrations, hands-on training, accommodation, meals, and official certification upon completion.",
+        "Absolutely! We host family gatherings, corporate events, team building activities, and celebrations. Music is allowed until 7:00 PM for evening events. Contact us to discuss your event requirements.",
+    },
+    {
+      question: "What are the pool hours?",
+      answer:
+        "For day events, pool access is until 4:30 PM. For night events, pool closes at 7:00 PM. Pool access is included in all our packages.",
     },
   ];
 
   const quickStats = [
-    { icon: <Zap className="w-6 h-6" />, label: "Quick Response", value: "< 2 hours" },
-    { icon: <Shield className="w-6 h-6" />, label: "Trust Score", value: "4.9/5" },
-    { icon: <Users className="w-6 h-6" />, label: "Happy Clients", value: "500+" },
-    { icon: <Globe className="w-6 h-6" />, label: "Countries", value: "15+" },
+    { icon: <Zap className="w-6 h-6" />, label: "Quick Response", value: "< 24 hours" },
+    { icon: <Shield className="w-6 h-6" />, label: "Trusted", value: "100+ Guests" },
+    { icon: <Users className="w-6 h-6" />, label: "Happy Visitors", value: "5★ Rating" },
+    { icon: <Globe className="w-6 h-6" />, label: "Location", value: "Matugama" },
   ];
 
   return (
@@ -116,13 +111,13 @@ export default function ContactPage() {
             </div>
 
             <h1 className="text-5xl lg:text-7xl font-bold mb-6 leading-tight">
-              Let&apos;s Start Your
+              Let&apos;s Plan Your
               <br />
-              <span className="text-accent">Wellness Journey</span>
+              <span className="text-accent">Perfect Stay</span>
             </h1>
 
             <p className="text-xl text-white/90 max-w-3xl mx-auto mb-12 leading-relaxed">
-              Ready to transform your life through authentic Ayurveda? We&apos;re here to guide you every step of the way. Reach out and let&apos;s begin your healing journey together.
+              Ready to experience our beautiful tea garden resort? We&apos;re here to help you plan the perfect getaway, event, or celebration at Diya Ulpatha.
             </p>
 
             {/* Quick stats */}
