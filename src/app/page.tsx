@@ -72,7 +72,7 @@ export default function HomePage() {
       subtitle: "Stay with Us",
       description: "Choose from our Standard and Luxury rooms, all set in beautiful tea garden surroundings with modern amenities and peaceful atmosphere.",
       features: ["Tea garden views", "Modern amenities", "Peaceful environment", "Multiple room types"],
-      image: IMAGES.accommodation.doubleRoom,
+      image: IMAGES.accommodation.familyRoom,
       color: "from-green-500/20 to-emerald-500/20",
       borderColor: "border-green-200",
       link: "/accommodation"
