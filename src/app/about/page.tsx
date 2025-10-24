@@ -1,7 +1,8 @@
+/* eslint-disable react/no-unescaped-entities */
 "use client";
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { Leaf, Heart, Award, Users, Clock, Stethoscope, Globe, Star } from "lucide-react";
+import { Leaf, Heart, Award, Users, Clock, Globe, Star } from "lucide-react";
 import { IMAGES } from "@/constants/images";
 
 export default function AboutPage() {

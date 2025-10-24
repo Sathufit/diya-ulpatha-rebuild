@@ -3,9 +3,9 @@ import { useState, useEffect } from "react";
 import { HeroCarousel } from "@/components/HeroCarousel";
 import { QuickInquiryForm } from "@/components/QuickInquiryForm";
 import { 
-  Leaf, Heart, Award, Star, ArrowRight, Play, Sparkles, 
+  Leaf, Heart, Star, ArrowRight, Play, Sparkles, 
   CheckCircle, TreePine, ChevronDown, Utensils,
-  MapPin, Calendar
+  Calendar
 } from "lucide-react";
 import { IMAGES } from "@/constants/images";
 import Image from "next/image";

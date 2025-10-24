@@ -2,11 +2,10 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { 
-  Star, Heart, Users, Clock, Phone, Gift, 
+  Star, Users, Clock, Phone, Gift, 
   CheckCircle, ArrowRight, Utensils, 
-  Sun, Moon, Calendar, CreditCard, Shield, MessageCircle,
-  Sparkles, Award, Timer, Package, MapPin, Crown,
-  Zap, Play
+  CreditCard, Shield, MessageCircle,
+  Package, Crown
 } from "lucide-react";
 import { IMAGES } from "@/constants/images";
 

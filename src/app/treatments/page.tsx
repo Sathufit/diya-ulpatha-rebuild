@@ -1,8 +1,9 @@
+/* eslint-disable react/no-unescaped-entities */
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { 
-  Heart, Leaf, Clock, Star, Calendar, Phone, Sparkles, Construction
+  Heart, Star, Calendar, Phone, Sparkles, Construction
 } from "lucide-react";
 import { IMAGES } from "@/constants/images";
 

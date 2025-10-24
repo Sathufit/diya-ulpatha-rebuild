@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { QuickInquiryForm } from "@/components/QuickInquiryForm";
 import { 
   Phone, Mail, MapPin, Clock, MessageCircle, Send,
-  Shield, Users, Globe, Zap, Star, ChevronDown, ChevronUp
+  Shield, Users, Globe, Zap, ChevronDown, ChevronUp
 } from "lucide-react";
 
 export default function ContactPage() {
